@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, TrendingUp } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
@@ -18,14 +18,12 @@ const Header = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl"
     >
-      <nav className="flex items-center justify-between px-6 py-4 bg-secondary/80 backdrop-blur-xl rounded-2xl border border-border">
+      <nav className="flex items-center justify-between px-6 py-3 bg-[hsl(220,18%,13%)] backdrop-blur-xl rounded-full border border-[hsl(220,14%,20%)]">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 text-foreground font-bold text-xl">
-          <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground text-sm font-bold">D</span>
-          </div>
+        <a href="#" className="flex items-center gap-2 text-foreground font-semibold text-lg">
+          <TrendingUp className="w-5 h-5 text-foreground" />
           designfast
         </a>
 
@@ -35,7 +33,7 @@ const Header = () => {
             <li key={link.label}>
               <a
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+                className="text-[hsl(220,10%,65%)] hover:text-foreground transition-colors text-sm font-medium"
               >
                 {link.label}
               </a>
@@ -44,7 +42,7 @@ const Header = () => {
         </ul>
 
         {/* CTA Button */}
-        <Button className="hidden md:flex" size="sm">
+        <Button className="hidden md:flex rounded-full px-5" size="sm">
           Contact us
         </Button>
 
