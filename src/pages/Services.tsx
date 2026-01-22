@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { LayoutTemplate, Search, RefreshCcw, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 
 const services = [
@@ -7,19 +8,19 @@ const services = [
     icon: LayoutTemplate,
     title: "Landing Pages from Scratch",
     description: "High-converting landing pages built from zero, designed to turn visitors into leads.",
-    href: "#contact"
+    href: "/services/landing-pages"
   },
   {
     icon: Search,
     title: "SEO (On-Site & Google)",
     description: "On-page SEO, technical optimization, and Google setup to help your business get found.",
-    href: "#contact"
+    href: "/services/seo"
   },
   {
     icon: RefreshCcw,
     title: "Website Redesign",
     description: "Transform your existing website into a modern, conversion-focused experience.",
-    href: "#contact"
+    href: "/services/redesign"
   }
 ];
 
@@ -48,14 +49,14 @@ const Services = () => {
             {/* Service Cards - 2 Column Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
               {services.map((service, index) => (
-                <motion.a
+                <motion.div
                   key={service.title}
-                  href={service.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="group block"
                 >
+                  <Link to={service.href}>
                   <div className="relative h-full p-6 md:p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] hover:border-white/10 hover:shadow-[0_0_30px_rgba(255,255,255,0.03)] transition-all duration-300 hover:-translate-y-1">
                     <div className="flex items-start gap-6">
                       {/* Icon Container */}
@@ -79,7 +80,8 @@ const Services = () => {
                       </div>
                     </div>
                   </div>
-                </motion.a>
+                  </Link>
+                </motion.div>
               ))}
             </div>
 
