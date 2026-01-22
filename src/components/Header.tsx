@@ -4,8 +4,8 @@ import { Menu, TrendingUp } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#services" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
   { label: "About Us", href: "#about" },
   { label: "Case Studies", href: "#cases" },
 ];
