@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { 
   ChevronRight, 
   ArrowRight,
-  Search,
+  ArrowDown,
+  Check,
   Gauge,
   MapPin,
   FileSearch,
   Zap,
-  Globe,
   Target,
   FileText,
   Link2,
@@ -88,8 +88,73 @@ const SEOService = () => {
     }
   ];
 
+  const flowSteps = [
+    "Website Built for SEO",
+    "Content Optimized",
+    "Google Crawls & Indexes",
+    "Consistent Leads from Search"
+  ];
+
+  const weDo = [
+    "SEO strategy and keyword research",
+    "On-page optimization for every page",
+    "Technical audits and fixes",
+    "Google Business Profile setup",
+    "Monthly performance reports"
+  ];
+
+  const youNeedTo = [
+    "Provide access to your website (or let us build it)",
+    "Share information about your services and customers",
+    "Respond to review requests from happy customers",
+    "Be patient—SEO takes 3–6 months to show results"
+  ];
+
+  const pricingTiers = [
+    {
+      name: "Starter Landing Page",
+      description: "Single-page high-converting design",
+      price: "$997",
+      featured: false,
+      seoFeatures: [
+        "Basic on-page SEO",
+        "Meta titles and descriptions",
+        "Mobile responsive",
+        "Fast loading speed"
+      ]
+    },
+    {
+      name: "Business Website",
+      description: "Complete SEO-optimized website",
+      price: "$2,497",
+      featured: true,
+      seoFeatures: [
+        "Full on-page SEO for all pages",
+        "Technical SEO audit & fixes",
+        "Google Business Profile setup",
+        "Schema markup implementation",
+        "Speed optimization",
+        "1 month of SEO support"
+      ]
+    },
+    {
+      name: "Premium Package",
+      description: "Growth-focused SEO solution",
+      price: "$4,997",
+      featured: false,
+      seoFeatures: [
+        "Everything in Business Website",
+        "Local citation building",
+        "Competitor analysis",
+        "Content strategy",
+        "Analytics & monthly reporting",
+        "3 months of SEO support"
+      ]
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
@@ -102,11 +167,11 @@ const SEOService = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center justify-center gap-2 text-sm text-muted-foreground mb-8"
           >
-            <Link to="/services" className="hover:text-white transition-colors">
+            <Link to="/services" className="hover:text-foreground transition-colors">
               Services
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-white">SEO</span>
+            <span className="text-foreground">SEO</span>
           </motion.nav>
 
           {/* Badge */}
@@ -114,9 +179,9 @@ const SEOService = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(220,15%,12%)]/80 border border-white/10 text-sm text-muted-foreground mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(220,15%,12%)]/80 border border-[hsl(220,10%,18%)] text-sm text-muted-foreground mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
+            <span className="w-2 h-2 rounded-full bg-[hsl(142,76%,36%)]" />
             Used by 50+ local businesses
           </motion.div>
 
@@ -125,7 +190,7 @@ const SEOService = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-b from-white via-white to-slate-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-foreground"
           >
             Rank on Google. Get consistent leads from local search.
           </motion.h1>
@@ -149,7 +214,7 @@ const SEOService = () => {
           >
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-white/90 text-lg px-8 py-6 rounded-full font-semibold"
+              className="bg-foreground text-background hover:bg-foreground/90 text-lg px-8 py-6 rounded-full font-semibold"
             >
               Get Your Free SEO Review
             </Button>
@@ -171,7 +236,7 @@ const SEOService = () => {
         >
           <Button
             variant="ghost"
-            className="text-white hover:text-white hover:bg-white/5 text-base gap-2 group"
+            className="text-foreground hover:text-foreground hover:bg-foreground/5 text-base gap-2 group"
           >
             👉 See Why Your Site Isn't Ranking
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -192,7 +257,7 @@ const SEOService = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-b from-white via-white to-slate-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
               Why You're Not Ranking on Google (Yet)
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -208,15 +273,18 @@ const SEOService = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-white/10"
+                className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
               >
+                {/* Subtle inner glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                
                 <div className="w-12 h-12 rounded-xl bg-[hsl(220,15%,15%)] flex items-center justify-center mb-6">
-                  <problem.icon className="w-6 h-6 text-muted-foreground" />
+                  <problem.icon className="w-6 h-6 text-[hsl(220,10%,55%)]" />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-4">
+                <h3 className="text-xl font-semibold text-foreground mb-4">
                   {problem.title}
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-[hsl(220,10%,55%)] leading-relaxed">
                   {problem.description}
                 </p>
               </motion.div>
@@ -235,7 +303,7 @@ const SEOService = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-b from-white via-white to-slate-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
               Our SEO Approach: Three Layers of Optimization
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -251,49 +319,333 @@ const SEOService = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-white/10 flex flex-col"
+                className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex flex-col"
               >
-                <h3 className="text-2xl font-bold text-white mb-6">
+                {/* Subtle inner glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                
+                <h3 className="text-2xl font-bold text-foreground mb-6 relative">
                   {component.title}
                 </h3>
 
                 {/* What It Includes */}
-                <div className="mb-8">
+                <div className="mb-8 relative">
                   <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                     What It Includes
                   </h4>
                   <ul className="space-y-3">
                     {component.includes.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <item.icon className="w-4 h-4 text-[#2ECC71] mt-1 flex-shrink-0" />
-                        <span className="text-sm text-white/80">{item.text}</span>
+                        <item.icon className="w-4 h-4 text-[hsl(142,76%,36%)] mt-1 flex-shrink-0" />
+                        <span className="text-sm text-foreground/80">{item.text}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Why It Matters */}
-                <div className="mb-8">
+                <div className="mb-8 relative">
                   <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                     Why It Matters
                   </h4>
-                  <p className="text-sm text-white/70 leading-relaxed">
+                  <p className="text-sm text-foreground/70 leading-relaxed">
                     {component.whyItMatters}
                   </p>
                 </div>
 
                 {/* Example */}
-                <div className="mt-auto pt-6 border-t border-white/10">
+                <div className="mt-auto pt-6 border-t border-[hsl(220,10%,18%)] relative">
                   <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                     Example
                   </h4>
-                  <p className="text-sm text-white/60 leading-relaxed italic">
+                  <p className="text-sm text-muted-foreground leading-relaxed italic">
                     {component.example}
                   </p>
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Section 4 - How SEO Fits Your Website */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+              SEO Isn't Separate—It's Built Into Everything
+            </h2>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column - Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="space-y-6"
+            >
+              <p className="text-[hsl(220,10%,55%)] text-lg leading-relaxed">
+                Most agencies treat SEO as an add-on—something you buy after your website is built. That's backwards.
+              </p>
+              <p className="text-[hsl(220,10%,55%)] text-lg leading-relaxed">
+                We build SEO into every page from the start. Your site structure, your content hierarchy, your page speed—all optimized before you launch.
+              </p>
+              <div className="pt-4">
+                <h4 className="text-foreground font-semibold mb-4">Why This Matters:</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[hsl(142,76%,36%)] font-bold">1.</span>
+                    <span className="text-[hsl(220,10%,55%)]">No expensive retrofits later</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[hsl(142,76%,36%)] font-bold">2.</span>
+                    <span className="text-[hsl(220,10%,55%)]">Google starts indexing you correctly from day one</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[hsl(142,76%,36%)] font-bold">3.</span>
+                    <span className="text-[hsl(220,10%,55%)]">Faster time to first rankings</span>
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Visual Flow */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+            >
+              {/* Subtle inner glow */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+              
+              <div className="relative flex flex-col items-center space-y-4">
+                {flowSteps.map((step, index) => (
+                  <div key={step} className="w-full">
+                    <div className="relative px-6 py-4 rounded-xl bg-[hsl(220,15%,12%)] border border-[hsl(220,10%,18%)] text-center">
+                      <span className="text-foreground font-medium">{step}</span>
+                    </div>
+                    {index < flowSteps.length - 1 && (
+                      <div className="flex justify-center py-2">
+                        <ArrowDown className="w-5 h-5 text-[hsl(220,10%,40%)]" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 8 - Your Role in SEO Success */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+              What Success Requires From You
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* We Do Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+              
+              <h3 className="text-xl font-bold text-foreground mb-6 relative">We Do</h3>
+              <ul className="space-y-4 relative">
+                {weDo.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-[hsl(142,76%,36%)] mt-0.5 flex-shrink-0" />
+                    <span className="text-[hsl(220,10%,55%)]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* You Need To Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+              
+              <h3 className="text-xl font-bold text-foreground mb-6 relative">You Need To</h3>
+              <ul className="space-y-4 relative">
+                {youNeedTo.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
+                    <span className="text-[hsl(220,10%,55%)]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* The Reality */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative p-6 rounded-xl bg-[hsl(220,15%,12%)]/60 border border-[hsl(220,10%,18%)] text-center"
+          >
+            <p className="text-foreground/90 italic text-lg">
+              <strong>The Reality:</strong> SEO is a long game. If you're looking for overnight results, we're not the right fit. But if you want sustainable, compounding growth—we'll get you there.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 9 - Pricing */}
+      <section className="py-24 px-4 bg-background">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              SEO Pricing (Included in Website Packages)
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Transparent pricing. No hidden fees. Choose the package that fits your goals.
+            </p>
+          </motion.div>
+
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {pricingTiers.map((tier, index) => (
+              <motion.div
+                key={tier.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`relative rounded-2xl p-8 flex flex-col
+                  ${
+                    tier.featured
+                      ? "bg-[hsl(220,15%,12%)]/90 border-primary/30 shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]"
+                      : "bg-[hsl(220,15%,8%)]/80"
+                  }
+                  backdrop-blur-xl
+                  border border-[hsl(220,10%,18%)]
+                  shadow-[0_8px_32px_rgba(0,0,0,0.3)]`}
+              >
+                {/* Most Popular Badge */}
+                {tier.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded-full">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+
+                {/* Subtle inner glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+
+                {/* Package Name */}
+                <h3 className="text-xl font-bold text-foreground mb-2 relative">
+                  {tier.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-muted-foreground text-sm mb-6 relative">
+                  {tier.description}
+                </p>
+
+                {/* Price */}
+                <div className="mb-8 relative">
+                  <span className="text-4xl md:text-5xl font-bold text-foreground">
+                    {tier.price}
+                  </span>
+                </div>
+
+                {/* Features List */}
+                <ul className="space-y-4 mb-8 flex-grow relative">
+                  {tier.seoFeatures.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <Check
+                        size={18}
+                        className="text-muted-foreground mt-0.5 flex-shrink-0"
+                      />
+                      <span className="text-muted-foreground text-sm">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Button
+                  variant={tier.featured ? "default" : "outline"}
+                  size="lg"
+                  className={`w-full relative ${
+                    tier.featured
+                      ? ""
+                      : "bg-[hsl(220,14%,14%)] hover:bg-[hsl(220,14%,18%)] border-[hsl(220,10%,22%)]"
+                  }`}
+                >
+                  Request a Quote
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 10 - Final CTA */}
+      <section className="py-24 px-4 bg-foreground">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-6">
+              See What's Holding Your Rankings Back
+            </h2>
+            <p className="text-background/70 text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+              Get a free SEO audit. Find out exactly what's working, what's broken, and your top 3 quick wins. No obligation, no sales pitch.
+            </p>
+            <Button
+              size="lg"
+              className="bg-background text-foreground hover:bg-background/90 text-lg px-10 py-6 rounded-full font-semibold mb-4"
+            >
+              Get Your Free SEO Review
+            </Button>
+            <p className="text-background/60 text-sm">
+              Takes 15 minutes. We'll email you a one-page report with actionable recommendations.
+            </p>
+          </motion.div>
         </div>
       </section>
     </div>
