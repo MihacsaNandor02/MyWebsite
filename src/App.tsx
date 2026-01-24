@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Services from "./pages/Services";
 import LandingPagesService from "./pages/LandingPagesService";
 import SEOService from "./pages/SEOService";
+import WebsiteRedesignService from "./pages/WebsiteRedesignService";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/services/landing-pages" element={<LandingPagesService />} />
           <Route path="/services/seo" element={<SEOService />} />
+          <Route path="/services/website-redesign" element={<WebsiteRedesignService />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
