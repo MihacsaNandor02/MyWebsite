@@ -405,6 +405,335 @@ const WebsiteRedesignService = () => {
           </div>
         </div>
       </section>
+
+      {/* Section 5 - Before & After: What Changes */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              What Improves in a Redesign
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              A strategic redesign impacts multiple areas. Here's what real clients experienced:
+            </p>
+          </motion.div>
+
+          <div className="space-y-6">
+            {[
+              {
+                metric: "Conversion Rate",
+                before: "1% of visitors take action (1,000 visitors = 10 leads/month)",
+                after: "3-4% of visitors take action (1,000 visitors = 30-40 leads/month)",
+                why: "Clearer messaging, better CTAs, and a more trustworthy design means more visitors become leads. Same traffic, 3x more results."
+              },
+              {
+                metric: "Site Speed",
+                before: "5.2 second load time (slow, hurts Google rankings)",
+                after: "2.1 second load time (fast, Google rewards this)",
+                why: "Faster sites rank better on Google AND convert better. People leave slow sites. Fast sites keep visitors engaged."
+              },
+              {
+                metric: "Mobile Experience",
+                before: "40% of mobile visitors bounce immediately (site doesn't work on phones)",
+                after: "10% bounce rate (site is designed for mobile first)",
+                why: "70% of traffic is mobile. If your site works on phones, you instantly reach more customers. More traffic + more conversions = more leads."
+              },
+              {
+                metric: "Trust/Credibility",
+                before: "Dated visuals, unclear messaging = visitors think 'this company isn't professional'",
+                after: "Modern design, clear benefits = visitors think 'I trust this company'",
+                why: "58% of people judge businesses by their website. A professional site wins more customers. You don't get a second chance at first impressions."
+              },
+              {
+                metric: "Google Rankings",
+                before: "Page 2-3 for main keywords (invisible)",
+                after: "Page 1 for main keywords (visible, getting traffic)",
+                why: "90% of clicks go to page 1 results. A redesign with proper SEO gets you visible. More visibility = more customers finding you naturally."
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={item.metric}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                
+                <div className="relative">
+                  <h3 className="text-xl font-bold text-foreground mb-6">{item.metric}</h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-6 mb-6">
+                    <div className="p-4 rounded-xl bg-[hsl(0,65%,50%)]/10 border border-[hsl(0,65%,50%)]/20">
+                      <span className="text-sm font-semibold text-[hsl(0,65%,50%)] uppercase tracking-wider">Before</span>
+                      <p className="text-foreground/80 mt-2">{item.before}</p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-[hsl(142,76%,36%)]/10 border border-[hsl(142,76%,36%)]/20">
+                      <span className="text-sm font-semibold text-[hsl(142,76%,36%)] uppercase tracking-wider">After</span>
+                      <p className="text-foreground/80 mt-2">{item.after}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-[hsl(220,10%,18%)]">
+                    <p className="text-[hsl(220,10%,55%)]">
+                      <span className="font-semibold text-foreground">Why It Matters:</span> {item.why}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6 - What's Included in a Redesign */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              The Full Redesign Package
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Here's exactly what you get when you redesign with us:
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { title: "Professional Audit & Report", details: "We analyze your current site, identify problems, and give you a detailed report with recommendations. You understand the 'why' before any work starts.", icon: ClipboardCheck },
+              { title: "Modern, Professional Design", details: "Updated visuals that match today's standards. Clean, professional, trustworthy. Built for your specific business (we don't use templates).", icon: PenTool },
+              { title: "Mobile Optimization", details: "Your site works beautifully on phones, tablets, and desktops. Mobile-first design means it's functional and fast everywhere.", icon: Smartphone },
+              { title: "Conversion-Focused Structure", details: "Clear messaging, obvious CTAs, and a logical flow from visitor to lead. Every element serves a purpose.", icon: Target },
+              { title: "Speed Optimization", details: "We compress images, optimize code, and use fast hosting. Your site loads in under 3 seconds (Google requirement, conversion necessity).", icon: Zap },
+              { title: "SEO-Friendly Setup", details: "Proper heading structure, meta tags, image alt text, internal linking. Your redesigned site ranks better on Google than your old one.", icon: Search },
+              { title: "Content Migration", details: "We move all your important content to the new site. No lost information, proper redirects, everything preserved.", icon: FileText },
+              { title: "2 Weeks of Free Support", details: "After launch, we're here to help. Minor tweaks, training, questions—all included.", icon: Wrench },
+              { title: "Analytics Setup", details: "We set up Google Analytics and Google Search Console so you can track performance. You'll see exactly what's working.", icon: BarChart3 },
+              { title: "Training", details: "We show you how to update your site, manage content, respond to reviews. You're not stuck depending on us.", icon: GraduationCap }
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="relative p-6 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                
+                <div className="relative flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-[hsl(220,15%,15%)] flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-[hsl(142,76%,36%)]" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-[hsl(220,10%,55%)] leading-relaxed">{item.details}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7 - Pricing */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+              Website Redesign Investment
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Pricing depends on complexity. Here's what you can expect:
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {[
+              {
+                name: "Redesign",
+                subtitle: "(Visual Update Only)",
+                price: "$3,500",
+                features: [
+                  "Modern design update",
+                  "Mobile optimization",
+                  "Speed improvements",
+                  "Keep current structure"
+                ],
+                bestFor: "Sites with good structure, just outdated look",
+                featured: false
+              },
+              {
+                name: "Redesign + New Pages",
+                subtitle: "",
+                price: "$4,500",
+                features: [
+                  "Modern design",
+                  "1-3 new pages (services, benefits, case studies, etc.)",
+                  "Mobile optimization",
+                  "Speed improvements",
+                  "SEO optimization"
+                ],
+                bestFor: "Sites that need improved messaging + modern look",
+                featured: true
+              },
+              {
+                name: "Complete Redesign",
+                subtitle: "(Rebuild)",
+                price: "$6,000",
+                features: [
+                  "Full redesign from scratch",
+                  "Restructured navigation/flow",
+                  "New pages + content strategy",
+                  "Mobile-first build",
+                  "SEO optimization",
+                  "Speed optimization",
+                  "Analytics setup"
+                ],
+                bestFor: "Outdated sites that need structural changes",
+                featured: false
+              }
+            ].map((tier, index) => (
+              <motion.div
+                key={tier.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`relative p-8 rounded-2xl backdrop-blur-xl border shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex flex-col ${
+                  tier.featured 
+                    ? 'bg-[hsl(220,15%,10%)]/90 border-primary/30 shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]' 
+                    : 'bg-[hsl(220,15%,8%)]/80 border-[hsl(220,10%,18%)]'
+                }`}
+              >
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+                
+                {tier.featured && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="px-4 py-1 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                
+                <div className="relative flex-grow">
+                  <h3 className="text-xl font-bold text-foreground mb-1">
+                    {tier.name}
+                  </h3>
+                  {tier.subtitle && (
+                    <p className="text-sm text-muted-foreground mb-4">{tier.subtitle}</p>
+                  )}
+                  <p className="text-4xl font-bold text-foreground mb-6">{tier.price}</p>
+                  
+                  <ul className="space-y-3 mb-6">
+                    {tier.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-[hsl(142,76%,36%)] flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground/80">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="pt-4 border-t border-[hsl(220,10%,18%)]">
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-semibold text-foreground">Best for:</span> {tier.bestFor}
+                    </p>
+                  </div>
+                </div>
+                
+                <Button
+                  className={`mt-6 w-full rounded-full font-semibold ${
+                    tier.featured
+                      ? 'bg-foreground text-background hover:bg-foreground/90'
+                      : 'bg-[hsl(220,15%,15%)] text-foreground hover:bg-[hsl(220,15%,20%)]'
+                  }`}
+                >
+                  Request a Quote
+                </Button>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* What's Included in All */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative p-8 rounded-2xl bg-[hsl(220,15%,8%)]/80 backdrop-blur-xl border border-[hsl(220,10%,18%)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+          >
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+            
+            <div className="relative">
+              <h3 className="text-lg font-semibold text-foreground mb-4">What's Included in All Redesigns:</h3>
+              <div className="flex flex-wrap gap-4">
+                {[
+                  "Professional audit",
+                  "Strategy & recommendations",
+                  "Mobile optimization",
+                  "Speed improvements",
+                  "2 weeks free support",
+                  "Analytics setup",
+                  "Training on content management"
+                ].map((item, i) => (
+                  <span key={i} className="flex items-center gap-2 text-sm text-foreground/80">
+                    <Check className="w-4 h-4 text-[hsl(142,76%,36%)]" />
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Section 12 - Final CTA */}
+      <section className="py-20 px-4 bg-foreground">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-background">
+              See What Your Website Could Do Better
+            </h2>
+            <p className="text-lg text-background/70 mb-10 max-w-2xl mx-auto">
+              Get a free audit. We'll show you exactly what's holding back your results and how to fix it. No obligation.
+            </p>
+            <Button
+              size="lg"
+              className="bg-background text-foreground hover:bg-background/90 text-lg px-10 py-6 rounded-full font-semibold shadow-lg"
+            >
+              Get Your Free Website Audit
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <p className="mt-6 text-sm text-background/60">
+              Takes 20 minutes. You'll get a detailed report with 3 specific recommendations for improvement.
+            </p>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 };
