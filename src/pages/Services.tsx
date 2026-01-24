@@ -20,7 +20,7 @@ const services = [
     icon: RefreshCcw,
     title: "Website Redesign",
     description: "Transform your existing website into a modern, conversion-focused experience.",
-    href: "/services/redesign"
+    href: "/services/website-redesign"
   }
 ];
 
