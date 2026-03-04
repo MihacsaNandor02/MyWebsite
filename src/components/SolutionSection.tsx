@@ -1,86 +1,112 @@
-import { Sparkles, Search, DollarSign } from "lucide-react";
+import { Reveal } from "./Reveal";
 import { Button } from "@/components/ui/button";
+import designIcon from "../assets/solution-design-final.jpg";
+import searchIcon from "../assets/solution-seo-v2.png";
+import websiteIcon from "../assets/solution-website-final-Picsart-BackgroundRemover.jpg";
 
 const SolutionSection = () => {
-  const benefits = [
+  const solutions = [
     {
-      icon: Sparkles,
-      title: "High-Converting Design",
+      title: "Conversion-Focused Design",
       description:
-        "Built on proven principles, not trends. Every element serves a purpose: capturing leads and building trust.",
+        "We don’t just focus on making sites look good — we build websites that are thoughtfully designed to help your business attract and convert more customers.",
+      image: designIcon,
+      reversed: false,
+      flipped: false,
     },
     {
-      icon: Search,
-      title: "SEO Built-In from Day One",
+      title: "Top 5 Google Ranking Guarantee",
       description:
-        "Google ranking isn't an afterthought. On-page SEO optimization, fast loading speeds, and mobile perfection are standard, not premium add-ons.",
+        "If we don't rank you in the top 5 for your keywords within 90 days, you get your money back. No excuses, just results.",
+      image: searchIcon,
+      reversed: true,
+      flipped: false,
     },
     {
-      icon: DollarSign,
-      title: "Transparent, Affordable Pricing",
+      title: "Risk-Free Strategy Call",
       description:
-        "No hidden fees. No surprise costs. You know exactly what you're getting and why it matters to your business.",
+        "Get a professional mockup of your new site for free before you spend a dime. Plus, 1 month of unlimited modifications after launch.",
+      image: websiteIcon,
+      reversed: false,
+      flipped: false,
+      large: true,
     },
   ];
 
   return (
-    <section className="py-24 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-24 px-4 overflow-hidden relative ">
+      {/* Background elements */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
+
+      <div className="max-w-6xl xl:max-w-[80%] mx-auto">
         {/* Section Headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-foreground mb-16 max-w-4xl mx-auto leading-tight">
-          Everything You Need to{" "}
-          <span className="text-[hsl(220,10%,50%)]">Grow Your Business</span>
-        </h2>
+        <Reveal width="100%">
+          <div className="text-center mb-24 md:mb-8 lg:mb-12 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
+              Everything You Need to{" "}
+              <span className="text-secondary">Grow Your Business</span>
+            </h2>
+            <p className="text-[hsl(220,10%,60%)] text-lg sm:text-xl xl:text-2xl leading-relaxed max-w-2xl xl:max-w-4xl mx-auto">
+              Proven strategies used across dozens of successful brands — delivered
+              through a done-for-you system that brings you more customers.
+            </p>
+          </div>
+        </Reveal>
 
-        {/* Benefits Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {benefits.map((benefit, index) => {
-            const IconComponent = benefit.icon;
-            return (
-              <div
-                key={index}
-                className="relative group rounded-2xl p-8
-                  bg-[hsl(220,15%,8%)]/80 
-                  backdrop-blur-xl
-                  border border-[hsl(220,10%,18%)]
-                  shadow-[0_4px_30px_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.03)]
-                  hover:border-[hsl(220,10%,25%)]
-                  transition-all duration-300"
-              >
-                {/* Subtle inner glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
-
-                {/* Icon */}
-                <div className="mb-4 relative z-10">
-                  <IconComponent
-                    size={32}
-                    className="text-[#2ECC71]"
-                    strokeWidth={1.5}
-                  />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-foreground mb-3 relative z-10">
-                  {benefit.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-[hsl(220,10%,60%)] text-sm leading-relaxed relative z-10">
-                  {benefit.description}
-                </p>
+        {/* Solutions Rows */}
+        <div className="space-y-16 md:space-y-0 pl-0">
+          {solutions.map((solution, index) => (
+            <div
+              key={index}
+              className={`flex flex-col-reverse ${solution.reversed ? "md:flex-row-reverse" : "md:flex-row sm:pl-8 lg:pl-8"
+                } items-center gap-12 md:gap-24`}
+            >
+              {/* Text Side */}
+              <div className="flex-1 text-center md:text-left ">
+                <Reveal>
+                  <div>
+                    <h3 className="text-2xl sm:text-3xl md:text-2xl lg:text-4xl font-bold text-foreground mb-6">
+                      {solution.title}
+                    </h3>
+                    <p className="text-[hsl(220,10%,60%)] text-lg sm:text-xl lg:text-2xl leading-relaxed mb-8">
+                      {solution.description}
+                    </p>
+                    <Button
+                      size="lg"
+                      className="rounded-full px-10 py-7 text-lg font-bold bg-primary hover:bg-primary/90 shadow-[0_0_1.875rem_-0.3125rem_rgba(124,58,237,0.5)] hover:shadow-[0_0_2.5rem_-0.3125rem_rgba(124,58,237,0.7)] transition-all duration-300 transform hover:-translate-y-1"
+                      onClick={() =>
+                        document
+                          .getElementById("contact")
+                          ?.scrollIntoView({ behavior: "smooth" })
+                      }
+                    >
+                      Book a Free Website Review
+                    </Button>
+                  </div>
+                </Reveal>
               </div>
-            );
-          })}
-        </div>
 
-        {/* CTA Button */}
-        <div className="flex justify-center">
-          <Button
-            size="lg"
-            className="rounded-full px-8 py-6 text-base font-medium bg-primary hover:bg-primary/90"
-          >
-            Book a Free Website Review
-          </Button>
+              {/* Image Side */}
+              <div className="flex-1 w-full relative">
+                <Reveal delay={0.2} width="100%">
+                  <div className="relative group">
+                    {/* Glow effect backend (targeted size) */}
+                    <div className={`absolute ${index === 1 ? '-inset-3' : '-inset-4'} bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                    {/* Image Container */}
+                    <div className={`relative z-10 ${solution.large ? 'p-4 mb-[-15vh] md:mb-[0vh] lg:mb-[10vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mb-[-20vh] md:mb-0  md:p-12 lg:p-16 lg:mb-[-10vh]'} transition-transform duration-500 hover:scale-105`}>
+                      <img
+                        src={solution.image}
+                        alt={solution.title}
+                        className={`w-full max-w-[22.125rem] md:max-w-none h-auto mx-auto drop-shadow-2xl${solution.large ? ' max-w-[25.3125rem] sm:max-w-[28.3125rem] lg:max-w-[70rem] xl:max-w-[40rem]' : ' max-w-[28.125rem]'}${solution.flipped ? ' scale-x-[-1]' : ''}`}
+                      />
+                    </div>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

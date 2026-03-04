@@ -15,11 +15,11 @@ const Features = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Everything you need to scale
+          <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">
+            Everything you need to <span className="text-primary">dominate</span> your niche
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Built for startups and growing businesses that need results, not complexity.
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+            From Top 5 Google rankings to conversion-focused designs, we provide the ultimate toolkit for SMBs to win online.
           </p>
         </motion.div>
 

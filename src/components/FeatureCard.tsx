@@ -15,15 +15,22 @@ const FeatureCard = ({ title, description, children, delay = 0 }: FeatureCardPro
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-      className="group bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 card-glow"
+      whileHover={{
+        y: -10,
+        scale: 1.02,
+        transition: { duration: 0.3, ease: "easeOut" }
+      }}
+      className="group relative bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:border-primary/40 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(139,92,246,0.15)] overflow-hidden"
     >
-      <h3 className="text-foreground text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+      {/* Dynamic Glow Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      <h3 className="relative z-10 text-foreground text-2xl font-bold mb-3 tracking-tight">{title}</h3>
+      <p className="relative z-10 text-muted-foreground text-base leading-relaxed mb-8 font-medium">
         {description}
       </p>
       {children && (
-        <div className="relative">
+        <div className="relative z-10">
           {children}
         </div>
       )}

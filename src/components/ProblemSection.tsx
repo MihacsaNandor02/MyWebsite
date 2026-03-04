@@ -1,4 +1,5 @@
 import { UserMinus, EyeOff, Receipt, LucideIcon } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 interface Problem {
   icon: LucideIcon;
@@ -8,58 +9,65 @@ interface Problem {
 const problems: Problem[] = [
   {
     icon: UserMinus,
-    text: "You're losing customers to competitors with better websites",
+    text: "Your website is invisible on Google, while competitors on page 1 steal your leads every day.",
   },
   {
     icon: EyeOff,
-    text: "You don't know if your website is actually bringing in leads",
+    text: "No website means no visibility, no growth, and low credibility — while you’re stuck chasing customers offline.",
   },
   {
     icon: Receipt,
-    text: "You've been quoted $5K–$15K by agencies for something simple",
+    text: "People are searching for your business right now — but with no website, they find your competitors instead.",
   },
 ];
 
 const ProblemSection = () => {
   return (
-    <section className="py-24 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section className="pt-16 pb-24 sm:pb-8 px-4 xl:mb-10 ">
+      <div className="max-w-[95%] md:max-w-none justify-items-center mx-auto">
         {/* Section Headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-foreground mb-16 max-w-4xl mx-auto leading-tight">
-          Your Website Should Be Making You Money,{" "}
-          <span className="text-muted-foreground">Not Costing You Time</span>
-        </h2>
+        <Reveal width="100%">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-10 xl:mb- max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
+            Your Website Should Be Making You Money,{" "}
+            <span className="text-primary italic">Not Costing You Time</span>
+          </h2>
+        </Reveal>
 
         {/* Problem Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {problems.map((problem, index) => {
-            const Icon = problem.icon;
-            return (
-              <div
-                key={index}
-                className="relative group rounded-2xl p-8 min-h-[200px] flex flex-col items-center
-                  bg-[hsl(220,15%,8%)]/80 
-                  backdrop-blur-xl
-                  border border-[hsl(220,10%,18%)]
-                  shadow-[0_4px_30px_rgba(0,0,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.03)]
-                  hover:border-[hsl(220,10%,25%)]
-                  transition-all duration-300"
-              >
-                {/* Subtle inner glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
-                
-                {/* Icon */}
-                <div className="mb-4 relative z-10">
-                  <Icon className="w-8 h-8 text-[hsl(220,10%,50%)]" strokeWidth={1.5} />
-                </div>
-                
-                {/* Problem Text */}
-                <p className="text-lg md:text-xl text-[hsl(220,10%,70%)] font-medium leading-relaxed text-center relative z-10">
-                  {problem.text}
-                </p>
-              </div>
-            );
-          })}
+        <div className="flex justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[410px] sm:max-w-[65%] md:max-w-none xl:max-w-[85%] xl:gap-x-10">
+            {problems.map((problem, index) => {
+              const Icon = problem.icon;
+              return (
+                <Reveal key={index} delay={0.2 + index * 0.1} fullHeight width="100%">
+                  <div
+                    className="relative h-full group rounded-3xl p-8 flex flex-col items-center
+                    bg-card/50 
+                    backdrop-blur-xl
+                    border border-border/50
+                    shadow-[0_0.5rem_1.875rem_rgb(0,0,0,0.04),inset_0_1px_0_0_rgba(255,255,255,0.1)]
+                    hover:border-primary/30
+                    hover:shadow-[0_1.25rem_2.5rem_rgba(0,0,0,0.08)]
+                    transition-all duration-300 hover:-translate-y-1 cursor-pointer
+                    pb-12"
+                  >
+                    {/* Subtle inner glow */}
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
+
+                    {/* Icon */}
+                    <div className="mb-6 relative z-10 p-4 bg-primary/10 rounded-2xl group-hover:bg-primary/20 transition-colors">
+                      <Icon className="w-10 h-10 text-primary" strokeWidth={2} />
+                    </div>
+
+                    {/* Problem Text */}
+                    <p className="text-lg sm:text-xl xl:text-2xl text-[hsl(220,10%,70%)] font-medium leading-relaxed xl:leading-[2.4rem] text-center relative z-10">
+                      {problem.text}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -2,12 +2,13 @@ import { useEffect, useCallback } from "react";
 import { Quote, Star } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
+import { Reveal } from "./Reveal";
 
 const testimonials = [
   {
     name: "Maria Garcia",
     title: "Owner, Garcia's Tacos",
-    quote: "Our old website looked nice but didn't bring in customers. [Your Name] showed us websites need to be built for conversions. We launched in 3 weeks and got our first customer that week.",
+    quote: "Our old website looked nice but didn't bring in customers. Design Hug showed us websites need to be built for conversions. We launched in 3 weeks and got our first customer that week.",
   },
   {
     name: "Robert Chen",
@@ -22,14 +23,14 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ name, title, quote }: { name: string; title: string; quote: string }) => (
-  <div className="relative p-8 rounded-2xl bg-[hsl(220,18%,10%)]/60 backdrop-blur-md border border-[hsl(220,14%,20%)]/50 shadow-lg min-w-[340px] max-w-[400px] mx-4">
+  <div className="relative p-8 rounded-3xl bg-card/60 backdrop-blur-md border border-border/50 shadow-[0_0.5rem_1.875rem_rgb(0,0,0,0.04)] min-w-[340px] max-w-[400px] mx-4 hover:border-primary/20 transition-all duration-300">
     {/* Quote Icon */}
     <div className="flex justify-center mb-6">
-      <Quote className="w-8 h-8 text-[hsl(220,10%,40%)]" />
+      <Quote className="w-8 h-8 text-primary/40" />
     </div>
 
     {/* Quote Text */}
-    <p className="text-foreground/90 text-base leading-relaxed text-center mb-6">
+    <p className="text-foreground/90 text-lg md:text-xl leading-relaxed text-center mb-6">
       "{quote}"
     </p>
 
@@ -42,8 +43,8 @@ const TestimonialCard = ({ name, title, quote }: { name: string; title: string; 
 
     {/* Client Info */}
     <div className="text-center">
-      <p className="text-foreground font-semibold text-sm">{name}</p>
-      <p className="text-muted-foreground text-xs mt-1">{title}</p>
+      <p className="text-foreground font-semibold text-base">{name}</p>
+      <p className="text-muted-foreground text-sm mt-1">{title}</p>
     </div>
   </div>
 );
@@ -77,29 +78,35 @@ const Testimonials = () => {
   }, [emblaApi, onPointerDown, onPointerUp]);
 
   return (
-    <section className="py-24 px-4 bg-background">
+    <section id="testimonials" className="py-24 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real results from real businesses we've helped grow
-          </p>
+          <Reveal width="100%">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              What Our Clients Say
+            </h2>
+          </Reveal>
+          <Reveal width="100%" delay={0.4}>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Real results from real businesses we've helped grow
+            </p>
+          </Reveal>
         </div>
 
         {/* Carousel */}
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex py-4">
-            {/* Duplicate testimonials for seamless loop */}
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div key={index} className="flex-shrink-0">
-                <TestimonialCard {...testimonial} />
-              </div>
-            ))}
+        <Reveal width="100%" delay={0.6}>
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex py-4">
+              {/* Duplicate testimonials for seamless loop */}
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <div key={index} className="flex-shrink-0">
+                  <TestimonialCard {...testimonial} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

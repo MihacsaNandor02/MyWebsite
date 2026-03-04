@@ -1,80 +1,65 @@
 import { Phone, FileText, Rocket } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const HowItWorks = () => {
   const steps = [
     {
-      icon: Phone,
-      title: "Free Discovery Call (15–30 min)",
+      title: "Step 1: Consultation & Booking",
       description:
-        "We discuss your business, goals, and current challenges. No obligation, no sales pitch.",
+        "Choose a suitable package and fill out the form to get started.",
     },
     {
-      icon: FileText,
-      title: "Proposal & Strategy",
+      title: "Step 2: Strategy & Planning",
       description:
-        "You receive a detailed plan showing what your new website will do, what pages it includes, and the ROI you can expect.",
+        "We help you identify what content and details your website needs — and we send you a step-by-step plan to kick off the project smoothly.",
     },
     {
-      icon: Rocket,
-      title: "Launch & Support",
+      title: "Step 3: Review & Refinement",
       description:
-        "We build, optimize, and launch. You get training and ongoing support to make the most of your new asset.",
+        "We help you review the first version of your website, make improvements together, and send you a ready-to-launch version.",
+    },
+    {
+      title: "Step 4: Launch & Lead Generation",
+      description:
+        "We help you launch your website with confidence, double-check every feature, and ensure it looks great, performs flawlessly, and starts bringing in new leads.",
     },
   ];
 
   return (
-    <section className="py-24 px-4 bg-background">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-24 px-8 md:px-16">
+      <div className="max-w-4xl mx-auto">
         {/* Section Headline */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-foreground mb-20 max-w-4xl mx-auto leading-tight">
-          How It Works
-        </h2>
+        <Reveal width="100%">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl  font-extrabold text-center text-foreground mb-20 xl:mb-4 leading-tight tracking-tight">
+            How It Works
+          </h2>
+        </Reveal>
 
         {/* Steps Container */}
-        <div className="relative">
-          {/* Connecting Line (desktop only) */}
-          <div className="hidden md:block absolute top-[60px] left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[hsl(220,10%,20%)] to-transparent" />
+        <div className="flex flex-col">
+          {steps.map((step, index) => (
+            <Reveal key={index} delay={0.2 + index * 0.15} width="100%">
+              <div className={`flex items-start gap-8 py-12 ${index !== 0 ? 'border-t border-white/10' : ''}`}>
+                {/* Number Indicator */}
+                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="text-2xl sm:text-3xl font-bold text-primary relative z-10">
+                    {index + 1}
+                  </span>
+                </div>
 
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-            {steps.map((step, index) => {
-              const IconComponent = step.icon;
-              return (
-                <div
-                  key={index}
-                  className="flex flex-col items-center text-center"
-                >
-                  {/* Circular Icon Container */}
-                  <div
-                    className="relative w-[120px] h-[120px] rounded-full mb-8 flex items-center justify-center
-                      bg-[hsl(220,15%,8%)]/60
-                      backdrop-blur-md
-                      border border-[hsl(220,10%,18%)]
-                      shadow-[0_4px_30px_rgba(0,0,0,0.2),inset_0_1px_0_0_rgba(255,255,255,0.04)]"
-                  >
-                    {/* Subtle inner glow */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
-
-                    <IconComponent
-                      size={36}
-                      className="text-[hsl(220,10%,70%)]"
-                      strokeWidth={1.5}
-                    />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-semibold text-foreground mb-3">
+                {/* Content */}
+                <div className="flex-grow pt-2 md:pt-4">
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4">
                     {step.title}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-[hsl(220,10%,55%)] text-sm leading-relaxed max-w-xs">
+                  <p className="text-[hsl(220,10%,70%)] text-lg sm:text-xl leading-relaxed">
                     {step.description}
                   </p>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
