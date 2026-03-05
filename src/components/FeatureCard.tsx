@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface FeatureCardProps {
   title: string;
@@ -9,18 +10,21 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ title, description, children, delay = 0 }: FeatureCardProps) => {
+  const isMobile = useIsMobile();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: isMobile ? 15 : 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: isMobile ? "-20px" : "-50px" }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{
+      whileHover={!isMobile ? {
         y: -10,
         scale: 1.02,
         transition: { duration: 0.3, ease: "easeOut" }
-      }}
+      } : {}}
       className="group relative bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:border-primary/40 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(139,92,246,0.15)] overflow-hidden"
+      style={{ willChange: "transform, opacity" }}
     >
       {/* Dynamic Glow Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -39,3 +43,4 @@ const FeatureCard = ({ title, description, children, delay = 0 }: FeatureCardPro
 };
 
 export default FeatureCard;
+

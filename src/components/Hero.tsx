@@ -2,39 +2,13 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Zap, Award, ArrowRight } from "lucide-react";
 import heroImage from "../assets/weboldalak-Picsart-BackgroundRemover.png";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const FloatingShapes = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 10, 0],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[6.25rem]"
-      />
-      <motion.div
-        animate={{
-          y: [0, 30, 0],
-          rotate: [0, -15, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[7.5rem]"
-      />
-      {/* Floating Glass Element */}
-      <motion.div
-        animate={{
-          y: [0, -40, 0],
-          x: [0, 20, 0],
-          rotate: [15, 25, 15],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/3 right-[15%] w-32 h-48 bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl hidden lg:block"
-        style={{ transform: "rotate(15deg)" }}
-      />
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-primary/10 rounded-full blur-[6.25rem]" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[7.5rem]" />
     </div>
   );
 };
@@ -42,27 +16,16 @@ const FloatingShapes = () => {
 const Starfield = () => {
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {[...Array(40)].map((_, i) => (
-        <motion.div
+      {[...Array(20)].map((_, i) => (
+        <div
           key={i}
-          initial={{
-            opacity: Math.random() * 0.5 + 0.1,
-            x: Math.random() * 100 + "%",
-            y: Math.random() * 100 + "%",
+          className="absolute w-1 h-1 bg-primary/40 rounded-full blur-[1px]"
+          style={{
+            opacity: Math.random() * 0.3 + 0.1,
+            left: Math.random() * 100 + "%",
+            top: Math.random() * 100 + "%",
             scale: Math.random() * 0.5 + 0.5
           }}
-          animate={{
-            y: ["-5%", "105%"],
-            x: [null, (Math.random() - 0.5) * 50 + "px"],
-            opacity: [null, 0.8, null],
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            ease: "linear",
-            delay: Math.random() * 10
-          }}
-          className="absolute w-1 h-1 bg-primary/40 rounded-full blur-[1px]"
         />
       ))}
     </div>
@@ -78,7 +41,6 @@ const InfinityGrid = () => {
           backgroundSize: '100% 100%, 5rem 5rem, 5rem 5rem',
           transform: 'perspective(50rem) rotateX(60deg)',
           transformOrigin: 'center bottom',
-
         }}
       />
     </div>
@@ -86,37 +48,13 @@ const InfinityGrid = () => {
 };
 
 const LightBeams = () => {
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      {[...Array(3)].map((_, i) => (
-        <motion.div
-          key={i}
-          initial={{
-            opacity: 0,
-            x: "-100%",
-            y: "-100%",
-            rotate: -45
-          }}
-          animate={{
-            x: ["-100%", "200%"],
-            y: ["-100%", "200%"],
-            opacity: [0, 0.2, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 5,
-            repeatDelay: Math.random() * 10
-          }}
-          className="absolute w-[31.25rem] h-32 bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-3xl"
-        />
-      ))}
-    </div>
-  );
+  return null;
 };
 
+
 const Hero = () => {
+  const isMobile = useIsMobile();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -129,7 +67,7 @@ const Hero = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: isMobile ? 15 : 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -236,6 +174,7 @@ const Hero = () => {
           <motion.div
             variants={itemVariants}
             className="hidden lg:flex justify-end items-center relative overflow-visible pr-0 lg:-mr-20 lg:justify-center"
+            style={{ willChange: "transform, opacity" }}
           >
             <div className="relative group">
               <div className="absolute -inset-8 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
