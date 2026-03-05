@@ -18,11 +18,7 @@ const FeatureCard = ({ title, description, children, delay = 0 }: FeatureCardPro
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: isMobile ? "-20px" : "-50px" }}
       transition={{ duration: 0.5, delay }}
-      whileHover={!isMobile ? {
-        y: -10,
-        scale: 1.02,
-        transition: { duration: 0.3, ease: "easeOut" }
-      } : {}}
+
       className="group relative bg-card/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:border-primary/40 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(139,92,246,0.15)] overflow-hidden"
       style={{ willChange: "transform, opacity" }}
     >

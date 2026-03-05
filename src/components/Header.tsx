@@ -25,15 +25,11 @@ const Header = () => {
     [0, 50],
     ["1px solid rgba(255, 255, 255, 0.1)", "1px solid rgba(255, 255, 255, 0.15)"]
   );
-  const headerY = useTransform(scrollY, [0, 50], [0, -10]);
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      style={{ y: headerY, fontSize: '1.25rem' }}
-      className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-5xl mx-auto"
+      style={{ fontSize: '1.25rem' }}
+      className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-5xl mx-auto transition-transform duration-300"
     >
       <motion.nav
         style={{
@@ -113,3 +109,4 @@ const Header = () => {
 };
 
 export default Header;
+

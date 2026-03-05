@@ -1,7 +1,6 @@
-import { useEffect, useCallback } from "react";
 import { Quote, Star } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
-import AutoScroll from "embla-carousel-auto-scroll";
+
 import { Reveal } from "./Reveal";
 
 const testimonials = [
@@ -50,32 +49,9 @@ const TestimonialCard = ({ name, title, quote }: { name: string; title: string; 
 );
 
 const Testimonials = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "center", dragFree: true },
-    [AutoScroll({ speed: 0.8, stopOnInteraction: false, stopOnMouseEnter: true })]
+  const [emblaRef] = useEmblaCarousel(
+    { loop: true, align: "center", dragFree: true }
   );
-
-  const onPointerDown = useCallback(() => {
-    const autoScroll = emblaApi?.plugins()?.autoScroll;
-    if (!autoScroll) return;
-    autoScroll.stop();
-  }, [emblaApi]);
-
-  const onPointerUp = useCallback(() => {
-    const autoScroll = emblaApi?.plugins()?.autoScroll;
-    if (!autoScroll) return;
-    autoScroll.play();
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on("pointerDown", onPointerDown);
-    emblaApi.on("pointerUp", onPointerUp);
-    return () => {
-      emblaApi.off("pointerDown", onPointerDown);
-      emblaApi.off("pointerUp", onPointerUp);
-    };
-  }, [emblaApi, onPointerDown, onPointerUp]);
 
   return (
     <section id="testimonials" className="py-24 px-4 overflow-hidden">
