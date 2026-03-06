@@ -102,6 +102,8 @@ const PortfolioModal = ({ isOpen, onClose }: PortfolioModalProps) => {
                                     <img
                                         src="/portfolio/mobile.png"
                                         alt="Torockó Beauty Mobile Interface"
+                                        loading="lazy"
+                                        decoding="async"
                                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                                     />
                                     <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
@@ -134,6 +136,8 @@ const PortfolioModal = ({ isOpen, onClose }: PortfolioModalProps) => {
                                             <img
                                                 src={screen.img}
                                                 alt={screen.label}
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                             />
                                         </div>

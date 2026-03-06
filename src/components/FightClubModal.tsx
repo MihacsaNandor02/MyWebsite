@@ -129,6 +129,8 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                         <img
                                             src="/portfolio/bdf-after.png"
                                             alt="After Redesign"
+                                            loading="lazy"
+                                            decoding="async"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
@@ -141,9 +143,11 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                         <img
                                             src="/portfolio/bdf-before.png"
                                             alt="Before Redesign"
-                                            className="w-full h-full object-cover grayscale brightness-[0.3]"
+                                            loading="lazy"
+                                            decoding="async"
+                                            className="w-full h-full object-cover grayscale opacity-80 blur-[2px]"
                                         />
-                                        <div className="absolute inset-0 bg-black/60" />
+                                        <div className="absolute inset-0 bg-black/20" />
                                     </div>
 
                                     {/* Labels */}
@@ -218,6 +222,8 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                             <img
                                                 src={screen.img}
                                                 alt={screen.title}
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="w-full h-full object-cover grayscale opacity-80 group-hover/screen:grayscale-0 group-hover/screen:opacity-100 group-hover/screen:scale-105 transition-all duration-700"
                                             />
                                             <div className="absolute inset-0 bg-black/20 group-hover/screen:bg-black/0 transition-colors duration-500" />

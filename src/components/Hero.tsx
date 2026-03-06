@@ -56,7 +56,7 @@ const Hero = () => {
   return (
     <section
       style={{ fontSize: '1.25rem' }}
-      className="relative min-h-[75vh] flex items-center justify-center pt-[8vw] lg:pt-0 lg:mt-[-2rem] sm:pb-8 md:pb-8 mb-12 sm:mb-0 md:mb-0 lg:mb-[-7rem] px-[.5%] overflow-hidden"
+      className="relative  min-h-[75vh] flex items-center justify-center pt-[8vw] lg:pt-0 xl:pt-8 lg:mt-[-2rem] sm:pb-8 md:pb-8 mb-12 sm:mb-0 md:mb-0 lg:mb-[-7rem] xl:mb-[-5rem] px-[.5%] overflow-hidden"
     >
       <InfinityGrid />
       <Starfield />
@@ -68,7 +68,7 @@ const Hero = () => {
           {/* Left Column: Text + CTA + Trust */}
           <div className="text-center lg:text-left lg:pl-[4vh] xl:pl-[8vh]">
             {/* Headline - ATTENTION */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-6xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.2] text-foreground">
+            <h1 className="text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.2] text-foreground">
               <span className="text-primary inline-block">
                 Conversion-Focused.
               </span>
@@ -135,7 +135,7 @@ const Hero = () => {
               <img
                 src={heroImage}
                 alt="Modern Digital Devices showing web interfaces"
-                className="relative z-10 w-[46.875rem] h-[46.875rem] object-contain drop-shadow-2xl transform transition-transform duration-700 group-hover:scale-105"
+                className="relative mt-[-10vh] z-10 w-[46.875rem] h-[46.875rem] object-contain drop-shadow-2xl transform transition-transform duration-700 group-hover:scale-105"
               />
             </div>
           </div>

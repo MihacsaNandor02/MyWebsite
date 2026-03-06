@@ -1,8 +1,8 @@
 import { Reveal } from "./Reveal";
 import { Button } from "@/components/ui/button";
-import designIcon from "../assets/solution-design-final.jpg";
+import designIcon from "../assets/wireframe-copped.png";
 import searchIcon from "../assets/solution-seo-v2.png";
-import websiteIcon from "../assets/solution-website-final-Picsart-BackgroundRemover.jpg";
+import websiteIcon from "../assets/solution-website-final-Picsart-BackgroundRemover-Photoroom.png";
 
 const SolutionSection = () => {
   const solutions = [
@@ -13,6 +13,7 @@ const SolutionSection = () => {
       image: designIcon,
       reversed: false,
       flipped: false,
+      largexl: true,
     },
     {
       title: "Top 5 Google Ranking Guarantee",
@@ -39,10 +40,10 @@ const SolutionSection = () => {
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
 
-      <div className="max-w-6xl xl:max-w-[80%] mx-auto">
+      <div className="max-w-6xl xl:max-w-[80%] mx-auto ">
         {/* Section Headline */}
         <Reveal width="100%">
-          <div className="text-center mb-24 md:mb-8 lg:mb-12 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto">
+          <div className="text-center mb-8 md:mb-8 lg:mb-12 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-20">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
               Everything You Need to{" "}
               <span className="text-secondary">Grow Your Business</span>
@@ -59,8 +60,8 @@ const SolutionSection = () => {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className={`flex flex-col-reverse ${solution.reversed ? "md:flex-row-reverse" : "md:flex-row sm:pl-8 lg:pl-8"
-                } items-center gap-12 md:gap-24`}
+              className={`flex flex-col-reverse ${solution.reversed ? " md:flex-row-reverse " : " md:flex-row sm:pl-8 lg:pl-8"
+                } items-center gap-12 md:gap-24 md:pb-28`}
             >
               {/* Text Side */}
               <div className="flex-1 text-center md:text-left ">
@@ -95,12 +96,19 @@ const SolutionSection = () => {
                     <div className={`absolute ${index === 1 ? '-inset-3' : '-inset-4'} bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500`} />
 
                     {/* Image Container */}
-                    <div className={`relative z-10 ${solution.large ? 'p-4 mb-[-15vh] md:mb-[0vh] lg:mb-[10vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mb-[-20vh] md:mb-0  md:p-12 lg:p-16 lg:mb-[-10vh]'} transition-transform duration-500 hover:scale-105`}>
+                    <div className={`relative z-10 ${solution.large ? 'p-4 mt-20 md:mt-0 mb-[-5.5vh] md:mb-[0vh] lg:mb-[2vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mt-12 md:mt-0 mb-[-8vh] md:mb-[-10vh]  md:p-12 lg:p-16 lg:mb-[-10vh]'} 
+                    ${solution.largexl ? 'p-0 md:p-0 lg:p-0 mb-[-5vh] sm:mb-[-5vh] md:mb-[2vh] lg:mb-[2vh] xl:mb-[-7vh]' : ''} transition-transform duration-500 hover:scale-105`}>
                       <img
                         src={solution.image}
                         alt={solution.title}
-                        className={`w-full max-w-[22.125rem] md:max-w-none h-auto mx-auto drop-shadow-2xl${solution.large ? ' max-w-[25.3125rem] sm:max-w-[28.3125rem] lg:max-w-[70rem] xl:max-w-[40rem]' : ' max-w-[28.125rem]'}${solution.flipped ? ' scale-x-[-1]' : ''}`}
-                      />
+                        className={`w-full h-auto mx-auto drop-shadow-2xl
+                                    ${solution.large
+                            ? 'max-w-[16.3125rem] sm:max-w-[19rem] md:max-w-[21.7125rem] lg:max-w-[23rem] xl:max-w-[40rem]'
+                            : solution.largexl
+                              ? 'max-w-[20rem] sm:max-w-[20rem] md:max-w-[20rem] lg:max-w-[22rem] xl:max-w-[28rem] 2xl:max-w-[23rem]'
+                              : 'max-w-[15.125rem] sm:max-w-[18rem] lg:max-w-[20.3125rem] xl:max-w-[25.3125rem]'
+                          }
+                                  `} />
                     </div>
                   </div>
                 </Reveal>
