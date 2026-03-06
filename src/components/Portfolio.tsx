@@ -14,7 +14,7 @@ const Portfolio = () => {
     const isInView = useInView(ref, { once: true, margin: "200px" });
 
     return (
-        <section id="portfolio" ref={ref} className="py-24 px-4 relative overflow-hidden">
+        <section id="portfolio" ref={ref} className="pb-24 px-4 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
