@@ -43,7 +43,7 @@ const SolutionSection = () => {
       <div className="max-w-6xl xl:max-w-[80%] mx-auto ">
         {/* Section Headline */}
         <Reveal width="100%">
-          <div className="text-center mb-8 md:mb-8 lg:mb-12 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-20">
+          <div className="text-center mb-8 md:mb-8 lg:mb-12 xl:mb-12 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-20">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
               Everything You Need to{" "}
               <span className="text-secondary">Grow Your Business</span>
@@ -97,16 +97,16 @@ const SolutionSection = () => {
 
                     {/* Image Container */}
                     <div className={`relative z-10 ${solution.large ? 'p-4 mt-20 md:mt-0 mb-[-5.5vh] md:mb-[0vh] lg:mb-[2vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mt-12 md:mt-0 mb-[-8vh] md:mb-[-10vh]  md:p-12 lg:p-16 lg:mb-[-10vh]'} 
-                    ${solution.largexl ? 'p-0 md:p-0 lg:p-0 mb-[-5vh] sm:mb-[-5vh] md:mb-[2vh] lg:mb-[2vh] xl:mb-[-7vh]' : ''} transition-transform duration-500 hover:scale-105`}>
+                    ${solution.largexl ? 'p-0 md:p-0 lg:p-0 mb-[-5vh] sm:mb-[-5vh] md:mb-[2vh] lg:mb-[2vh] xl:mb-[0vh] xl:mt-[2vh]' : ''} transition-transform duration-500 hover:scale-105`}>
                       <img
                         src={solution.image}
                         alt={solution.title}
                         className={`w-full h-auto mx-auto drop-shadow-2xl
                                     ${solution.large
-                            ? 'max-w-[16.3125rem] sm:max-w-[19rem] md:max-w-[21.7125rem] lg:max-w-[23rem] xl:max-w-[40rem]'
+                            ? 'max-w-[16.3125rem] sm:max-w-[19rem] md:max-w-[21.7125rem] lg:max-w-[23rem] xl:max-w-[27rem]'
                             : solution.largexl
-                              ? 'max-w-[20rem] sm:max-w-[20rem] md:max-w-[20rem] lg:max-w-[22rem] xl:max-w-[28rem] 2xl:max-w-[23rem]'
-                              : 'max-w-[15.125rem] sm:max-w-[18rem] lg:max-w-[20.3125rem] xl:max-w-[25.3125rem]'
+                              ? 'max-w-[20rem] sm:max-w-[20rem] md:max-w-[20rem] lg:max-w-[22rem] xl:max-w-[25rem]'
+                              : 'max-w-[15.125rem] sm:max-w-[18rem] lg:max-w-[20.3125rem] xl:max-w-[21.7125rem]'
                           }
                                   `} />
                     </div>

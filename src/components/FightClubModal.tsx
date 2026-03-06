@@ -129,8 +129,6 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                         <img
                                             src="/portfolio/bdf-after.png"
                                             alt="After Redesign"
-                                            loading="lazy"
-                                            decoding="async"
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
@@ -143,8 +141,6 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                         <img
                                             src="/portfolio/bdf-before.png"
                                             alt="Before Redesign"
-                                            loading="lazy"
-                                            decoding="async"
                                             className="w-full h-full object-cover grayscale opacity-80 blur-[2px]"
                                         />
                                         <div className="absolute inset-0 bg-black/20" />

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Zap, Target, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,8 +10,11 @@ const Portfolio = () => {
     const [isFightClubOpen, setIsFightClubOpen] = useState(false);
     const [isGenericOpen, setIsGenericOpen] = useState(false);
 
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "200px" });
+
     return (
-        <section id="portfolio" className="py-24 px-4 relative overflow-hidden">
+        <section id="portfolio" ref={ref} className="py-24 px-4 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
@@ -142,6 +145,16 @@ const Portfolio = () => {
                 {/* Modal Integrations */}
                 <FightClubModal isOpen={isFightClubOpen} onClose={() => setIsFightClubOpen(false)} />
                 <PortfolioModal isOpen={isGenericOpen} onClose={() => setIsGenericOpen(false)} />
+
+                {/* Preload critical modal images ONLY when section comes into view */}
+                {isInView && (
+                    <div className="hidden" aria-hidden="true">
+                        <img src="/portfolio/bdf-after.png" alt="preload" />
+                        <img src="/portfolio/bdf-before.png" alt="preload" />
+                        <img src="/portfolio/hero.png" alt="preload" />
+                        <img src="/portfolio/mobile.png" alt="preload" />
+                    </div>
+                )}
             </div>
         </section>
     );
