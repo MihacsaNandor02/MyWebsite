@@ -6,8 +6,6 @@ import Portfolio from "@/components/Portfolio";
 import HowItWorks from "@/components/HowItWorks";
 
 import Pricing from "@/components/Pricing";
-import Features from "@/components/Features";
-import Testimonials from "@/components/Testimonials";
 import ContactSection from "@/components/ContactSection";
 import BackgroundEffect from "@/components/BackgroundEffect";
 
@@ -55,13 +53,7 @@ const Index = () => {
           <HowItWorks />
         </div>
         <Pricing />
-        <div className="bg-card/20 border-t border-white/5">
-          <Testimonials />
-        </div>
         <ContactSection />
-        <div className="hidden">
-          <Features />
-        </div>
       </main>
       <footer className="py-12 px-4 border-t border-border bg-card/30">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
