@@ -4,9 +4,9 @@ import { Menu } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "Services", href: "#pricing" },
-  { label: "Case Studies", href: "#portfolio" },
+  { label: "Our Solutions", href: "#solutions" },
+  { label: "SEO & Design", href: "#seo" },
+  { label: "Success Stories", href: "#portfolio" },
 ];
 
 const Header = () => {
@@ -70,7 +70,7 @@ const Header = () => {
             size="sm"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Contact us
+            Start Your Project
           </Button>
 
           {/* Mobile Menu Button */}
