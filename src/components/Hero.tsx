@@ -85,7 +85,7 @@ const Hero = ({ id }: { id?: string }) => {
 
             {/* Subheadline - INTEREST & DESIRE */}
             <p className="text-muted-foreground text-md md:text-xl lg:text-xl xl:text-[1.4rem] max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed lg:leading-[1.4] xl:leading-[1.6] font-medium text-pretty">
-              Stop hiding on page 2. We help you <span className="text-foreground font-bold italic">dominate the first page of Google in 90 days</span> while building high-performance websites optimized to convert every visitor into a customer.
+              Stop hiding on page 2. We provide <span className="text-foreground font-bold italic">Google-Optimized strategies for guaranteed growth</span>, building high-performance <span className="text-foreground font-bold">conversion-focused websites</span> that turn visitors into loyal customers.
             </p>
 
             {/* CTA Buttons - Primary + Secondary */}
