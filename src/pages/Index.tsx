@@ -83,10 +83,11 @@ const Index = () => {
             <p className="text-sm text-muted-foreground mt-2">Websites that convert visitors into buyers.</p>
           </div>
           <div className="flex gap-8 text-sm text-muted-foreground flex-wrap justify-center">
-            <a href="#hero" className="hover:text-primary transition-colors">Home</a>
+            <a href="#hero" className="hover:text-primary transition-colors">Future Builds Home</a>
             <a href="#portfolio" className="hover:text-primary transition-colors">Case Studies</a>
-            <a href="#how-it-works" className="hover:text-primary transition-colors">Process</a>
-            <a href="#pricing" className="hover:text-primary transition-colors">Pricing</a>
+            <a href="#how-it-works" className="hover:text-primary transition-colors">Our Process</a>
+            <a href="#pricing" className="hover:text-primary transition-colors">Website Pricing</a>
+            <a href="#seo" className="hover:text-primary transition-colors">SEO Services</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact Us</a>
             <a href="#about" className="hover:text-primary transition-colors">About Us</a>
             <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>

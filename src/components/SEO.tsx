@@ -189,7 +189,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                       onClick={() => onSelectPackage(tier.packageName)}
                     >
                       <Phone size={16} className="text-teal-400" />
-                      Book a Call
+                      Book a {tier.name} Call
                     </Button>
                   </div>
                 </div>
