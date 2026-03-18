@@ -52,9 +52,10 @@ const LightBeams = () => {
 };
 
 
-const Hero = () => {
+const Hero = ({ id }: { id?: string }) => {
   return (
     <section
+      id={id}
       style={{ fontSize: '1.25rem' }}
       className="relative  min-h-[75vh] flex items-center justify-center pt-[8vw] lg:pt-0 xl:pt-8 lg:mt-[-2rem] sm:pb-8 md:pb-8 mb-12 sm:mb-0 md:mb-0 lg:mb-[-7rem] xl:mb-[-5rem] px-[.5%] overflow-hidden"
     >

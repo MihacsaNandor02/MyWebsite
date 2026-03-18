@@ -12,6 +12,8 @@ const Index = lazy(() => import("./pages/Index"));
 // const LandingPagesService = lazy(() => import("./pages/LandingPagesService"));
 // const SEOService = lazy(() => import("./pages/SEOService"));
 // const WebsiteRedesignService = lazy(() => import("./pages/WebsiteRedesignService"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -25,6 +27,8 @@ const App = () => (
         <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center"><div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" /></div>}>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             {/* 
             <Route path="/services" element={<Services />} />
             <Route path="/services/landing-pages" element={<LandingPagesService />} />

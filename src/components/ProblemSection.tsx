@@ -26,7 +26,7 @@ const ProblemSection = () => {
     <section className="pt-16 pb-24 sm:pb-8 px-4 xl:mb-10 ">
       <div className="max-w-[95%] md:max-w-none justify-items-center mx-auto">
         {/* Section Headline */}
-        <Reveal width="100%">
+        <Reveal width="100%" instant>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-10 xl:mb- max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
             Your Website Should Be Making You Money,{" "}
             <span className="text-primary italic">Not &nbsp;Lose You Customers</span>
@@ -39,7 +39,7 @@ const ProblemSection = () => {
             {problems.map((problem, index) => {
               const Icon = problem.icon;
               return (
-                <Reveal key={index} delay={0.2 + index * 0.1} fullHeight width="100%">
+                <Reveal key={index} delay={0.2 + index * 0.1} fullHeight width="100%" instant>
                   <div
                     className="relative h-full group rounded-3xl p-8 flex flex-col items-center
                     bg-card/50 

@@ -46,11 +46,12 @@ const seoTiers = [
 
 interface SEOProps {
   onSelectPackage: (packageName: string) => void;
+  id?: string;
 }
 
-const SEO = ({ onSelectPackage }: SEOProps) => {
+const SEO = ({ onSelectPackage, id }: SEOProps) => {
   return (
-    <section id="seo" className="py-24 px-4 overflow-hidden">
+    <section id={id || "seo"} className="py-24 px-4 overflow-hidden">
       <div className="max-w-6xl xl:max-w-7xl mx-auto relative w-[95%]">
 
         {/* Section Headline */}

@@ -30,6 +30,7 @@ const Header = () => {
     <motion.header
       style={{ fontSize: '1.25rem' }}
       className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-5xl mx-auto transition-transform duration-300"
+      role="banner"
     >
       <motion.nav
         style={{
@@ -38,10 +39,12 @@ const Header = () => {
           border: headerBorder,
         }}
         className="flex items-center justify-between px-8 py-4 rounded-full shadow-[0_1.25rem_3.125rem_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)]"
+        role="navigation"
+        aria-label="Main navigation"
       >
         {/* Logo - Flex Basis to balance with Action Area */}
         <div className="flex-1 lg:flex-none lg:w-[200px]">
-          <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <a href="/" className="flex items-center hover:opacity-80 transition-opacity" aria-label="Future Builds Home">
             <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className=" h-6 max-[400px]:h-5 sm:h-7 md:h-8 w-auto " />
           </a>
         </div>
@@ -75,6 +78,8 @@ const Header = () => {
             className="md:hidden p-2 text-foreground hover:bg-white/5 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <Menu size={24} />
           </button>
@@ -84,6 +89,7 @@ const Header = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div
+          id="mobile-menu"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden mt-2 bg-background/98 backdrop-blur-2xl rounded-2xl border border-white/10 p-6 shadow-2xl"

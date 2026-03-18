@@ -106,7 +106,7 @@ const SolutionSection = () => {
                         alt={solution.title}
                         className={`w-full h-auto mx-auto drop-shadow-2xl
                                     ${solution.large
-                            ? 'max-w-[16.3125rem] sm:max-w-[19rem] md:max-w-[21.7125rem] lg:max-w-[23rem] xl:max-w-[27rem]'
+                            ? 'max-w-[16.3125rem] sm:max-w-[19rem] md:max-w-[21.7125rem] lg:max-w-[23rem] xl:max-w-[24.5rem]'
                             : solution.largexl
                               ? 'max-w-[20rem] sm:max-w-[20rem] md:max-w-[20rem] lg:max-w-[22rem] xl:max-w-[25rem]'
                               : 'max-w-[15.125rem] sm:max-w-[18rem] lg:max-w-[20.3125rem] xl:max-w-[21.7125rem]'

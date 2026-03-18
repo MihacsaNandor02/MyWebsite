@@ -8,9 +8,10 @@ interface Props {
     delay?: number;
     fullHeight?: boolean;
     className?: string;
+    instant?: boolean;
 }
 
-export const Reveal = ({ children, width = "fit-content", delay = 0.25, fullHeight = false, className = "" }: Props) => {
+export const Reveal = ({ children, width = "fit-content", delay = 0.25, fullHeight = false, className = "", instant = false }: Props) => {
     const isMobile = useIsMobile();
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: isMobile ? "-20px" : "-50px" });
@@ -30,9 +31,9 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25, fullHeig
                     hidden: { opacity: 0, y: isMobile ? 30 : 75 },
                     visible: { opacity: 1, y: 0 },
                 }}
-                initial="hidden"
-                animate={mainControls}
-                transition={{ duration: 0.5, delay }}
+                initial={instant ? "visible" : "hidden"}
+                animate={instant ? "visible" : mainControls}
+                transition={{ duration: 0.5, delay: instant ? 0 : delay }}
                 className={fullHeight ? "h-full" : ""}
                 style={{ willChange: "transform, opacity" }}
             >

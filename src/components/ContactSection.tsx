@@ -25,6 +25,7 @@ const formSchema = z.object({
 interface ContactSectionProps {
   initialPackage?: string | null;
   packageCategory?: 'website' | 'seo' | null;
+  id?: string;
 }
 
 type FormData = z.infer<typeof formSchema>;
@@ -110,7 +111,7 @@ const packageDetails: Record<string, { price: string; features: string[] }> = {
  */
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuEILaezFqyOX3jhif1xa4b8zFBT8-AKI-eTmMl-kgdF0xfay-qpDyM2CCH7vUGMG_/exec";
 
-const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, packageCategory }) => {
+const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, packageCategory, id }) => {
   const [step, setStep] = useState<Step>("form");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -198,7 +199,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
   const currentPackage = formData.need ? packageDetails[formData.need] : null;
 
   return (
-    <section id="contact" className="py-24 px-4 overflow-hidden relative">
+    <section id={id || "contact"} className="py-24 px-4 overflow-hidden relative">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
