@@ -12,31 +12,108 @@ import BackgroundEffect from "@/components/BackgroundEffect";
 import { useState } from "react";
 
 const Index = () => {
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Future Builds",
-    "url": "https://futurebuilds.dev",
-    "logo": "https://futurebuilds.dev/portfolio/Future Builds - Written-Transparent-Cropped.png",
-    "email": "futurebuilds@futurebuilds.dev",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Bulevardul 1 Decembrie 1918 213",
-      "addressLocality": "Targu Mures",
-      "addressCountry": "RO"
+  const organizationSchema = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://futurebuilds.dev/#organization",
+      "name": "Future Builds",
+      "url": "https://futurebuilds.dev",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://futurebuilds.dev/portfolio/Future Builds - Written-Transparent-Cropped.png"
+      },
+      "description": "Conversion-focused web design agency helping businesses dominate Google and grow."
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://futurebuilds.dev/#localbusiness",
+      "name": "Future Builds",
+      "image": "https://futurebuilds.dev/portfolio/Future Build - Logo and BG with write - Cropped.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bulevardul 1 Decembrie 1918 213",
+        "addressLocality": "Targu Mures",
+        "addressCountry": "RO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "46.5456",
+        "longitude": "24.5625"
+      },
+      "url": "https://futurebuilds.dev",
       "telephone": "+40768919621",
-      "contactType": "customer service",
-      "email": "futurebuilds@futurebuilds.dev"
+      "priceRange": "$$"
     },
-    "sameAs": [
-      "https://twitter.com/futurebuilds",
-      "https://linkedin.com/company/futurebuilds"
-    ],
-    "description": "Conversion-focused web design agency helping businesses dominate Google and grow."
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Conversion-Focused Web Design",
+      "serviceType": "Web Design",
+      "provider": { "@id": "https://futurebuilds.dev/#organization" },
+      "description": "High-performance websites designed to turn visitors into buyers with 90-day ranking guarantees."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Google SEO Strategy",
+      "serviceType": "Search Engine Optimization",
+      "provider": { "@id": "https://futurebuilds.dev/#organization" },
+      "description": "Professional SEO services to help businesses rank in the top 5 of Google results."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://futurebuilds.dev"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to see SEO results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We guarantee a Top 5 Google ranking within 90 days for our Growth plan partners, though many see improvements in as little as 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer custom web design?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we build custom, conversion-focused websites tailored to the specific needs of creative agencies and founders."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://futurebuilds.dev",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://futurebuilds.dev/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Future Builds - Conversion-Focused Web Design & SEO Agency",
+      "description": "Future Builds crafts high-performance websites and provides expert SEO services to help businesses dominate Google and convert visitors into buyers.",
+      "url": "https://futurebuilds.dev"
+    }
+  ];
 
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [packageCategory, setPackageCategory] = useState<'website' | 'seo' | null>(null);
@@ -49,8 +126,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative selection:bg-primary/30">
-      <a 
-        href="#main-content" 
+      <a
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md shadow-xl"
       >
         Skip to content
