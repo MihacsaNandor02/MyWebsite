@@ -14,14 +14,16 @@ const SolutionSection = () => {
       reversed: false,
       flipped: false,
       largexl: true,
+      ctaText: "Get Your Free Website Mockup",
     },
     {
       title: "Top 5 Google Ranking Guarantee",
       description:
-        "If we don't rank you in the top 5 for your keywords within 90 days, you get your money back. No excuses, just results.",
+        "If we don't rank you in the top 5 for your keywords within 90 days, we work for free until you do. No excuses, just results.",
       image: searchIcon,
       reversed: true,
       flipped: false,
+      ctaText: "I Want to Rank Higher",
     },
     {
       title: "Risk-Free Strategy Call",
@@ -31,11 +33,12 @@ const SolutionSection = () => {
       reversed: false,
       flipped: false,
       large: true,
+      ctaText: "Book Your Consultation Call",
     },
   ];
 
   return (
-    <section className="py-24 px-4 overflow-hidden relative ">
+    <section id="solutions" className="py-24 px-4 overflow-hidden relative ">
       {/* Background elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
@@ -82,7 +85,7 @@ const SolutionSection = () => {
                           ?.scrollIntoView({ behavior: "smooth" })
                       }
                     >
-                      Book a Free Website Review
+                      {solution.ctaText}
                     </Button>
                   </div>
                 </Reveal>

@@ -141,9 +141,9 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                         <img
                                             src="/portfolio/bdf-before.png"
                                             alt="Before Redesign"
-                                            className="w-full h-full object-cover grayscale blur-[2px]"
+                                            className="w-full h-full object-cover grayscale blur-[0px]"
                                         />
-                                        <div className="absolute inset-0 bg-black/40" />
+                                        <div className="absolute inset-0 bg-black/0" />
                                     </div>
 
                                     {/* Labels */}

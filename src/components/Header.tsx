@@ -1,12 +1,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, TrendingUp } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "#Pricing" },
-  { label: "Case Studies", href: "#cases" },
+  { label: "Solutions", href: "#solutions" },
+  { label: "Services", href: "#pricing" },
+  { label: "Case Studies", href: "#portfolio" },
 ];
 
 const Header = () => {
@@ -41,9 +41,8 @@ const Header = () => {
       >
         {/* Logo - Flex Basis to balance with Action Area */}
         <div className="flex-1 lg:flex-none lg:w-[200px]">
-          <a href="/" className="flex items-center gap-2 text-foreground font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
-            <TrendingUp className="w-6 h-6 text-primary" />
-            <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Design Hug</span>
+          <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <img src="/public/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className=" h-6 max-[400px]:h-5 sm:h-7 md:h-8 w-auto " />
           </a>
         </div>
 
@@ -64,7 +63,7 @@ const Header = () => {
         {/* Action Area - Balanced Flex Basis */}
         <div className="flex-1 lg:flex-none lg:w-[200px] flex items-center justify-end gap-4">
           <Button
-            className="hidden md:flex rounded-full px-6 font-bold shadow-lg shadow-primary/20"
+            className="hidden md:flex rounded-full px-8 py-6 font-bold text-[1.1rem] shadow-lg shadow-primary/20"
             size="sm"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >

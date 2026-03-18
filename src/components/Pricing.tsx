@@ -2,55 +2,62 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 
-const Pricing = () => {
-  const tiers = [
+interface PricingProps {
+  onSelectPackage: (packageName: string) => void;
+}
+
+const Pricing = ({ onSelectPackage }: PricingProps) => {
+  const websiteTiers = [
     {
-      name: "Standard Design",
-      description: "Perfect for SMBs looking for a professional, lead-generating presence.",
+      name: "Essential",
+      description: "Perfect for small businesses that want a professional website which brings in customers.",
       price: "$2,499",
+      option: "(or 3 payments of $833)",
       featured: false,
       features: [
-        "Custom High-End Design",
-        "Conversion Optimization",
-        "Mobile & Speed Optimization",
-        "Free Mockup Included",
-        "1 Month Unlimited Modifications",
+        { title: "Free Mockup Included", subtext: "Get a preview design before development begins." },
+        { title: "Custom High-End Design", subtext: "Design tailored to your business so it builds trust with your customers" },
+        { title: "Conversion Optimization", subtext: "Every element is carefully designed to convert visitors into paying customers." },
+        { title: "Mobile & Speed Optimization", subtext: "Optimized for mobile devices and quick loading." },
+        { title: "Limited Website Optimization", subtext: "Getting found on Google isn't included — that's what the Recommended plan is for." },
+        { title: "1 Month Unlimited Modifications", subtext: "Unlimited edits during the first month after launch." }
       ],
       cta: "Claim Your Free Mockup",
     },
     {
-      name: "SEO + Design Alpha",
-      description: "Our core solution to dominate your local or national niche.",
+      name: "Recommended",
+      description: "For small businesses that want to rank on Google and get customers without paying for ads.",
       price: "$4,999",
       featured: true,
       features: [
-        "Everything in Standard",
-        "Top 5 Google Rank Guarantee*",
-        "90-Day Money-Back Ranking Plan",
-        "On-Page & Technical SEO",
-        "Strategic Keyword Research",
+        { title: "Everything in Essential" },
+        { title: "Ready in 10 Days", subtext: "So you can start getting customers as soon as possible." },
+        { title: "Traffic Tracking", subtext: "Track visitors and see what drives customers to take action." },
+        { title: "Top 5 On Google Guaranteed", subtext: "Get in the top 5 Google results within 90 days — or we work for free until you do." },
+        { title: "Full Website Optimization", subtext: "Every page fine-tuned to get more customers from Google." },
+        { title: "Stop Paying for Ads", subtext: "Attract customers from Google without paying for expensive ads." }
       ],
-      cta: "Book a Strategy Call",
+      cta: "Get My Free Strategy Call",
     },
     {
-      name: "Enterprise Scaler",
-      description: "Full-scale digital dominance for established businesses.",
-      price: "Custom",
+      name: "Custom",
+      description: "Got an online store or want your existing site redesigned? Let's build something around your business.",
+      price: "Quote",
       featured: false,
       features: [
-        "Everything in SEO + Design",
-        "Off-Page Link Building",
-        "Content Matrix Strategy",
-        "Priority Direct Support",
-        "Advanced Industry Analysis",
+        { title: "Everything in Recommended" },
+        { title: "Built Around You", subtext: "Have something specific in mind? If it belongs on a website, we can build it." },
+        { title: "E-Commerce Ready", subtext: "Sell your products online — we build the store, you handle the orders." },
+        { title: "Website Redesign", subtext: "Already have a site that isn't working? We'll rebuild it from the ground up." },
+        { title: "Custom Quote", subtext: "Every project is different — you only pay for what your business actually needs." },
       ],
       cta: "Get a Custom Quote",
-    },
+    }
   ];
 
   return (
     <section id="pricing" className="py-24 px-4 overflow-hidden">
-      <div className="max-w-6xl xl:max-w-7xl mx-auto relative w-[95%]">
+      <div className="max-w-6xl xl:max-w-[1300px] mx-auto relative w-[95%]">
         {/* Section Headline */}
         <div className="text-center mb-16">
           <Reveal width="100%">
@@ -69,7 +76,7 @@ const Pricing = () => {
 
         {/* Pricing Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 justify-items-center">
-          {tiers.map((tier, index) => (
+          {websiteTiers.map((tier, index) => (
             <Reveal key={index} delay={0.2 + index * 0.1} width="100%" fullHeight>
               <div className="w-full max-w-none sm:max-w-[75%] lg:max-w-none mx-auto h-full">
                 <div
@@ -83,8 +90,8 @@ const Pricing = () => {
                   {/* Most Popular Badge */}
                   {tier.featured && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-primary text-primary-foreground text-xs font-semibold px-4 py-1.5 rounded-full">
-                        Most Popular
+                      <span className="bg-primary text-primary-foreground text-xs xl:text-[1.1rem] font-semibold px-4 py-1.5 rounded-full">
+                        Best Value
                       </span>
                     </div>
                   )}
@@ -107,22 +114,30 @@ const Pricing = () => {
                     <span className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-foreground">
                       {tier.price}
                     </span>
-                    {tier.price !== "Custom" && (
+                    {tier.price !== "Custom" && tier.price !== "Quote" && (
                       <span className="text-muted-foreground text-sm font-medium">/project</span>
                     )}
                   </div>
 
+
                   {/* Features List */}
                   <ul className="space-y-4 mb-8 flex-grow">
-                    {tier.features.map((feature, featureIndex) => (
+                    {tier.features.map((feature: any, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
                         <Check
                           size={18}
-                          className="text-primary mt-0.5 flex-shrink-0"
+                          className="text-primary mt-1 flex-shrink-0"
                         />
-                        <span className="text-[hsl(220,10%,70%)] text-lg md:text-xl font-medium leading-tight">
-                          {feature}
-                        </span>
+                        <div className="text-[hsl(220,10%,70%)] text-lg md:text-xl font-medium leading-tight">
+                          {typeof feature === "string" ? (
+                            <span>{feature}</span>
+                          ) : (
+                            <div className="flex flex-col">
+                              <span className="text-foreground">{feature.title}</span>
+                              <span className="text-[0.95rem] md:text-base mt-2 opacity-80 leading-snug">{feature.subtext}</span>
+                            </div>
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -135,7 +150,7 @@ const Pricing = () => {
                       ? "shadow-lg shadow-primary/20"
                       : "border-primary/20 hover:bg-primary/5 hover:border-primary/40 hover:text-primary transition-colors"
                       }`}
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => onSelectPackage(`${tier.name} Website`)}
                   >
                     {tier.cta}
                   </Button>

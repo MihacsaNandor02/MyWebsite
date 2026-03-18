@@ -7,18 +7,20 @@ import HowItWorks from "@/components/HowItWorks";
 
 import Pricing from "@/components/Pricing";
 import ContactSection from "@/components/ContactSection";
+import SEO from "@/components/SEO";
 import BackgroundEffect from "@/components/BackgroundEffect";
+import { useState } from "react";
 
 const Index = () => {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Design Hug",
-    "url": "https://designhug.com",
-    "logo": "https://designhug.com/logo.png",
+    "name": "Future Builds",
+    "url": "https://futurebuilds.com",
+    "logo": "https://futurebuilds.com/favicon.png",
     "sameAs": [
-      "https://twitter.com/designhug",
-      "https://linkedin.com/company/designhug"
+      "https://twitter.com/futurebuilds",
+      "https://linkedin.com/company/futurebuilds"
     ],
     "description": "Conversion-focused web design agency helping businesses dominate Google and grow.",
     "address": {
@@ -31,6 +33,15 @@ const Index = () => {
       "telephone": "+44-000-000-0000",
       "contactType": "customer service"
     }
+  };
+
+  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
+  const [packageCategory, setPackageCategory] = useState<'website' | 'seo' | null>(null);
+
+  const handleSelectPackage = (packageName: string, category: 'website' | 'seo') => {
+    setSelectedPackage(packageName);
+    setPackageCategory(category);
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -52,14 +63,15 @@ const Index = () => {
         <div className="bg-card/20 border-y border-white/5">
           <HowItWorks />
         </div>
-        <Pricing />
-        <ContactSection />
+        <Pricing onSelectPackage={(name) => handleSelectPackage(name, 'website')} />
+        <SEO onSelectPackage={(name) => handleSelectPackage(name, 'seo')} />
+        <ContactSection initialPackage={selectedPackage} packageCategory={packageCategory} />
       </main>
       <footer className="py-12 px-4 border-t border-border bg-card/30">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-2">
-            <span className="font-bold text-xl text-primary">Design Hug</span>
-            <p className="text-sm text-muted-foreground">Websites that convert visitors into buyers.</p>
+          <div className="flex flex-col gap-2 items-center md:items-start">
+            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className="h-8 md:h-10 w-auto object-contain" />
+            <p className="text-sm text-muted-foreground mt-2">Websites that convert visitors into buyers.</p>
           </div>
           <div className="flex gap-8 text-sm text-muted-foreground flex-wrap justify-center">
             <a href="#hero" className="hover:text-primary transition-colors">Home</a>
@@ -71,7 +83,7 @@ const Index = () => {
             <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>
-          <p className="text-xs text-muted-foreground/50">© 2026 Design Hug Agency. Built for growth.</p>
+          <p className="text-xs text-muted-foreground/50">© 2026 Future Builds Agency. Built for growth.</p>
 
         </div>
       </footer>

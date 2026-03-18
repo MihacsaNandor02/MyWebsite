@@ -29,7 +29,7 @@ const ProblemSection = () => {
         <Reveal width="100%">
           <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-10 xl:mb- max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
             Your Website Should Be Making You Money,{" "}
-            <span className="text-primary italic">Not Costing You Time</span>
+            <span className="text-primary italic">Not &nbsp;Lose You Customers</span>
           </h2>
         </Reveal>
 
