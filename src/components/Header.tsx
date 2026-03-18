@@ -42,7 +42,7 @@ const Header = () => {
         {/* Logo - Flex Basis to balance with Action Area */}
         <div className="flex-1 lg:flex-none lg:w-[200px]">
           <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src="/public/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className=" h-6 max-[400px]:h-5 sm:h-7 md:h-8 w-auto " />
+            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className=" h-6 max-[400px]:h-5 sm:h-7 md:h-8 w-auto " />
           </a>
         </div>
 
