@@ -32,7 +32,7 @@ const seoTiers = [
     visibility: "Visible on 75%+ of searches in your area",
     visibilityStrength: 0.75,
     features: [
-      { title: "Top 3 on Google in 90 Days", subtext: "Guaranteed — or you don't pay until you get there." },
+      { title: "Top 5 on Google in 90 Days", subtext: "Guaranteed — or you don't pay until you get there." },
       { title: "Rank for Multiple Keywords", subtext: "Show up for every service your customers search for." },
       { title: "Full Website Fine-Tuned for Google", subtext: "Every page on your site optimized to rank higher." },
       { title: "Beat Your Top Competitors", subtext: "We analyze what they're doing and outrank them." },
@@ -51,13 +51,13 @@ interface SEOProps {
 
 const SEO = ({ onSelectPackage, id }: SEOProps) => {
   return (
-    <section id={id || "seo"} className="py-24 px-4 overflow-hidden">
+    <section id={id || "seo"} className="py-12 px-4 overflow-hidden">
       <div className="max-w-6xl xl:max-w-7xl mx-auto relative w-[95%]">
 
         {/* Section Headline */}
         <div className="text-center mb-16">
           <Reveal width="100%">
-            <h2 className="text-4xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
+            <h2 className="text-4xl sm:text-4xl md:text-[2.5rem] lg:text-5xl font-extrabold text-foreground mb-6">
               Already have a website?{" "}
               <span className="text-teal-400 italic">Get to the top of Google.</span>
             </h2>
@@ -74,7 +74,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
         </div>
 
         {/* SEO Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 justify-items-center max-w-3xl lg:max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 justify-items-center max-w-3xl lg:max-w-5xl mx-auto">
           {seoTiers.map((tier, index) => (
             <Reveal key={index} delay={0.2 + index * 0.1} width="100%" fullHeight>
               <div className="w-full max-w-none sm:max-w-[75%] lg:max-w-none mx-auto h-full">

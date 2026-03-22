@@ -17,17 +17,17 @@ const problems: Problem[] = [
   },
   {
     icon: Receipt,
-    text: "People are searching for your business right now — but with no website, they find your competitors instead.",
+    text: "Getting visitors to your site is only half the battle. Without the right structure people browse, hesitate, and leave — without ever reaching out.",
   },
 ];
 
 const ProblemSection = () => {
   return (
-    <section className="pt-16 pb-24 sm:pb-8 px-4 xl:mb-10 ">
+    <section className="pt-10 sm:pt-10 pb-24 sm:pb-8 px-4 xl:mb-10 ">
       <div className="max-w-[95%] md:max-w-none justify-items-center mx-auto">
         {/* Section Headline */}
         <Reveal width="100%" instant>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-10 xl:mb- max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-12 lg:mb-12 max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
             Your Website Should Be Making You Money,{" "}
             <span className="text-primary italic">Not &nbsp;Lose You Customers</span>
           </h2>

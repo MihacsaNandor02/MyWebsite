@@ -26,11 +26,11 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-24 px-8 md:px-16">
+    <section id="how-it-works" className="py-24 px-8 md:px-16">
       <div className="max-w-4xl mx-auto">
         {/* Section Headline */}
         <Reveal width="100%">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl  font-extrabold text-center text-foreground mb-20 xl:mb-4 leading-tight tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-foreground mb-8 xl:mb-4 leading-tight tracking-tight">
             How It Works
           </h2>
         </Reveal>

@@ -28,7 +28,7 @@ const SolutionSection = () => {
     {
       title: "Risk-Free Strategy Call",
       description:
-        "Get a professional mockup of your new site for free before you spend a dime. Plus, 1 month of unlimited modifications after launch.",
+        "Book a free 15-minute call and we'll map out exactly what your site needs to rank and convert. If we're a good fit, you'll walk away with a free professional mockup before spending anything.",
       image: websiteIcon,
       reversed: false,
       flipped: false,
@@ -38,7 +38,7 @@ const SolutionSection = () => {
   ];
 
   return (
-    <section id="solutions" className="py-24 px-4 overflow-hidden relative ">
+    <section id="solutions" className="pt-8 sm:pt-20  px-4 overflow-hidden relative ">
       {/* Background elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
@@ -46,7 +46,7 @@ const SolutionSection = () => {
       <div className="max-w-6xl xl:max-w-[80%] mx-auto ">
         {/* Section Headline */}
         <Reveal width="100%">
-          <div className="text-center mb-8 md:mb-8 lg:mb-12 xl:mb-12 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-20">
+          <div className="text-center mb-8 md:mb-0 lg:mb-0 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-6 xl:pb-0">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
               Everything You Need to{" "}
               <span className="text-secondary">Grow Your Business</span>
@@ -63,8 +63,8 @@ const SolutionSection = () => {
           {solutions.map((solution, index) => (
             <div
               key={index}
-              className={`flex flex-col-reverse ${solution.reversed ? " md:flex-row-reverse " : " md:flex-row sm:pl-8 lg:pl-8"
-                } items-center gap-12 md:gap-24 md:pb-28`}
+              className={`flex flex-col-reverse ${solution.reversed ? " md:flex-row-reverse md:pb-28 xl:pb-24 " : " md:flex-row sm:pl-8 lg:pl-8 xl:pb-4"
+                } items-center gap-12 md:gap-24 md:pb-16 `}
             >
               {/* Text Side */}
               <div className="flex-1 text-center md:text-left ">
@@ -99,7 +99,7 @@ const SolutionSection = () => {
                     <div className={`absolute ${index === 1 ? '-inset-3' : '-inset-4'} bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500`} />
 
                     {/* Image Container */}
-                    <div className={`relative z-10 ${solution.large ? 'p-4 mt-20 md:mt-0 mb-[-5.5vh] md:mb-[0vh] lg:mb-[2vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mt-12 md:mt-0 mb-[-8vh] md:mb-[-10vh]  md:p-12 lg:p-16 lg:mb-[-10vh]'} 
+                    <div className={`relative z-10 ${solution.large ? 'p-4 mt-20 md:mt-0 mb-[-5.5vh] md:mb-[0vh] lg:mb-[2vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mt-12 md:mt-0 mb-[-8vh] md:mb-[-10vh] md:p-12 lg:p-16 lg:mb-[-10vh]'} 
                     ${solution.largexl ? 'p-0 md:p-0 lg:p-0 mb-[-5vh] sm:mb-[-5vh] md:mb-[2vh] lg:mb-[2vh] xl:mb-[0vh] xl:mt-[2vh]' : ''} transition-transform duration-500 hover:scale-105`}>
                       <img
                         src={solution.image}

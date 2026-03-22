@@ -14,7 +14,7 @@ const Portfolio = () => {
     const isInView = useInView(ref, { once: true, margin: "200px" });
 
     return (
-        <section id="portfolio" ref={ref} className="pb-24 px-4 relative overflow-hidden">
+        <section id="portfolio" ref={ref} className="pb-24 mt-32 sm:mt-36 md:mt-32 xl:mt-28 px-4 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
@@ -32,10 +32,10 @@ const Portfolio = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]"
+                            className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] uppercase italic"
                         >
-                            WE DON'T JUST DESIGN. <br />
-                            <span className="text-primary italic">WE DOMINATE.</span>
+                            BUILT WITH INTENT. <br />
+                            <span className="text-primary ">DESIGNED TO CONVERT.</span>
                         </motion.h2>
                     </div>
                 </div>

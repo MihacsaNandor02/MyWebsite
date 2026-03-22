@@ -12,8 +12,8 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
     {
       name: "Essential",
       description: "Perfect for small businesses that want a professional website which brings in customers.",
-      price: "$2,499",
-      option: "(or 3 payments of $833)",
+      price: "€2,499",
+      option: "(or 3 payments of €833)",
       featured: false,
       features: [
         { title: "Free Mockup Included", subtext: "Get a preview design before development begins." },
@@ -27,8 +27,8 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
     },
     {
       name: "Recommended",
-      description: "For small businesses that want to rank on Google and get customers without paying for ads.",
-      price: "$4,999",
+      description: "Rank on Google and win customers organically — no ad budget required.",
+      price: "€4,999",
       featured: true,
       features: [
         { title: "Everything in Essential" },
@@ -36,7 +36,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
         { title: "Traffic Tracking", subtext: "Track visitors and see what drives customers to take action." },
         { title: "Top 5 On Google Guaranteed", subtext: "Get in the top 5 Google results within 90 days — or we work for free until you do." },
         { title: "Full Website Optimization", subtext: "Every page fine-tuned to get more customers from Google." },
-        { title: "Stop Paying for Ads", subtext: "Attract customers from Google without paying for expensive ads." }
+        { title: "Organic Traffic Setup", subtext: "We build your site so Google understands exactly what you do and who to send your way." }
       ],
       cta: "Get My Free Strategy Call",
     },
@@ -62,7 +62,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
         {/* Section Headline */}
         <div className="text-center mb-16">
           <Reveal width="100%">
-            <h2 className="text-4xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
+            <h2 className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-6">
               Simple Pricing. <span className="text-primary italic">Guaranteed Results.</span>
             </h2>
           </Reveal>

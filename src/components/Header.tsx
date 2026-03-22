@@ -38,7 +38,7 @@ const Header = () => {
           backdropFilter: headerBlur,
           border: headerBorder,
         }}
-        className="flex items-center justify-between px-8 py-4 rounded-full shadow-[0_1.25rem_3.125rem_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)]"
+        className="flex items-center justify-between px-8 py-2 mb-5 sm:py-3 min-[880px]:py-4 rounded-full shadow-[0_1.25rem_3.125rem_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)]"
         role="navigation"
         aria-label="Main navigation"
       >
@@ -50,7 +50,7 @@ const Header = () => {
         </div>
 
         {/* Desktop Navigation - Centered in the middle */}
-        <ul className="hidden md:flex items-center justify-center gap-8 flex-1">
+        <ul className="hidden min-[880px]:flex items-center justify-center gap-8 flex-1">
           {navLinks.map((link) => (
             <li key={link.label}>
               <a
@@ -66,7 +66,7 @@ const Header = () => {
         {/* Action Area - Balanced Flex Basis */}
         <div className="flex-1 lg:flex-none lg:w-[200px] flex items-center justify-end gap-4">
           <Button
-            className="hidden md:flex rounded-full px-8 py-6 font-bold text-[1.1rem] shadow-lg shadow-primary/20"
+            className="hidden min-[880px]:flex rounded-full px-6 py-5 lg:py-6 font-bold text-[1.1rem] shadow-lg shadow-primary/20"
             size="sm"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
@@ -75,7 +75,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground hover:bg-white/5 rounded-full transition-colors"
+            className="min-[880px]:hidden p-2 text-foreground hover:bg-white/5 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}

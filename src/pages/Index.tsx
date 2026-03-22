@@ -44,7 +44,7 @@ const Index = () => {
       },
       "url": "https://futurebuilds.dev",
       "telephone": "+40768919621",
-      "priceRange": "$$"
+      "priceRange": "€€"
     },
     {
       "@context": "https://schema.org",
@@ -166,7 +166,6 @@ const Index = () => {
             <a href="#pricing" className="hover:text-primary transition-colors">Website Pricing</a>
             <a href="#seo" className="hover:text-primary transition-colors">SEO Services</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact Us</a>
-            <a href="#about" className="hover:text-primary transition-colors">About Us</a>
             <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
             <a href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</a>
           </div>

@@ -43,7 +43,7 @@ const needOptions = [
 
 const packageDetails: Record<string, { price: string; features: string[] }> = {
   "Essential Website": {
-    price: "$2,499",
+    price: "€2,499",
     features: [
       "Free Mockup Included",
       "Custom High-End Design",
@@ -54,14 +54,14 @@ const packageDetails: Record<string, { price: string; features: string[] }> = {
     ]
   },
   "Recommended Website": {
-    price: "$4,999",
+    price: "€4,999",
     features: [
       "Everything in Essential",
       "Ready in 10 Days",
       "Traffic Tracking",
       "Top 5 On Google Guaranteed",
       "Full Website Optimization",
-      "Stop Paying for Ads"
+      "Organic Traffic Setup"
     ]
   },
   "Custom Website": {
@@ -196,10 +196,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
     }
   };
 
-  const currentPackage = formData.need ? packageDetails[formData.need] : null;
+  const effectiveNeed = formData.need || "Recommended Website";
+  const currentPackage = packageDetails[effectiveNeed];
+  const isDefault = !formData.need;
 
   return (
-    <section id={id || "contact"} className="py-24 px-4 overflow-hidden relative">
+    <section id={id || "contact"} className="pb-16 pt-20 lg:mt-12 px-4 overflow-hidden relative">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full pointer-events-none opacity-20">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]" />
@@ -207,9 +209,9 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <Reveal width="100%">
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6">
+            <h2 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-foreground mb-6">
               Get Started in <span className="text-primary italic">Just 2 Minutes</span>
             </h2>
           </Reveal>
@@ -257,171 +259,178 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 min-[930px]:grid-cols-2 gap-8 lg:gap-8 xl:gap-12 items-stretch max-w-2xl min-[930px]:max-w-6xl xl:max-w-7xl mx-auto">
-                <div className="h-full">
-                  <div
-                    className="relative rounded-3xl p-8 min-[900px]:p-10 lg:p-8 xl:p-10
-                      bg-[#111317]
-                      backdrop-blur-xl
-                      border border-[hsl(220,10%,18%)]
-                      shadow-[0_2rem_4rem_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)]
-                      h-full flex flex-col"
-                  >
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-bold uppercase tracking-wider mb-6 w-fit">
-                      Start Your Project
-                    </div>
+              <div className="flex flex-col items-center">
+                <div className="grid grid-cols-1 min-[930px]:grid-cols-2 gap-8 lg:gap-8 xl:gap-12 items-stretch max-w-2xl min-[930px]:max-w-6xl xl:max-w-7xl mx-auto w-full">
+                  <div className="h-full">
+                    <div
+                      className="relative rounded-3xl p-8 min-[900px]:p-10 lg:p-8 xl:p-10
+                        bg-[#111317]
+                        backdrop-blur-xl
+                        border border-[hsl(220,10%,18%)]
+                        shadow-[0_2rem_4rem_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)]
+                        h-full flex flex-col"
+                    >
+                      <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-bold uppercase tracking-wider mb-6 w-fit">
+                        Start Your Project
+                      </div>
 
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
 
-                    <div className="relative z-10 flex-grow">
-                      <h2 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-10">
-                        Let's Build Something <span className="text-primary">Great</span>
-                      </h2>
+                      <div className="relative z-10 flex-grow">
+                        <h2 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-10">
+                          Let's Build Something <span className="text-primary">Great</span>
+                        </h2>
 
-                      <form onSubmit={handleSubmit} className="space-y-6 lg:space-y-5 mt-4">
-                        <div className="grid grid-cols-1 gap-6 lg:gap-4">
+                        <form onSubmit={handleSubmit} className="space-y-6 lg:space-y-5 mt-4">
+                          <div className="grid grid-cols-1 gap-6 lg:gap-4">
+                            <div className="space-y-3 lg:space-y-2">
+                              <Label htmlFor="name" className="text-base font-semibold text-foreground/90">
+                                Name <span className="text-primary">*</span>
+                              </Label>
+                              <Input
+                                id="name"
+                                type="text"
+                                placeholder="Jane Smith"
+                                value={formData.name}
+                                onChange={(e) => handleInputChange("name", e.target.value)}
+                                className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
+                              />
+                              {errors.name && (
+                                <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                              )}
+                            </div>
+
+                            <div className="space-y-3 lg:space-y-2">
+                              <Label htmlFor="email" className="text-base font-semibold text-foreground/90">
+                                Email <span className="text-primary">*</span>
+                              </Label>
+                              <Input
+                                id="email"
+                                type="email"
+                                placeholder="jane@company.com"
+                                value={formData.email}
+                                onChange={(e) => handleInputChange("email", e.target.value)}
+                                className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
+                              />
+                              {errors.email && (
+                                <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 gap-6 lg:gap-4">
+                            <div className="space-y-3 lg:space-y-2">
+                              <Label htmlFor="phone" className="text-base font-semibold text-foreground/90">
+                                Phone <span className="text-primary">*</span>
+                              </Label>
+                              <Input
+                                id="phone"
+                                type="tel"
+                                placeholder="+1 (555) 000-0000"
+                                value={formData.phone}
+                                onChange={(e) => handleInputChange("phone", e.target.value)}
+                                className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
+                              />
+                              {errors.phone && (
+                                <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+                              )}
+                            </div>
+
+                            <div className="space-y-3 lg:space-y-2">
+                              <Label htmlFor="website" className="text-base font-semibold text-foreground/90">
+                                Website URL <span className="text-muted-foreground font-normal">(optional)</span>
+                              </Label>
+                              <Input
+                                id="website"
+                                type="url"
+                                placeholder="https://yoursite.com"
+                                value={formData.website}
+                                onChange={(e) => handleInputChange("website", e.target.value)}
+                                className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
+                              />
+                            </div>
+                          </div>
+
                           <div className="space-y-3 lg:space-y-2">
-                            <Label htmlFor="name" className="text-base font-semibold text-foreground/90">
-                              Name <span className="text-primary">*</span>
+                            <Label htmlFor="need" className="text-base font-semibold text-foreground/90">
+                              What do you need? <span className="text-primary">*</span>
                             </Label>
-                            <Input
-                              id="name"
-                              type="text"
-                              placeholder="Jane Smith"
-                              value={formData.name}
-                              onChange={(e) => handleInputChange("name", e.target.value)}
-                              className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
-                            />
-                            {errors.name && (
-                              <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                            <Select
+                              value={formData.need}
+                              onValueChange={(value) => handleInputChange("need", value)}
+                            >
+                              <SelectTrigger className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground">
+                                <SelectValue placeholder="Select an option" />
+                              </SelectTrigger>
+                              <SelectContent className="bg-[#111317] border-[hsl(220,10%,20%)]">
+                                {needOptions.map((option) => (
+                                  <SelectItem
+                                    key={option.value}
+                                    value={option.value}
+                                    className="text-lg py-3 cursor-pointer text-foreground/90 focus:bg-primary/10 focus:text-primary transition-colors"
+                                  >
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            {errors.need && (
+                              <p className="text-sm text-destructive mt-1">{errors.need}</p>
                             )}
                           </div>
 
-                          <div className="space-y-3 lg:space-y-2">
-                            <Label htmlFor="email" className="text-base font-semibold text-foreground/90">
-                              Email <span className="text-primary">*</span>
-                            </Label>
-                            <Input
-                              id="email"
-                              type="email"
-                              placeholder="jane@company.com"
-                              value={formData.email}
-                              onChange={(e) => handleInputChange("email", e.target.value)}
-                              className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
-                            />
-                            {errors.email && (
-                              <p className="text-sm text-destructive mt-1">{errors.email}</p>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 gap-6 lg:gap-4">
-                          <div className="space-y-3 lg:space-y-2">
-                            <Label htmlFor="phone" className="text-base font-semibold text-foreground/90">
-                              Phone <span className="text-primary">*</span>
-                            </Label>
-                            <Input
-                              id="phone"
-                              type="tel"
-                              placeholder="+1 (555) 000-0000"
-                              value={formData.phone}
-                              onChange={(e) => handleInputChange("phone", e.target.value)}
-                              className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
-                            />
-                            {errors.phone && (
-                              <p className="text-sm text-destructive mt-1">{errors.phone}</p>
-                            )}
-                          </div>
-
-                          <div className="space-y-3 lg:space-y-2">
-                            <Label htmlFor="website" className="text-base font-semibold text-foreground/90">
-                              Website URL <span className="text-muted-foreground font-normal">(optional)</span>
-                            </Label>
-                            <Input
-                              id="website"
-                              type="url"
-                              placeholder="https://yoursite.com"
-                              value={formData.website}
-                              onChange={(e) => handleInputChange("website", e.target.value)}
-                              className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="space-y-3 lg:space-y-2">
-                          <Label htmlFor="need" className="text-base font-semibold text-foreground/90">
-                            What do you need? <span className="text-primary">*</span>
-                          </Label>
-                          <Select
-                            value={formData.need}
-                            onValueChange={(value) => handleInputChange("need", value)}
+                          <Button
+                            type="submit"
+                            size="lg"
+                            disabled={isSubmitting}
+                            className="w-full h-16 lg:h-14 mt-6 lg:mt-4 glow-primary text-xl lg:text-lg font-bold transition-all active:scale-[0.98]"
                           >
-                            <SelectTrigger className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground">
-                              <SelectValue placeholder="Select an option" />
-                            </SelectTrigger>
-                            <SelectContent className="bg-[#111317] border-[hsl(220,10%,20%)]">
-                              {needOptions.map((option) => (
-                                <SelectItem
-                                  key={option.value}
-                                  value={option.value}
-                                  className="text-lg py-3 cursor-pointer text-foreground/90 focus:bg-primary/10 focus:text-primary transition-colors"
-                                >
-                                  {option.label}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                          {errors.need && (
-                            <p className="text-sm text-destructive mt-1">{errors.need}</p>
-                          )}
-                        </div>
-
-                        <Button
-                          type="submit"
-                          size="lg"
-                          disabled={isSubmitting}
-                          className="w-full h-16 lg:h-14 mt-6 lg:mt-4 glow-primary text-xl lg:text-lg font-bold transition-all active:scale-[0.98]"
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                              Sending...
-                            </>
-                          ) : (
-                            "Send Message"
-                          )}
-                        </Button>
-                      </form>
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 className="mr-2 h-6 w-6 animate-spin" />
+                                Sending...
+                              </>
+                            ) : (
+                              "Send Message"
+                            )}
+                          </Button>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Right Side Column: Package Overview */}
-                <div className="h-full">
-                  <div
-                    className="relative rounded-3xl p-8 min-[900px]:p-10 lg:p-8 xl:p-10
-                      bg-[#111317]
-                      backdrop-blur-xl
-                      border border-[hsl(220,10%,18%)]
-                      shadow-[0_2rem_4rem_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)]
-                      min-h-[500px] lg:min-h-[450px] flex flex-col h-full overflow-hidden"
-                  >
-                    <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-bold uppercase tracking-wider mb-8 lg:mb-6 w-fit">
-                      Selected Package
-                    </div>
+                  {/* Right Side Column: Package Overview */}
+                  <div className="h-full">
+                    <div
+                      className="relative rounded-3xl p-8 min-[900px]:p-10 lg:p-8 xl:p-10
+                        bg-[#111317]
+                        backdrop-blur-xl
+                        border border-[hsl(220,10%,18%)]
+                        shadow-[0_2rem_4rem_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)]
+                        min-h-[500px] lg:min-h-[450px] flex flex-col h-full overflow-hidden"
+                    >
+                      <div className="flex items-center gap-3 mb-8 lg:mb-6">
+                        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-bold uppercase tracking-wider w-fit">
+                          Selected Package
+                        </div>
+                        {isDefault && (
+                          <span className="text-primary/60 text-xs md:text-sm font-bold italic animate-pulse">
+                            ← Most popular choice
+                          </span>
+                        )}
+                      </div>
 
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
 
-                    <div className="relative z-10 flex flex-col h-full overflow-hidden">
-                      {currentPackage ? (
+                      <div className="relative z-10 flex flex-col h-full overflow-hidden">
                         <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full flex flex-col">
                           <div className="mb-8">
-                            <h3 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-3">{formData.need}</h3>
+                            <h3 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-3">{effectiveNeed}</h3>
                             {currentPackage.price !== "Custom" && currentPackage.price !== "Quote" && currentPackage.price !== "TBD" && (
                               <div className="flex items-baseline gap-2">
                                 <span className="text-4xl md:text-[2.2rem] font-extrabold text-primary pt-2">{currentPackage.price}</span>
                                 <span className="text-muted-foreground text-lg font-medium">
-                                  {formData.need.includes("SEO") ? "/month" : "/project"}
+                                  {effectiveNeed.includes("SEO") ? "/month" : "/project"}
                                 </span>
                               </div>
                             )}
@@ -447,19 +456,102 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                             </p>
                           </div>
                         </div>
-                      ) : (
-                        <div className="flex flex-col items-center justify-center p-8 text-center flex-grow">
-                          <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mb-8">
-                            <CheckCircle className="w-10 h-10 text-primary opacity-20" />
-                          </div>
-                          <h3 className="text-2xl font-bold text-foreground mb-4">
-                            Select a Package
-                          </h3>
-                          <p className="text-muted-foreground text-lg max-w-xs leading-relaxed">
-                            Select what you need from the list to see the full plan details and pricing.
-                          </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* WhatsApp Contact Card - INSIDE GRID FOR PERFECT ALIGNMENT */}
+                  <div className="mt-8 min-[930px]:mt-16 min-[930px]:col-span-2 w-full">
+                    <div className="relative rounded-3xl p-8 min-[900px]:p-10 lg:p-8 xl:p-10 min-[930px]:max-w-2xl mx-auto
+                        bg-[#111317]
+                        backdrop-blur-xl
+                        border border-[hsl(220,10%,18%)]
+                        shadow-[0_2rem_4rem_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)]
+                        flex flex-col gap-6">
+
+                      {/* Header */}
+                      <div className="text-center sm:text-left">
+                        <div className="inline-flex items-center px-4 py-1.5 rounded-full
+                            bg-[#25D366]/10 border border-[#25D366]/20
+                            text-[#25D366] text-xs font-bold uppercase tracking-wider mb-6 w-fit mx-auto sm:mx-0">
+                          Direct Contact
                         </div>
-                      )}
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+                          Let's talk directly
+                        </h3>
+                        <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto sm:mx-0 text-pretty">
+                          Prefer a quicker conversation? Reach us on WhatsApp and we'll
+                          get back to you within a few hours.
+                        </p>
+                      </div>
+
+                      {/* Divider */}
+                      <div className="border-t border-[hsl(220,10%,18%)]"></div>
+
+                      {/* WhatsApp Contact */}
+                      <a href="https://wa.me/40768919621?text=Hi%2C%20I'm%20interested%20in%20your%20services"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex flex-col gap-1 items-center sm:items-start">
+
+                        {/* Phone number row */}
+                        <div className="flex items-center gap-3">
+                          {/* WhatsApp icon */}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            className="w-5 h-5 flex-shrink-0"
+                            fill="#25D366">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15
+                                    -.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075
+                                    -.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
+                                    -.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52
+                                    .149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52
+                                    -.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51
+                                    -.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372
+                                    -.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074
+                                    .149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625
+                                    .712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413
+                                    .248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.855L.057 23.571
+                                    a.75.75 0 0 0 .92.92l5.716-1.471A11.943 11.943 0 0 0 12 24
+                                    c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75
+                                    a9.708 9.708 0 0 1-4.953-1.355l-.355-.211-3.674.944.982-3.573
+                                    -.232-.368A9.715 9.715 0 0 1 2.25 12C2.25 6.615 6.615 2.25 12 2.25
+                                    S21.75 6.615 21.75 12 17.385 21.75 12 21.75z"/>
+                          </svg>
+                          <span className="text-foreground font-semibold text-lg tracking-wide">
+                            +40 768 919 621
+                          </span>
+                        </div>
+
+                        {/* CTA row */}
+                        <div className="flex items-center gap-2 pl-0 sm:pl-8
+                            text-[#25D366] text-base font-medium
+                            group-hover:gap-3 transition-all duration-200">
+                          <span>Chat on WhatsApp</span>
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="transition-transform duration-200 group-hover:translate-x-1">
+                            <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+
+                      {/* Divider */}
+                      <div className="border-t border-[hsl(220,10%,18%)]"></div>
+
+                      {/* Hours */}
+                      <p className="text-muted-foreground text-sm text-center sm:text-left">
+                        Mon – Fri, 9:00 – 18:00
+                        <span className="text-foreground/40 pl-1">(Romania time)</span>
+                      </p>
                     </div>
                   </div>
                 </div>

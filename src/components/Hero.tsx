@@ -57,7 +57,7 @@ const Hero = ({ id }: { id?: string }) => {
     <section
       id={id}
       style={{ fontSize: '1.25rem' }}
-      className="relative  min-h-[75vh] flex items-center justify-center pt-[8vw] lg:pt-0 xl:pt-8 lg:mt-[-2rem] sm:pb-8 md:pb-8 mb-12 sm:mb-0 md:mb-0 lg:mb-[-7rem] xl:mb-[-5rem] px-[.5%] overflow-hidden"
+      className="relative min-h-[75vh] flex items-center justify-center pt-[6vw] sm:pt-0 md:pt-12 lg:pt-0 xl:pt-8 lg:mt-[-4%] xl:mt-[-3%] sm:pb-0 md:pb-8 mb-4 sm:mb-0 md:mb-0 lg:mb-[-7rem] xl:mb-[-5rem] px-[.5%] overflow-hidden"
     >
       <InfinityGrid />
       <Starfield />
@@ -69,7 +69,7 @@ const Hero = ({ id }: { id?: string }) => {
           {/* Left Column: Text + CTA + Trust */}
           <div className="text-center lg:text-left lg:pl-[4vh] xl:pl-[8vh]">
             {/* Headline - ATTENTION */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.2] text-foreground">
+            <h1 className="text-4xl min-[450px]:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-6xl 2xl:text-7xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.2] text-foreground">
               <span className="text-primary inline-block">
                 Conversion-Focused.
               </span>
@@ -84,31 +84,37 @@ const Hero = ({ id }: { id?: string }) => {
             </h1>
 
             {/* Subheadline - INTEREST & DESIRE */}
-            <p className="text-muted-foreground text-md md:text-xl lg:text-xl xl:text-[1.4rem] max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed lg:leading-[1.4] xl:leading-[1.6] font-medium text-pretty">
-              Stop hiding on page 2. We provide <span className="text-foreground font-bold italic">Google-Optimized strategies for guaranteed growth</span>, building high-performance <span className="text-foreground font-bold">conversion-focused websites</span> that turn visitors into loyal customers.
+            <p className="text-muted-foreground text-md min-[450px]:text-md md:text-xl lg:text-xl xl:text-[1.4rem] max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed lg:leading-[1.4] xl:leading-[1.6] font-medium text-pretty">
+              We build websites that rank on Google and turn visitors into paying customers — guaranteed within 90 days.
             </p>
 
             {/* CTA Buttons - Primary + Secondary */}
-            <div className="flex flex-col max-w-[70vw] sm:flex-row sm:max-w-none sm:items-stretch sm:items-center justify-center lg:justify-start mb-12 gap-6 sm:gap-8 sm:mx-8  max-w-2xl mx-auto lg:mx-0">
+            <div className="flex flex-col max-w-[65vw] sm:flex-row sm:max-w-xl sm:items-stretch sm:items-center justify-center lg:justify-start mb-12 gap-6 sm:gap-8  mx-auto sm:mx-auto lg:mx-0">
               <Button
+                asChild
                 size="lg"
-                className="flex-1 group relative text-base lg:text-lg px-6 py-5 sm:py-8 lg:px-10 lg:py-8 font-bold rounded-2xl shadow-2xl shadow-primary/20 transition-all hover:shadow-primary/40 hover:-translate-y-1.5 overflow-hidden"
+                className="flex-1 group relative text-base lg:text-lg px-0 py-5  sm:py-8 lg:px-10 lg:py-8 font-bold rounded-2xl shadow-2xl shadow-primary/20 transition-all hover:shadow-primary/40 hover:-translate-y-1.5 overflow-hidden"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <span className="relative z-10 transition-colors group-hover:text-white">Book Your Call</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 transition-transform duration-500 group-hover:scale-110" />
-                {/* Shimmer Effect */}
-                <div className="absolute inset-0 w-1/2 h-full bg-white/20 -skew-x-[45deg] -translate-x-[200%] group-hover:animate-[shimmer_1.5s_infinite]" />
+                <a href="#contact">
+                  <span className="relative z-10 transition-colors group-hover:text-white">Book Your Call</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 transition-transform duration-500 group-hover:scale-110" />
+                  {/* Shimmer Effect */}
+                  <div className="absolute inset-0 w-1/2 h-full bg-white/20 -skew-x-[45deg] -translate-x-[200%] group-hover:animate-[shimmer_1.5s_infinite]" />
+                </a>
               </Button>
 
               <Button
+                asChild
                 size="lg"
                 variant="outline"
-                className="flex-1 group text-base lg:text-lg px-6 py-5 sm:py-8 lg:px-10 lg:py-8 font-semibold rounded-2xl border-white/15 bg-white/5 backdrop-blur-sm text-foreground hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1"
+                className="flex-1 group text-base lg:text-lg px-0 py-5 sm:py-8 lg:px-10 lg:py-8 font-semibold rounded-2xl border-white/15 bg-white/5 backdrop-blur-sm text-foreground hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1"
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                See Our Work
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                <a href="#portfolio">
+                  See Our Work
+                  <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
             </div>
 
