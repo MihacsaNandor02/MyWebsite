@@ -8,6 +8,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
 import ContactSection from "@/components/ContactSection";
 import SEO from "@/components/SEO";
+import FAQSection from "@/components/FAQSection";
 import BackgroundEffect from "@/components/BackgroundEffect";
 import { useState } from "react";
 
@@ -151,6 +152,7 @@ const Index = () => {
         </div>
         <Pricing onSelectPackage={(name) => handleSelectPackage(name, 'website')} id="pricing" />
         <SEO onSelectPackage={(name) => handleSelectPackage(name, 'seo')} id="seo" />
+        <FAQSection />
         <ContactSection initialPackage={selectedPackage} packageCategory={packageCategory} id="contact" />
       </main>
       <footer className="py-12 px-4 border-t border-border bg-card/30" role="contentinfo">

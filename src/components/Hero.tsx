@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Zap, Award, ArrowRight } from "lucide-react";
-import heroImage from "../assets/weboldalak-Picsart-BackgroundRemover.png";
+import heroImage from "../assets/weboldalak-Picsart-BackgroundRemover_v2.png";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const FloatingShapes = () => {
@@ -57,19 +57,19 @@ const Hero = ({ id }: { id?: string }) => {
     <section
       id={id}
       style={{ fontSize: '1.25rem' }}
-      className="relative min-h-[75vh] flex items-center justify-center pt-[6vw] sm:pt-0 md:pt-12 lg:pt-0 xl:pt-8 lg:mt-[-4%] xl:mt-[-3%] sm:pb-0 md:pb-8 mb-4 sm:mb-0 md:mb-0 lg:mb-[-7rem] xl:mb-[-5rem] px-[.5%] overflow-hidden"
+      className="relative min-h-[75vh] flex items-center justify-center pt-[6vw] lg:pl-12 sm:pt-0 md:pt-12 lg:pt-0 xl:pt-4 sm:pb-0 md:pb-8 lg:pb-0 mb-4 sm:mb-0 md:mb-0  px-[.5%] overflow-hidden"
     >
       <InfinityGrid />
       <Starfield />
       <LightBeams />
       <FloatingShapes />
 
-      <div className="relative z-20 w-full max-w-[95%] lg:max-w-none lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-x-12 items-center">
+      <div className="relative z-20 w-full max-w-[95%] lg:max-w-none ">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-x-12 items-start">
           {/* Left Column: Text + CTA + Trust */}
           <div className="text-center lg:text-left lg:pl-[4vh] xl:pl-[8vh]">
             {/* Headline - ATTENTION */}
-            <h1 className="text-4xl min-[450px]:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-6xl 2xl:text-7xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.2] text-foreground">
+            <h1 className="text-4xl min-[450px]:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-7xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.3] text-foreground">
               <span className="text-primary inline-block">
                 Conversion-Focused.
               </span>
@@ -89,7 +89,7 @@ const Hero = ({ id }: { id?: string }) => {
             </p>
 
             {/* CTA Buttons - Primary + Secondary */}
-            <div className="flex flex-col max-w-[65vw] sm:flex-row sm:max-w-xl sm:items-stretch sm:items-center justify-center lg:justify-start mb-12 gap-6 sm:gap-8  mx-auto sm:mx-auto lg:mx-0">
+            <div className="flex flex-col sm:flex-row max-w-[65vw] sm:max-w-xl xl:max-w-2xl sm:items-stretch sm:items-center justify-center lg:justify-start mb-12 gap-6 sm:gap-8  mx-auto sm:mx-auto lg:mx-0">
               <Button
                 asChild
                 size="lg"
@@ -119,7 +119,7 @@ const Hero = ({ id }: { id?: string }) => {
             </div>
 
             {/* Trust Indicators - Under CTAs */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 text-sm xl:text-xl font-medium text-muted-foreground">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 text-sm lg:text-base xl:text-xl  font-medium text-muted-foreground">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-secondary" />
                 <span>High-Converting Designs</span>
@@ -136,13 +136,13 @@ const Hero = ({ id }: { id?: string }) => {
           </div>
 
           {/* Right Column: Image (1.5x bigger) */}
-          <div className="hidden lg:flex justify-end items-center relative overflow-visible pr-0 lg:-mr-20 lg:justify-center">
+          <div className="hidden lg:flex  items-start relative overflow-visible lg:justify-center lg:items-start lg:mt-4 2xl:pr-12  ">
             <div className="relative group">
               <div className="absolute -inset-8 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
               <img
                 src={heroImage}
                 alt="Modern Digital Devices showing web interfaces"
-                className="relative mt-[-10vh] z-10 w-[46.875rem] h-[46.875rem] object-contain drop-shadow-2xl transform transition-transform duration-700 group-hover:scale-105"
+                className="relative z-10 w-[clamp(24rem,32vw,38rem)] h-auto object-top drop-shadow-2xl transform transition-transform duration-700 group-hover:scale-105"
               />
             </div>
           </div>
