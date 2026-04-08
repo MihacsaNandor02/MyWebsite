@@ -1,12 +1,14 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowUpRight, Zap, Target, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Zap, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import PortfolioModal from "./PortfolioModal";
 import FightClubModal from "./FightClubModal";
+import { useTranslation } from "react-i18next";
 
 const Portfolio = () => {
+    const { t } = useTranslation();
     const [isFightClubOpen, setIsFightClubOpen] = useState(false);
     const [isGenericOpen, setIsGenericOpen] = useState(false);
 
@@ -25,7 +27,7 @@ const Portfolio = () => {
                             viewport={{ once: true }}
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
                         >
-                            <Zap className="w-3 h-3" /> Selected Case Studies
+                            <Zap className="w-3 h-3" /> {t('portfolio.tag')}
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -34,8 +36,8 @@ const Portfolio = () => {
                             transition={{ delay: 0.1 }}
                             className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] uppercase italic"
                         >
-                            BUILT WITH INTENT. <br />
-                            <span className="text-primary ">DESIGNED TO CONVERT.</span>
+                            {t('portfolio.title_part1')} <br />
+                            <span className="text-primary ">{t('portfolio.title_part2')}</span>
                         </motion.h2>
                     </div>
                 </div>
@@ -63,26 +65,26 @@ const Portfolio = () => {
                                     <div className="absolute top-8 left-8">
                                         <div className="flex items-center gap-3">
                                             <div className="w-12 h-px bg-yellow-400" />
-                                            <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">Redesign Case Study</span>
+                                            <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">{t('portfolio.case_study_redesign')}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="lg:col-span-5 p-8 md:p-12 lg:p-16 flex flex-col justify-center space-y-10">
                                     <div className="space-y-4">
-                                        <Badge className="bg-yellow-400 text-black border-none font-black italic uppercase tracking-tighter px-4 py-1">Featured Project</Badge>
+                                        <Badge className="bg-yellow-400 text-black border-none font-black italic uppercase tracking-tighter px-4 py-1">{t('portfolio.featured_badge')}</Badge>
                                         <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-[0.9]">
                                             BLACK <span className="text-yellow-400">DIAMOND</span> FIGHT
                                         </h3>
                                         <p className="text-xl text-white/50 leading-tight max-w-md">
-                                            Turning a cluttered legacy site into a high-impact, conversion-focused digital engine.
+                                            {t('portfolio.fight_club_desc')}
                                         </p>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-6">
                                         {[
-                                            { label: "Content Clarity", val: "STRATEGIC", icon: Target },
-                                            { label: "Design Level", val: "PREMIUM", icon: Zap },
+                                            { label: t('portfolio.stat_clarity'), val: t('portfolio.stat_strategic'), icon: Target },
+                                            { label: t('portfolio.stat_design'), val: t('portfolio.stat_premium'), icon: Zap },
                                         ].map((stat, i) => (
                                             <div key={i} className="space-y-1">
                                                 <div className="flex items-center gap-2 text-yellow-400/60 mb-2">
@@ -99,7 +101,7 @@ const Portfolio = () => {
                                             size="lg"
                                             className="h-16 mx-auto sm:mx-0 px-6 md:px-10 text-base md:text-lg font-black italic uppercase tracking-widest rounded-2xl bg-white text-black hover:bg-yellow-400 transition-all flex items-center gap-4 group/btn"
                                         >
-                                            The Transformation
+                                            {t('portfolio.cta_transformation')}
                                             <ArrowUpRight className="w-6 h-6 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                         </Button>
                                     </div>
@@ -126,17 +128,17 @@ const Portfolio = () => {
                                 />
                                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                                 <div className="absolute bottom-6 left-6 right-6">
-                                    <h4 className="text-2xl font-black tracking-tight uppercase italic mb-2">TOROCKÓ BEAUTY: NATURAL ESSENCE</h4>
-                                    <p className="text-white/60 text-sm line-clamp-1">Visual language and e-commerce UX for artisan cosmetics.</p>
+                                    <h4 className="text-2xl font-black tracking-tight uppercase italic mb-2">{t('portfolio.project_torocko_title')}</h4>
+                                    <p className="text-white/60 text-sm line-clamp-1">{t('portfolio.project_torocko_desc')}</p>
                                 </div>
                             </div>
                         </motion.div>
 
                         <div className="flex flex-col justify-center p-8 rounded-[2rem] border border-dashed border-white/10 hover:border-primary/50 transition-colors group cursor-pointer">
-                            <h4 className="text-xl font-bold mb-2 text-white/40 group-hover:text-white transition-colors uppercase italic tracking-tighter">Your Project Here?</h4>
-                            <p className="text-muted-foreground mb-6">We're ready to build your next conversion machine.</p>
+                            <h4 className="text-xl font-bold mb-2 text-white/40 group-hover:text-white transition-colors uppercase italic tracking-tighter">{t('portfolio.your_project_title')}</h4>
+                            <p className="text-muted-foreground mb-6">{t('portfolio.your_project_desc')}</p>
                             <Button variant="link" className="text-primary p-0 h-auto font-bold uppercase tracking-widest text-xs flex items-center gap-2 group-hover:gap-4 transition-all" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                                Start Your Redesign <ArrowUpRight className="w-4 h-4" />
+                                {t('portfolio.your_project_cta')} <ArrowUpRight className="w-4 h-4" />
                             </Button>
                         </div>
                     </div>

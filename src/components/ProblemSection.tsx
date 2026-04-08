@@ -1,35 +1,38 @@
 import { UserMinus, EyeOff, Receipt, LucideIcon } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { useTranslation } from "react-i18next";
 
 interface Problem {
   icon: LucideIcon;
-  text: string;
+  textKey: string;
 }
 
-const problems: Problem[] = [
-  {
-    icon: UserMinus,
-    text: "Your website is invisible on Google, while competitors on page 1 steal your leads every day.",
-  },
-  {
-    icon: EyeOff,
-    text: "No website means no visibility, no growth, and low credibility — while you’re stuck chasing customers offline.",
-  },
-  {
-    icon: Receipt,
-    text: "Getting visitors to your site is only half the battle. Without the right structure people browse, hesitate, and leave — without ever reaching out.",
-  },
-];
-
 const ProblemSection = () => {
+  const { t } = useTranslation();
+
+  const problems: Problem[] = [
+    {
+      icon: UserMinus,
+      textKey: "problems.item_1",
+    },
+    {
+      icon: EyeOff,
+      textKey: "problems.item_2",
+    },
+    {
+      icon: Receipt,
+      textKey: "problems.item_3",
+    },
+  ];
+
   return (
     <section className="pt-10 sm:pt-10 pb-24 sm:pb-8 px-4 xl:mb-10 ">
       <div className="max-w-[95%] md:max-w-none justify-items-center mx-auto">
         {/* Section Headline */}
         <Reveal width="100%" instant>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-12 lg:mb-12 max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
-            Your Website Should Be Making You Money,{" "}
-            <span className="text-primary italic">Not &nbsp;Lose You Customers</span>
+            {t('problems.headline_main')}
+            <span className="text-primary italic">{t('problems.headline_highlight')}</span>
           </h2>
         </Reveal>
 
@@ -61,7 +64,7 @@ const ProblemSection = () => {
 
                     {/* Problem Text */}
                     <p className="text-lg sm:text-xl xl:text-2xl text-[hsl(220,10%,70%)] font-medium leading-relaxed xl:leading-[2.4rem] text-center relative z-10">
-                      {problem.text}
+                      {t(problem.textKey)}
                     </p>
                   </div>
                 </Reveal>

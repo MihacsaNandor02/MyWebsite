@@ -1,48 +1,7 @@
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-
-const seoTiers = [
-  {
-    name: "Local",
-    description: "Get found by customers searching for your business in your area.",
-    price: "€250",
-    priceLabel: "/month",
-    featured: false,
-    visibility: "Visible on 30%+ of local searches",
-    visibilityStrength: 0.3,
-    features: [
-      { title: "Get Found on Google Maps", subtext: "Show up when nearby customers search for your service." },
-      { title: "Rank for Your Main Keyword", subtext: "Show up when customers search for what you do." },
-      { title: "Basic Competitor Analysis", subtext: "See where you stand against other local businesses." },
-      { title: "Updates Every Two Weeks", subtext: "We keep working on your rankings consistently." },
-      { title: "Monthly Progress Report", subtext: "See exactly how your rankings are improving each month." },
-    ],
-    cta: "Start Getting Found",
-    packageName: "Local SEO",
-  },
-  {
-    name: "Growth",
-    description: "Show up before your competitors when customers are ready to buy.",
-    price: "€319",
-    priceLabel: "/month",
-    quarterlyPrice: "€837",
-    quarterlySaving: "Save €120",
-    featured: true,
-    visibility: "Visible on 75%+ of searches in your area",
-    visibilityStrength: 0.75,
-    features: [
-      { title: "Top 5 on Google in 90 Days", subtext: "Guaranteed — or you don't pay until you get there." },
-      { title: "Rank for Multiple Keywords", subtext: "Show up for every service your customers search for." },
-      { title: "Full Website Fine-Tuned for Google", subtext: "Every page on your site optimized to rank higher." },
-      { title: "Beat Your Top Competitors", subtext: "We analyze what they're doing and outrank them." },
-      { title: "Updates Every Two Weeks", subtext: "We keep working on your rankings consistently." },
-      { title: "Monthly Progress Report", subtext: "See exactly where you rank and how fast you're climbing." },
-    ],
-    cta: "Get to the Top",
-    packageName: "Growth SEO",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 interface SEOProps {
   onSelectPackage: (packageName: string) => void;
@@ -50,6 +9,50 @@ interface SEOProps {
 }
 
 const SEO = ({ onSelectPackage, id }: SEOProps) => {
+  const { t } = useTranslation();
+
+  const seoTiers = [
+    {
+      name: t("seo_pricing.local.name"),
+      description: t("seo_pricing.local.desc"),
+      price: t("seo_pricing.local.price"),
+      priceLabel: t("seo_pricing.local.price_label"),
+      featured: false,
+      visibility: t("seo_pricing.local.visibility"),
+      visibilityStrength: 0.3,
+      features: [
+        { title: t("seo_pricing.local.f1_t"), subtext: t("seo_pricing.local.f1_s") },
+        { title: t("seo_pricing.local.f2_t"), subtext: t("seo_pricing.local.f2_s") },
+        { title: t("seo_pricing.local.f3_t"), subtext: t("seo_pricing.local.f3_s") },
+        { title: t("seo_pricing.local.f4_t"), subtext: t("seo_pricing.local.f4_s") },
+        { title: t("seo_pricing.local.f5_t"), subtext: t("seo_pricing.local.f5_s") },
+      ],
+      cta: t("seo_pricing.local.cta"),
+      packageName: "Local SEO",
+    },
+    {
+      name: t("seo_pricing.growth.name"),
+      description: t("seo_pricing.growth.desc"),
+      price: t("seo_pricing.growth.price"),
+      priceLabel: t("seo_pricing.growth.price_label"),
+      quarterlyPrice: t("seo_pricing.growth.q_price"),
+      quarterlySaving: t("seo_pricing.growth.q_save"),
+      featured: true,
+      visibility: t("seo_pricing.growth.visibility"),
+      visibilityStrength: 0.75,
+      features: [
+        { title: t("seo_pricing.growth.f1_t"), subtext: t("seo_pricing.growth.f1_s") },
+        { title: t("seo_pricing.growth.f2_t"), subtext: t("seo_pricing.growth.f2_s") },
+        { title: t("seo_pricing.growth.f3_t"), subtext: t("seo_pricing.growth.f3_s") },
+        { title: t("seo_pricing.growth.f4_t"), subtext: t("seo_pricing.growth.f4_s") },
+        { title: t("seo_pricing.growth.f5_t"), subtext: t("seo_pricing.growth.f5_s") },
+        { title: t("seo_pricing.growth.f6_t"), subtext: t("seo_pricing.growth.f6_s") },
+      ],
+      cta: t("seo_pricing.growth.cta"),
+      packageName: "Growth SEO",
+    },
+  ];
+
   return (
     <section id={id || "seo"} className="py-12 px-4 overflow-hidden">
       <div className="max-w-6xl xl:max-w-7xl mx-auto relative w-[95%]">
@@ -58,16 +61,16 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
         <div className="text-center mb-16">
           <Reveal width="100%">
             <h2 className="text-4xl sm:text-4xl md:text-[2.5rem] lg:text-5xl font-extrabold text-foreground mb-6">
-              Already have a website?{" "}
-              <span className="text-teal-400 italic">Get to the top of Google.</span>
+              {t("seo_pricing.title_main")}
+              <span className="text-teal-400 italic">{t("seo_pricing.title_highlight")}</span>
             </h2>
           </Reveal>
           <Reveal width="100%" delay={0.4}>
             <p className="text-muted-foreground text-lg sm:text-xl xl:text-2xl max-w-2xl mx-auto font-medium w-[80%]">
-              No new website needed. We work with what you have and get you ranking above your competitors.
+              {t("seo_pricing.subtitle")}
               <br />
               <span className="text-xs xl:text-lg mt-2 block opacity-70">
-                *90-day ranking guarantee applies to Growth plan and selected keywords.
+                {t("seo_pricing.guarantee_note")}
               </span>
             </p>
           </Reveal>
@@ -89,7 +92,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                   {tier.featured && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="bg-teal-500 text-white text-xs xl:text-[1.1rem] font-semibold px-4 py-1.5 rounded-full whitespace-nowrap">
-                        Best Value
+                        {t("seo_pricing.best_value")}
                       </span>
                     </div>
                   )}
@@ -119,7 +122,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                   {tier.quarterlyPrice && (
                     <div className="mb-6 flex items-center gap-2">
                       <span className="text-muted-foreground text-sm">
-                        or <span className="text-foreground font-semibold">{tier.quarterlyPrice}</span> billed every 3 months
+                        {t("seo_pricing.or")} <span className="text-foreground font-semibold">{tier.quarterlyPrice}</span> {t("seo_pricing.billed_quarterly")}
                       </span>
                       <span className="bg-teal-500/15 text-teal-400 text-xs font-bold px-2 py-0.5 rounded-full">
                         {tier.quarterlySaving}
@@ -151,18 +154,14 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                           className="text-teal-400 mt-1 flex-shrink-0"
                         />
                         <div className="text-lg md:text-xl font-medium leading-tight">
-                          {typeof feature === "string" ? (
-                            <span className="text-foreground">{feature}</span>
-                          ) : (
-                            <div className="flex flex-col">
-                              <span className="text-foreground">{feature.title}</span>
-                              {feature.subtext && (
-                                <span className="text-[0.95rem] md:text-base mt-2 opacity-80 leading-snug text-muted-foreground font-normal">
-                                  {feature.subtext}
-                                </span>
-                              )}
-                            </div>
-                          )}
+                          <div className="flex flex-col">
+                            <span className="text-foreground">{feature.title}</span>
+                            {feature.subtext && (
+                              <span className="text-[0.95rem] md:text-base mt-2 opacity-80 leading-snug text-muted-foreground font-normal">
+                                {feature.subtext}
+                              </span>
+                            )}
+                          </div>
                         </div>
                       </li>
                     ))}
@@ -189,7 +188,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                       onClick={() => onSelectPackage(tier.packageName)}
                     >
                       <Phone size={16} className="text-teal-400" />
-                      Book a {tier.name} Call
+                      {t("seo_pricing.book_call", { name: tier.name })}
                     </Button>
                   </div>
                 </div>

@@ -1,27 +1,25 @@
-import { Phone, FileText, Rocket } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { useTranslation } from "react-i18next";
 
 const HowItWorks = () => {
+  const { t } = useTranslation();
+
   const steps = [
     {
-      title: "Step 1: Consultation & Booking",
-      description:
-        "Choose a suitable package and fill out the form to get started.",
+      title: t("how_it_works.step1_title"),
+      description: t("how_it_works.step1_desc"),
     },
     {
-      title: "Step 2: Strategy & Planning",
-      description:
-        "We help you identify what content and details your website needs — and we send you a step-by-step plan to kick off the project smoothly.",
+      title: t("how_it_works.step2_title"),
+      description: t("how_it_works.step2_desc"),
     },
     {
-      title: "Step 3: Review & Refinement",
-      description:
-        "We help you review the first version of your website, make improvements together, and send you a ready-to-launch version.",
+      title: t("how_it_works.step3_title"),
+      description: t("how_it_works.step3_desc"),
     },
     {
-      title: "Step 4: Launch & Lead Generation",
-      description:
-        "We help you launch your website with confidence, double-check every feature, and ensure it looks great, performs flawlessly, and starts bringing in new leads.",
+      title: t("how_it_works.step4_title"),
+      description: t("how_it_works.step4_desc"),
     },
   ];
 
@@ -31,7 +29,7 @@ const HowItWorks = () => {
         {/* Section Headline */}
         <Reveal width="100%">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-foreground mb-8 xl:mb-4 leading-tight tracking-tight">
-            How It Works
+            {t("how_it_works.title")}
           </h2>
         </Reveal>
 

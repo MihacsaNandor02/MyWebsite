@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import ProblemSection from "@/components/ProblemSection";
 import SolutionSection from "@/components/SolutionSection";
 import Portfolio from "@/components/Portfolio";
+import LeadFocus from "@/components/LeadFocus";
 import HowItWorks from "@/components/HowItWorks";
 
 import Pricing from "@/components/Pricing";
@@ -11,20 +12,27 @@ import SEO from "@/components/SEO";
 import FAQSection from "@/components/FAQSection";
 import BackgroundEffect from "@/components/BackgroundEffect";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
+  const { t, i18n } = useTranslation();
+  const currentLang = i18n.language || 'ro';
+  const baseUrl = "https://futurebuilds.dev";
+  const localizedUrl = currentLang === 'en' ? `${baseUrl}/en/` : `${baseUrl}/`;
+
   const organizationSchema = [
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "@id": "https://futurebuilds.dev/#organization",
       "name": "Future Builds",
-      "url": "https://futurebuilds.dev",
+      "url": localizedUrl,
       "logo": {
         "@type": "ImageObject",
         "url": "https://futurebuilds.dev/portfolio/Future Builds - Written-Transparent-Cropped.png"
       },
-      "description": "Conversion-focused web design agency helping businesses dominate Google and grow."
+      "description": t("seo.org_desc")
     },
     {
       "@context": "https://schema.org",
@@ -43,25 +51,25 @@ const Index = () => {
         "latitude": "46.5456",
         "longitude": "24.5625"
       },
-      "url": "https://futurebuilds.dev",
+      "url": localizedUrl,
       "telephone": "+40768919621",
       "priceRange": "€€"
     },
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Conversion-Focused Web Design",
+      "name": t("seo.service_web_title"),
       "serviceType": "Web Design",
       "provider": { "@id": "https://futurebuilds.dev/#organization" },
-      "description": "High-performance websites designed to turn visitors into buyers with 90-day ranking guarantees."
+      "description": t("seo.service_web_desc")
     },
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Google SEO Strategy",
+      "name": t("seo.service_seo_title"),
       "serviceType": "Search Engine Optimization",
       "provider": { "@id": "https://futurebuilds.dev/#organization" },
-      "description": "Professional SEO services to help businesses rank in the top 5 of Google results."
+      "description": t("seo.service_seo_desc")
     },
     {
       "@context": "https://schema.org",
@@ -70,8 +78,8 @@ const Index = () => {
         {
           "@type": "ListItem",
           "position": 1,
-          "name": "Home",
-          "item": "https://futurebuilds.dev"
+          "name": t("seo.breadcrumb_home"),
+          "item": localizedUrl
         }
       ]
     },
@@ -81,18 +89,18 @@ const Index = () => {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How long does it take to see SEO results?",
+          "name": t("faq.items.how_long_q"),
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We guarantee a Top 5 Google ranking within 90 days for our Growth plan partners, though many see improvements in as little as 30 days."
+            "text": t("faq.items.how_long_a")
           }
         },
         {
           "@type": "Question",
-          "name": "Do you offer custom web design?",
+          "name": t("faq.items.seo_results_time_q"),
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, we build custom, conversion-focused websites tailored to the specific needs of creative agencies and founders."
+            "text": t("faq.items.seo_results_time_a")
           }
         }
       ]
@@ -100,19 +108,19 @@ const Index = () => {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "url": "https://futurebuilds.dev",
+      "url": localizedUrl,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://futurebuilds.dev/search?q={search_term_string}",
+        "target": `${localizedUrl}search?q={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     },
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Future Builds - Conversion-Focused Web Design & SEO Agency",
-      "description": "Future Builds crafts high-performance websites and provides expert SEO services to help businesses dominate Google and convert visitors into buyers.",
-      "url": "https://futurebuilds.dev"
+      "name": t("seo.page_title"),
+      "description": t("seo.page_desc"),
+      "url": localizedUrl
     }
   ];
 
@@ -127,11 +135,16 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative selection:bg-primary/30">
+      <Helmet>
+        <title>{t("seo.page_title")}</title>
+        <meta name="description" content={t("seo.page_desc")} />
+        <link rel="canonical" href={localizedUrl} />
+      </Helmet>
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md shadow-xl"
       >
-        Skip to content
+        {currentLang === 'ro' ? "Sari la conținut" : "Skip to content"}
       </a>
       <script
         type="application/ld+json"
@@ -146,6 +159,7 @@ const Index = () => {
           <ProblemSection />
         </div>
         <SolutionSection />
+        <LeadFocus />
         <Portfolio />
         <div className="bg-card/20 border-y border-white/5">
           <HowItWorks />
@@ -159,20 +173,31 @@ const Index = () => {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex flex-col gap-2 items-center md:items-start">
             <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className="h-8 md:h-10 w-auto object-contain" />
-            <p className="text-sm text-muted-foreground mt-2">Websites that convert visitors into buyers.</p>
+            <p className="text-sm text-muted-foreground mt-2">{t("footer.tagline")}</p>
           </div>
           <div className="flex gap-8 text-sm text-muted-foreground flex-wrap justify-center">
-            <a href="#hero" className="hover:text-primary transition-colors">Future Builds Home</a>
-            <a href="#portfolio" className="hover:text-primary transition-colors">Case Studies</a>
-            <a href="#how-it-works" className="hover:text-primary transition-colors">Our Process</a>
-            <a href="#pricing" className="hover:text-primary transition-colors">Website Pricing</a>
-            <a href="#seo" className="hover:text-primary transition-colors">SEO Services</a>
-            <a href="#contact" className="hover:text-primary transition-colors">Contact Us</a>
-            <a href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</a>
+            <a href="#hero" className="hover:text-primary transition-colors">{t("footer.link_home")}</a>
+            <a href="#portfolio" className="hover:text-primary transition-colors">{t("footer.link_portfolio")}</a>
+            <a href="#how-it-works" className="hover:text-primary transition-colors">{t("footer.link_process")}</a>
+            <a href="#pricing" className="hover:text-primary transition-colors">{t("footer.link_pricing")}</a>
+            <a href="#seo" className="hover:text-primary transition-colors">{t("footer.link_seo")}</a>
+            <a href="#contact" className="hover:text-primary transition-colors">{t("footer.link_contact")}</a>
+            <a href="/privacy-policy" className="hover:text-primary transition-colors">{t("footer.link_privacy")}</a>
+            <a href="/terms-of-service" className="hover:text-primary transition-colors">{t("footer.link_terms")}</a>
           </div>
-          <p className="text-xs text-muted-foreground/50">© 2026 Future Builds Agency. Built for growth.</p>
-
+          <div className="flex flex-col items-center md:items-end gap-2">
+            <p className="text-xs text-muted-foreground/50">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
+            {/* Hidden Address Block for SEO */}
+            <div className="hidden sr-only">
+              <address>
+                Future Builds Agency<br />
+                Bulevardul 1 Decembrie 1918 213<br />
+                Targu Mures, {t("seo.addr_country_full")} 540000<br />
+                {t("seo.addr_phone")}: +40768919621<br />
+                {t("seo.addr_email")}: hello@futurebuilds.dev
+              </address>
+            </div>
+          </div>
         </div>
       </footer>
     </div>

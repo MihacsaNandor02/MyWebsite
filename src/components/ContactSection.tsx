@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,15 +12,7 @@ import {
 import { CheckCircle, Loader2, Check } from "lucide-react";
 import { z } from "zod";
 import { Reveal } from "./Reveal";
-
-const formSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  phone: z.string().trim().min(5, "Phone number is required").max(20),
-  website: z.string().trim().max(255).optional(),
-  need: z.string().min(1, "Please select an option"),
-  timezone: z.string().optional(),
-});
+import { useTranslation } from "react-i18next";
 
 interface ContactSectionProps {
   initialPackage?: string | null;
@@ -28,83 +20,7 @@ interface ContactSectionProps {
   id?: string;
 }
 
-type FormData = z.infer<typeof formSchema>;
-
 type Step = "form" | "confirmation";
-
-const needOptions = [
-  { value: "Essential Website", label: "Essential Website" },
-  { value: "Recommended Website", label: "Recommended Website" },
-  { value: "Custom Website", label: "Custom Website" },
-  { value: "Local SEO", label: "Local SEO" },
-  { value: "Growth SEO", label: "Growth SEO" },
-  { value: "Not sure yet", label: "Not sure yet" },
-];
-
-const packageDetails: Record<string, { price: string; features: string[] }> = {
-  "Essential Website": {
-    price: "€2,499",
-    features: [
-      "Free Mockup Included",
-      "Custom High-End Design",
-      "Conversion Optimization",
-      "Mobile & Speed Optimization",
-      "Standard Website SEO",
-      "1 Month Unlimited Modifications"
-    ]
-  },
-  "Recommended Website": {
-    price: "€4,999",
-    features: [
-      "Everything in Essential",
-      "Ready in 10 Days",
-      "Traffic Tracking",
-      "Top 5 On Google Guaranteed",
-      "Full Website Optimization",
-      "Organic Traffic Setup"
-    ]
-  },
-  "Custom Website": {
-    price: "Quote",
-    features: [
-      "Everything in Recommended",
-      "Built Around You",
-      "E-Commerce Ready",
-      "Website Redesign",
-      "Custom Quote"
-    ]
-  },
-  "Local SEO": {
-    price: "€250",
-    features: [
-      "Get Found on Google Maps",
-      "Rank for Main Keyword",
-      "Competitor Analysis",
-      "Bi-Weekly Updates",
-      "Monthly Progress Reports"
-    ]
-  },
-  "Growth SEO": {
-    price: "€319",
-    features: [
-      "Top 3 on Google in 90 Days",
-      "Rank for Multiple Keywords",
-      "Full Site Optimization",
-      "Beat Top Competitors",
-      "Monthly Progress Reports"
-    ]
-  },
-  "Not sure yet": {
-    price: "TBD",
-    features: [
-      "Strategy Session Included",
-      "Goal Alignment",
-      "Tech Audit & Review",
-      "Custom Roadmap Planning",
-      "Find the Best Fit for You"
-    ]
-  }
-};
 
 /**
  * PASTE YOUR GOOGLE APPS SCRIPT URL HERE
@@ -112,8 +28,21 @@ const packageDetails: Record<string, { price: string; features: string[] }> = {
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuEILaezFqyOX3jhif1xa4b8zFBT8-AKI-eTmMl-kgdF0xfay-qpDyM2CCH7vUGMG_/exec";
 
 const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, packageCategory, id }) => {
+  const { t } = useTranslation();
   const [step, setStep] = useState<Step>("form");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const formSchema = useMemo(() => z.object({
+    name: z.string().trim().min(1, t("contact.err_name")).max(100),
+    email: z.string().trim().email(t("contact.err_email")).max(255),
+    phone: z.string().trim().min(5, t("contact.err_phone")).max(20),
+    website: z.string().trim().max(255).optional(),
+    need: z.string().min(1, t("contact.err_need")),
+    timezone: z.string().optional(),
+  }), [t]);
+
+  type FormData = z.infer<typeof formSchema>;
+
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -123,6 +52,80 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
     timezone: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+
+  const needOptions = [
+    { value: "Essential Website", label: t("contact.packages.essential.name") },
+    { value: "Recommended Website", label: t("contact.packages.recommended.name") },
+    { value: "Custom Website", label: t("contact.packages.custom.name") },
+    { value: "Local SEO", label: t("contact.packages.local.name") },
+    { value: "Growth SEO", label: t("contact.packages.growth.name") },
+    { value: "Not sure yet", label: t("contact.packages.not_sure.name") },
+  ];
+
+  const packageDetails: Record<string, { price: string; features: string[] }> = {
+    "Essential Website": {
+      price: t("contact.packages.essential.price"),
+      features: [
+        t("contact.packages.essential.f1"),
+        t("contact.packages.essential.f2"),
+        t("contact.packages.essential.f3"),
+        t("contact.packages.essential.f4"),
+        t("contact.packages.essential.f5"),
+        t("contact.packages.essential.f6")
+      ]
+    },
+    "Recommended Website": {
+      price: t("contact.packages.recommended.price"),
+      features: [
+        t("contact.packages.recommended.f1"),
+        t("contact.packages.recommended.f2"),
+        t("contact.packages.recommended.f3"),
+        t("contact.packages.recommended.f4"),
+        t("contact.packages.recommended.f5"),
+        t("contact.packages.recommended.f6")
+      ]
+    },
+    "Custom Website": {
+      price: t("contact.packages.custom.price"),
+      features: [
+        t("contact.packages.custom.f1"),
+        t("contact.packages.custom.f2"),
+        t("contact.packages.custom.f3"),
+        t("contact.packages.custom.f4"),
+        t("contact.packages.custom.f5")
+      ]
+    },
+    "Local SEO": {
+      price: t("contact.packages.local.price"),
+      features: [
+        t("contact.packages.local.f1"),
+        t("contact.packages.local.f2"),
+        t("contact.packages.local.f3"),
+        t("contact.packages.local.f4"),
+        t("contact.packages.local.f5")
+      ]
+    },
+    "Growth SEO": {
+      price: t("contact.packages.growth.price"),
+      features: [
+        t("contact.packages.growth.f1"),
+        t("contact.packages.growth.f2"),
+        t("contact.packages.growth.f3"),
+        t("contact.packages.growth.f4"),
+        t("contact.packages.growth.f5")
+      ]
+    },
+    "Not sure yet": {
+      price: t("contact.packages.not_sure.price"),
+      features: [
+        t("contact.packages.not_sure.f1"),
+        t("contact.packages.not_sure.f2"),
+        t("contact.packages.not_sure.f3"),
+        t("contact.packages.not_sure.f4"),
+        t("contact.packages.not_sure.f5")
+      ]
+    }
+  };
 
   // Detect timezone on mount
   useEffect(() => {
@@ -212,12 +215,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
         <div className="text-center mb-10">
           <Reveal width="100%">
             <h2 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold text-foreground mb-6">
-              Get Started in <span className="text-primary italic">Just 2 Minutes</span>
+              {t("contact.title_main")} <span className="text-primary italic">{t("contact.title_highlight")}</span>
             </h2>
           </Reveal>
           <Reveal width="100%" delay={0.4}>
             <p className="text-muted-foreground text-lg sm:text-xl xl:text-2xl max-w-2xl mx-auto font-medium">
-              Tell us about your business and the package you’re interested in.
+              {t("contact.subtitle")}
             </p>
           </Reveal>
         </div>
@@ -242,17 +245,17 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                       </div>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                      Inquiry Received!
+                      {t("contact.conf_title")}
                     </h2>
                     <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-                      Thanks for reaching out! We've received your details and our team will review your project and get back to you within 24 hours.
+                      {t("contact.conf_desc")}
                     </p>
                     <div className="bg-[#1a1c23] rounded-xl p-6 text-left border border-[hsl(220,10%,20%)]">
-                      <h3 className="text-foreground font-semibold mb-3">Next Steps:</h3>
+                      <h3 className="text-foreground font-semibold mb-3">{t("contact.conf_next_steps")}</h3>
                       <ul className="space-y-2 text-muted-foreground text-sm">
-                        <li>• Check your inbox for a confirmation email</li>
-                        <li>• We'll analyze your website/market niche</li>
-                        <li>• Expect a custom proposal or a quick follow-up call</li>
+                        <li>• {t("contact.conf_step1")}</li>
+                        <li>• {t("contact.conf_step2")}</li>
+                        <li>• {t("contact.conf_step3")}</li>
                       </ul>
                     </div>
                   </div>
@@ -271,26 +274,26 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                         h-full flex flex-col"
                     >
                       <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-bold uppercase tracking-wider mb-6 w-fit">
-                        Start Your Project
+                        {t("contact.form_tag")}
                       </div>
 
                       <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
 
                       <div className="relative z-10 flex-grow">
                         <h2 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-10">
-                          Let's Build Something <span className="text-primary">Great</span>
+                          {t("contact.form_title_part1")}<span className="text-primary">{t("contact.form_title_part2")}</span>
                         </h2>
 
                         <form onSubmit={handleSubmit} className="space-y-6 lg:space-y-5 mt-4">
                           <div className="grid grid-cols-1 gap-6 lg:gap-4">
                             <div className="space-y-3 lg:space-y-2">
                               <Label htmlFor="name" className="text-base font-semibold text-foreground/90">
-                                Name <span className="text-primary">*</span>
+                                {t("contact.label_name")} <span className="text-primary">*</span>
                               </Label>
                               <Input
                                 id="name"
                                 type="text"
-                                placeholder="Jane Smith"
+                                placeholder={t("contact.placeholder_name")}
                                 value={formData.name}
                                 onChange={(e) => handleInputChange("name", e.target.value)}
                                 className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
@@ -302,12 +305,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
 
                             <div className="space-y-3 lg:space-y-2">
                               <Label htmlFor="email" className="text-base font-semibold text-foreground/90">
-                                Email <span className="text-primary">*</span>
+                                {t("contact.label_email")} <span className="text-primary">*</span>
                               </Label>
                               <Input
                                 id="email"
                                 type="email"
-                                placeholder="jane@company.com"
+                                placeholder={t("contact.placeholder_email")}
                                 value={formData.email}
                                 onChange={(e) => handleInputChange("email", e.target.value)}
                                 className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
@@ -321,12 +324,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                           <div className="grid grid-cols-1 gap-6 lg:gap-4">
                             <div className="space-y-3 lg:space-y-2">
                               <Label htmlFor="phone" className="text-base font-semibold text-foreground/90">
-                                Phone <span className="text-primary">*</span>
+                                {t("contact.label_phone")} <span className="text-primary">*</span>
                               </Label>
                               <Input
                                 id="phone"
                                 type="tel"
-                                placeholder="+1 (555) 000-0000"
+                                placeholder={t("contact.placeholder_phone")}
                                 value={formData.phone}
                                 onChange={(e) => handleInputChange("phone", e.target.value)}
                                 className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
@@ -338,12 +341,12 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
 
                             <div className="space-y-3 lg:space-y-2">
                               <Label htmlFor="website" className="text-base font-semibold text-foreground/90">
-                                Website URL <span className="text-muted-foreground font-normal">(optional)</span>
+                                {t("contact.label_website")} <span className="text-muted-foreground font-normal">{t("contact.label_optional")}</span>
                               </Label>
                               <Input
                                 id="website"
                                 type="url"
-                                placeholder="https://yoursite.com"
+                                placeholder={t("contact.placeholder_website")}
                                 value={formData.website}
                                 onChange={(e) => handleInputChange("website", e.target.value)}
                                 className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground"
@@ -353,14 +356,14 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
 
                           <div className="space-y-3 lg:space-y-2">
                             <Label htmlFor="need" className="text-base font-semibold text-foreground/90">
-                              What do you need? <span className="text-primary">*</span>
+                              {t("contact.label_need")} <span className="text-primary">*</span>
                             </Label>
                             <Select
                               value={formData.need}
                               onValueChange={(value) => handleInputChange("need", value)}
                             >
                               <SelectTrigger className="bg-[#1a1c23] border-[hsl(220,10%,20%)] h-12 sm:h-14 text-sm sm:text-lg lg:text-[1rem] focus:ring-primary/20 text-foreground">
-                                <SelectValue placeholder="Select an option" />
+                                <SelectValue placeholder={t("contact.placeholder_select")} />
                               </SelectTrigger>
                               <SelectContent className="bg-[#111317] border-[hsl(220,10%,20%)]">
                                 {needOptions.map((option) => (
@@ -388,10 +391,10 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                             {isSubmitting ? (
                               <>
                                 <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                                Sending...
+                                {t("contact.btn_sending")}
                               </>
                             ) : (
-                              "Send Message"
+                              t("contact.btn_send")
                             )}
                           </Button>
                         </form>
@@ -411,11 +414,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                     >
                       <div className="flex items-center gap-3 mb-8 lg:mb-6">
                         <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs md:text-sm font-bold uppercase tracking-wider w-fit">
-                          Selected Package
+                          {t("contact.overview_tag")}
                         </div>
                         {isDefault && (
                           <span className="text-primary/60 text-xs md:text-sm font-bold italic animate-pulse">
-                            ← Most popular choice
+                            {t("contact.overview_popular")}
                           </span>
                         )}
                       </div>
@@ -425,19 +428,21 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                       <div className="relative z-10 flex flex-col h-full overflow-hidden">
                         <div className="animate-in fade-in slide-in-from-right-4 duration-500 h-full flex flex-col">
                           <div className="mb-8">
-                            <h3 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-3">{effectiveNeed}</h3>
+                            <h3 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-3">
+                              {needOptions.find(o => o.value === (formData.need || "Recommended Website"))?.label || effectiveNeed}
+                            </h3>
                             {currentPackage.price !== "Custom" && currentPackage.price !== "Quote" && currentPackage.price !== "TBD" && (
                               <div className="flex items-baseline gap-2">
                                 <span className="text-4xl md:text-[2.2rem] font-extrabold text-primary pt-2">{currentPackage.price}</span>
                                 <span className="text-muted-foreground text-lg font-medium">
-                                  {effectiveNeed.includes("SEO") ? "/month" : "/project"}
+                                  {effectiveNeed.includes("SEO") ? t("pricing.per_month") : t("pricing.per_project")}
                                 </span>
                               </div>
                             )}
                           </div>
 
                           <div className="flex-grow overflow-y-auto pr-4 scrollbar-hide py-2">
-                            <p className="text-muted-foreground text-lg md:text-xl lg:text-lg font-medium mb-6 lg:mb-4">What's included in this plan:</p>
+                            <p className="text-muted-foreground text-lg md:text-xl lg:text-lg font-medium mb-6 lg:mb-4">{t("contact.overview_included")}</p>
                             <ul className="space-y-5 lg:space-y-3">
                               {currentPackage.features.map((feature, i) => (
                                 <li key={i} className="flex items-start gap-4">
@@ -452,7 +457,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
 
                           <div className="mt-8 pt-8 border-t border-[hsl(220,10%,20%)] lg:block hidden">
                             <p className="text-lg text-muted-foreground leading-relaxed italic opacity-80">
-                              "Our goal is to build you a website that doesn't just look pretty, but actually acts as a 24/7 salesperson for your business."
+                              {t("contact.overview_quote")}
                             </p>
                           </div>
                         </div>
@@ -474,14 +479,13 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                         <div className="inline-flex items-center px-4 py-1.5 rounded-full
                             bg-[#25D366]/10 border border-[#25D366]/20
                             text-[#25D366] text-xs font-bold uppercase tracking-wider mb-6 w-fit mx-auto sm:mx-0">
-                          Direct Contact
+                          {t("contact.direct_tag")}
                         </div>
                         <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-                          Let's talk directly
+                          {t("contact.direct_title")}
                         </h3>
                         <p className="text-muted-foreground text-lg leading-relaxed max-w-xl mx-auto sm:mx-0 text-pretty">
-                          Prefer a quicker conversation? Reach us on WhatsApp and we'll
-                          get back to you within a few hours.
+                          {t("contact.direct_desc")}
                         </p>
                       </div>
 
@@ -529,7 +533,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                         <div className="flex items-center gap-2 pl-0 sm:pl-8
                             text-[#25D366] text-base font-medium
                             group-hover:gap-3 transition-all duration-200">
-                          <span>Chat on WhatsApp</span>
+                          <span>{t("contact.direct_whatsapp")}</span>
                           <svg xmlns="http://www.w3.org/2000/svg"
                             width="16" height="16"
                             viewBox="0 0 24 24"
@@ -549,8 +553,8 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
 
                       {/* Hours */}
                       <p className="text-muted-foreground text-sm text-center sm:text-left">
-                        Mon – Fri, 9:00 – 18:00
-                        <span className="text-foreground/40 pl-1">(Romania time)</span>
+                        {t("contact.direct_hours")}
+                        <span className="text-foreground/40 pl-1">{t("contact.direct_timezone")}</span>
                       </p>
                     </div>
                   </div>

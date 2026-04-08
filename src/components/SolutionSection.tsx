@@ -3,37 +3,37 @@ import { Button } from "@/components/ui/button";
 import designIcon from "../assets/wireframe-copped.png";
 import searchIcon from "../assets/solution-seo-v2.png";
 import websiteIcon from "../assets/solution-website-final-Picsart-BackgroundRemover-Photoroom.png";
+import { useTranslation } from "react-i18next";
 
 const SolutionSection = () => {
+  const { t } = useTranslation();
+
   const solutions = [
     {
-      title: "Conversion-Focused Design",
-      description:
-        "We don’t just focus on making sites look good — we build websites that are thoughtfully designed to help your business attract and convert more customers.",
+      title: t("solutions.design_title"),
+      description: t("solutions.design_desc"),
       image: designIcon,
       reversed: false,
       flipped: false,
       largexl: true,
-      ctaText: "Get Your Free Website Mockup",
+      ctaText: t("solutions.design_cta"),
     },
     {
-      title: "Top 5 Google Ranking Guarantee",
-      description:
-        "If we don't rank you in the top 5 for your keywords within 90 days, we work for free until you do. No excuses, just results.",
+      title: t("solutions.seo_title"),
+      description: t("solutions.seo_desc"),
       image: searchIcon,
       reversed: true,
       flipped: false,
-      ctaText: "I Want to Rank Higher",
+      ctaText: t("solutions.seo_cta"),
     },
     {
-      title: "Risk-Free Strategy Call",
-      description:
-        "Book a free 15-minute call and we'll map out exactly what your site needs to rank and convert. If we're a good fit, you'll walk away with a free professional mockup before spending anything.",
+      title: t("solutions.consult_title"),
+      description: t("solutions.consult_desc"),
       image: websiteIcon,
       reversed: false,
       flipped: false,
       large: true,
-      ctaText: "Book Your Consultation Call",
+      ctaText: t("solutions.consult_cta"),
     },
   ];
 
@@ -48,12 +48,11 @@ const SolutionSection = () => {
         <Reveal width="100%">
           <div className="text-center mb-8 md:mb-0 lg:mb-0 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-6 xl:pb-0">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
-              Everything You Need to{" "}
-              <span className="text-secondary">Grow Your Business</span>
+              {t("solutions.headline_main")}
+              <span className="text-secondary">{t("solutions.headline_highlight")}</span>
             </h2>
             <p className="text-[hsl(220,10%,60%)] text-lg sm:text-xl xl:text-2xl leading-relaxed max-w-2xl xl:max-w-4xl mx-auto">
-              Proven strategies used across dozens of successful brands — delivered
-              through a done-for-you system that brings you more customers.
+              {t("solutions.headline_subtitle")}
             </p>
           </div>
         </Reveal>

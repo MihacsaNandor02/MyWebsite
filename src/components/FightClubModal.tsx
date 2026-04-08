@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import {
     Dialog,
     DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogDescription,
-    DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, ArrowRight, ExternalLink, Smartphone, UserCheck, CreditCard, TrendingUp } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, Smartphone, UserCheck, CreditCard, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface FightClubModalProps {
     isOpen: boolean;
@@ -18,6 +15,7 @@ interface FightClubModalProps {
 }
 
 const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
+    const { t } = useTranslation();
     const [sliderPos, setSliderPos] = useState(50);
 
     const handleMove = (clientX: number, container: HTMLElement) => {
@@ -71,7 +69,7 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                             animate={{ scale: 1 }}
                             transition={{ duration: 1.5, ease: "easeOut" }}
                             src="/portfolio/bdf-after.png"
-                            alt="Black Diamond Fight Redesign Hero"
+                            alt={t('modals.fight_club.alt_after')}
                             className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-[2s]"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent" />
@@ -83,27 +81,27 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-px bg-yellow-400" />
-                                    <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">Platinum Case Study</span>
+                                    <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">{t('modals.fight_club.tag')}</span>
                                 </div>
                                 <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter uppercase italic leading-[0.8]">
-                                    BLACK <span className="text-yellow-400">DIAMOND.</span>
+                                    {t('modals.fight_club.title_main')}<span className="text-yellow-400">{t('modals.fight_club.title_highlight')}</span>
                                 </h2>
                             </div>
 
                             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10">
                                 <div className="space-y-6 flex-1">
                                     <p className="text-xl md:text-2xl text-white/50 font-medium leading-tight max-w-2xl">
-                                        Total digital rebirth for an elite MMA facility, transforming their online presence into a lead-generation powerhouse with a brutal, high-performance aesthetic.
+                                        {t('modals.fight_club.overview')}
                                     </p>
                                 </div>
                                 <div className="flex shrink-0 gap-4">
                                     <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400/60 mb-1">Impact</p>
-                                        <p className="text-xl font-bold italic uppercase tracking-tighter">+240% Leads</p>
+                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400/60 mb-1">{t('modals.fight_club.impact_label')}</p>
+                                        <p className="text-xl font-bold italic uppercase tracking-tighter">{t('modals.fight_club.impact_val')}</p>
                                     </div>
                                     <div className="p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl">
-                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400/60 mb-1">Focus</p>
-                                        <p className="text-xl font-bold italic uppercase tracking-tighter">Funnel UX</p>
+                                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-400/60 mb-1">{t('modals.fight_club.focus_label')}</p>
+                                        <p className="text-xl font-bold italic uppercase tracking-tighter">{t('modals.fight_club.focus_val')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -113,11 +111,11 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                         <section className="space-y-10">
                             <div className="flex flex-col md:flex-row justify-between items-end gap-6">
                                 <div className="space-y-3">
-                                    <h3 className="text-4xl font-black italic uppercase tracking-tighter">The <span className="text-yellow-400">Transformation</span></h3>
-                                    <p className="text-white/40 max-w-lg">From a cluttered legacy site to a streamlined conversion engine. Drag the slider to witness the rebirth.</p>
+                                    <h3 className="text-4xl font-black italic uppercase tracking-tighter">{t('modals.fight_club.trans_title')}<span className="text-yellow-400">{t('modals.fight_club.trans_highlight')}</span></h3>
+                                    <p className="text-white/40 max-w-lg">{t('modals.fight_club.trans_desc')}</p>
                                 </div>
                                 <Badge variant="outline" className="text-white/30 border-white/10 px-4 py-2 uppercase tracking-widest text-xs italic font-black">
-                                    Side-By-Side Comparison
+                                    {t('modals.fight_club.trans_badge')}
                                 </Badge>
                             </div>
 
@@ -128,7 +126,7 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                     <div className="absolute inset-0">
                                         <img
                                             src="/portfolio/bdf-after.png"
-                                            alt="After Redesign"
+                                            alt={t('modals.fight_club.alt_after')}
                                             className="w-full h-full object-cover"
                                         />
                                     </div>
@@ -140,7 +138,7 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                     >
                                         <img
                                             src="/portfolio/bdf-before.png"
-                                            alt="Before Redesign"
+                                            alt={t('modals.fight_club.alt_before')}
                                             className="w-full h-full object-cover grayscale blur-[0px]"
                                         />
                                         <div className="absolute inset-0 bg-black/0" />
@@ -148,10 +146,10 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
 
                                     {/* Labels */}
                                     <div className="absolute bottom-8 left-8 z-20 pointer-events-none">
-                                        <Badge className="bg-black/60 backdrop-blur-md border-white/10 text-white/40 px-4 py-2 tracking-widest">LEGACY SITE</Badge>
+                                        <Badge className="bg-black/60 backdrop-blur-md border-white/10 text-white/40 px-4 py-2 tracking-widest">{t('modals.fight_club.label_legacy')}</Badge>
                                     </div>
                                     <div className="absolute bottom-8 right-8 z-20 pointer-events-none">
-                                        <Badge className="bg-yellow-400 text-black px-4 py-2 tracking-widest font-black">NEW PERFORMANCE ERA</Badge>
+                                        <Badge className="bg-yellow-400 text-black px-4 py-2 tracking-widest font-black">{t('modals.fight_club.label_new')}</Badge>
                                     </div>
                                 </div>
 
@@ -176,33 +174,33 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                         {/* 4. Strategic Impact Grid (Large / Light Overlays) */}
                         <section className="space-y-12">
                             <div className="space-y-2">
-                                <h3 className="text-4xl font-black italic uppercase tracking-tighter">Strategic <span className="text-yellow-400">Wins</span></h3>
-                                <p className="text-white/40 text-lg">Detailed breakthroughs in the 2.0 architecture.</p>
+                                <h3 className="text-4xl font-black italic uppercase tracking-tighter">{t('modals.fight_club.wins_title')}<span className="text-yellow-400">{t('modals.fight_club.wins_highlight')}</span></h3>
+                                <p className="text-white/40 text-lg">{t('modals.fight_club.wins_desc')}</p>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                                 {[
                                     {
                                         img: "/portfolio/bdf-mobile.png",
-                                        title: "Mobile-First UX",
-                                        desc: "Seamless performance and one-touch scheduling for athletes on the move.",
+                                        title: t('modals.fight_club.win1_t'),
+                                        desc: t('modals.fight_club.win1_d'),
                                         icon: <Smartphone className="w-6 h-6 text-black" />
                                     },
                                     {
                                         img: "/portfolio/bdf-branding.png",
-                                        title: "Elite Branding",
-                                        desc: "Visual trust metrics tied directly to Zoltan's national championship authority.",
+                                        title: t('modals.fight_club.win2_t'),
+                                        desc: t('modals.fight_club.win2_d'),
                                         icon: <UserCheck className="w-6 h-6 text-black" />
                                     },
                                     {
                                         img: "/portfolio/bdf-programs.png",
-                                        title: "Program Clarity",
-                                        desc: "Strategic segmentation of Juniors, Fit, and Elite training paths.",
+                                        title: t('modals.fight_club.win3_t'),
+                                        desc: t('modals.fight_club.win3_d'),
                                         icon: <CreditCard className="w-6 h-6 text-black" />
                                     },
                                     {
                                         img: "/portfolio/bdf-testimonials.png",
-                                        title: "Proof Systems",
-                                        desc: "High-impact social evidence integrated into the core scrolling experience.",
+                                        title: t('modals.fight_club.win4_t'),
+                                        desc: t('modals.fight_club.win4_d'),
                                         icon: <TrendingUp className="w-6 h-6 text-black" />
                                     }
                                 ].map((screen, i) => (
@@ -240,10 +238,10 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                         <div className="p-6 md:p-14 rounded-[3rem] bg-yellow-400/5 border border-yellow-400/10 flex flex-col items-center text-center space-y-10 mt-12 mb-12">
                             <div className="space-y-4">
                                 <h3 className="text-3xl md:text-5xl font-black italic uppercase tracking-tighter leading-[0.9]">
-                                    WANT RESULTS <span className="text-yellow-400">LIKE THIS?</span>
+                                    {t('modals.fight_club.cta_title')}<span className="text-yellow-400">{t('modals.fight_club.cta_highlight')}</span>
                                 </h3>
                                 <p className="text-lg text-white/50 max-w-2xl mx-auto font-medium leading-tight">
-                                    Your website shouldn't just look pretty. It should be your hardest working employee. Let’s build your machine.
+                                    {t('modals.fight_club.cta_desc')}
                                 </p>
                             </div>
                             <Button
@@ -254,7 +252,7 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
                             >
-                                Get Your Design Strategy
+                                {t('modals.fight_club.cta_btn')}
                                 <ArrowRight className="ml-4 w-6 h-6 group-hover/btn:translate-x-2 transition-transform" />
                             </Button>
                         </div>

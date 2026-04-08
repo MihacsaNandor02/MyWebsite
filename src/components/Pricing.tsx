@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import { useTranslation } from "react-i18next";
 
 interface PricingProps {
   onSelectPackage: (packageName: string) => void;
@@ -8,51 +9,53 @@ interface PricingProps {
 }
 
 const Pricing = ({ onSelectPackage, id }: PricingProps) => {
+  const { t } = useTranslation();
+
   const websiteTiers = [
     {
-      name: "Essential",
-      description: "Perfect for small businesses that want a professional website which brings in customers.",
-      price: "€2,499",
-      option: "(or 3 payments of €833)",
+      name: t("pricing.essential.name"),
+      description: t("pricing.essential.desc"),
+      price: t("pricing.essential.price"),
+      option: t("pricing.essential.option"),
       featured: false,
       features: [
-        { title: "Free Mockup Included", subtext: "Get a preview design before development begins." },
-        { title: "Custom High-End Design", subtext: "Design tailored to your business so it builds trust with your customers" },
-        { title: "Conversion Optimization", subtext: "Every element is carefully designed to convert visitors into paying customers." },
-        { title: "Mobile & Speed Optimization", subtext: "Optimized for mobile devices and quick loading." },
-        { title: "Limited Website Optimization", subtext: "Getting found on Google isn't included — that's what the Recommended plan is for." },
-        { title: "1 Month Unlimited Modifications", subtext: "Unlimited edits during the first month after launch." }
+        { title: t("pricing.essential.f1_t"), subtext: t("pricing.essential.f1_s") },
+        { title: t("pricing.essential.f2_t"), subtext: t("pricing.essential.f2_s") },
+        { title: t("pricing.essential.f3_t"), subtext: t("pricing.essential.f3_s") },
+        { title: t("pricing.essential.f4_t"), subtext: t("pricing.essential.f4_s") },
+        { title: t("pricing.essential.f5_t"), subtext: t("pricing.essential.f5_s") },
+        { title: t("pricing.essential.f6_t"), subtext: t("pricing.essential.f6_s") }
       ],
-      cta: "Claim Your Free Mockup",
+      cta: t("pricing.essential.cta"),
     },
     {
-      name: "Recommended",
-      description: "Rank on Google and win customers organically — no ad budget required.",
-      price: "€4,999",
+      name: t("pricing.recommended.name"),
+      description: t("pricing.recommended.desc"),
+      price: t("pricing.recommended.price"),
       featured: true,
       features: [
-        { title: "Everything in Essential" },
-        { title: "Ready in 10 Days", subtext: "So you can start getting customers as soon as possible." },
-        { title: "Traffic Tracking", subtext: "Track visitors and see what drives customers to take action." },
-        { title: "Top 5 On Google Guaranteed", subtext: "Get in the top 5 Google results within 90 days — or we work for free until you do." },
-        { title: "Full Website Optimization", subtext: "Every page fine-tuned to get more customers from Google." },
-        { title: "Organic Traffic Setup", subtext: "We build your site so Google understands exactly what you do and who to send your way." }
+        { title: t("pricing.recommended.f1_t") },
+        { title: t("pricing.recommended.f2_t"), subtext: t("pricing.recommended.f2_s") },
+        { title: t("pricing.recommended.f3_t"), subtext: t("pricing.recommended.f3_s") },
+        { title: t("pricing.recommended.f4_t"), subtext: t("pricing.recommended.f4_s") },
+        { title: t("pricing.recommended.f5_t"), subtext: t("pricing.recommended.f5_s") },
+        { title: t("pricing.recommended.f6_t"), subtext: t("pricing.recommended.f6_s") }
       ],
-      cta: "Get My Free Strategy Call",
+      cta: t("pricing.recommended.cta"),
     },
     {
-      name: "Custom",
-      description: "Got an online store or want your existing site redesigned? Let's build something around your business.",
-      price: "Quote",
+      name: t("pricing.custom.name"),
+      description: t("pricing.custom.desc"),
+      price: t("pricing.custom.price"),
       featured: false,
       features: [
-        { title: "Everything in Recommended" },
-        { title: "Built Around You", subtext: "Have something specific in mind? If it belongs on a website, we can build it." },
-        { title: "E-Commerce Ready", subtext: "Sell your products online — we build the store, you handle the orders." },
-        { title: "Website Redesign", subtext: "Already have a site that isn't working? We'll rebuild it from the ground up." },
-        { title: "Custom Quote", subtext: "Every project is different — you only pay for what your business actually needs." },
+        { title: t("pricing.custom.f1_t") },
+        { title: t("pricing.custom.f2_t"), subtext: t("pricing.custom.f2_s") },
+        { title: t("pricing.custom.f3_t"), subtext: t("pricing.custom.f3_s") },
+        { title: t("pricing.custom.f4_t"), subtext: t("pricing.custom.f4_s") },
+        { title: t("pricing.custom.f5_t"), subtext: t("pricing.custom.f5_s") },
       ],
-      cta: "Get a Custom Quote",
+      cta: t("pricing.custom.cta"),
     }
   ];
 
@@ -63,14 +66,14 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
         <div className="text-center mb-16">
           <Reveal width="100%">
             <h2 className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-6">
-              Simple Pricing. <span className="text-primary italic">Guaranteed Results.</span>
+              {t("pricing.title_main")} <span className="text-primary italic">{t("pricing.title_highlight")}</span>
             </h2>
           </Reveal>
           <Reveal width="100%" delay={0.4}>
             <p className="text-muted-foreground text-lg sm:text-xl xl:text-2xl max-w-2xl mx-auto font-medium w-[80%]">
-              No hidden fees. Just industry-leading design and SEO that actually grows your business.
+              {t("pricing.subtitle")}
               <br />
-              <span className="text-xs xl:text-lg mt-2 block opacity-70">*90-day ranking guarantee applies to selected keywords.</span>
+              <span className="text-xs xl:text-lg mt-2 block opacity-70">{t("pricing.guarantee_note")}</span>
             </p>
           </Reveal>
         </div>
@@ -92,7 +95,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
                   {tier.featured && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="bg-primary text-primary-foreground text-xs xl:text-[1.1rem] font-semibold px-4 py-1.5 rounded-full">
-                        Best Value
+                        {t("pricing.best_value")}
                       </span>
                     </div>
                   )}
@@ -115,8 +118,8 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
                     <span className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-foreground">
                       {tier.price}
                     </span>
-                    {tier.price !== "Custom" && tier.price !== "Quote" && (
-                      <span className="text-muted-foreground text-sm font-medium">/project</span>
+                    {tier.name !== t("pricing.custom.name") && (
+                      <span className="text-muted-foreground text-sm font-medium">{t("pricing.per_project")}</span>
                     )}
                   </div>
 
@@ -130,14 +133,10 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
                           className="text-primary mt-1 flex-shrink-0"
                         />
                         <div className="text-[hsl(220,10%,70%)] text-lg md:text-xl font-medium leading-tight">
-                          {typeof feature === "string" ? (
-                            <span>{feature}</span>
-                          ) : (
-                            <div className="flex flex-col">
-                              <span className="text-foreground">{feature.title}</span>
-                              <span className="text-[0.95rem] md:text-base mt-2 opacity-80 leading-snug">{feature.subtext}</span>
-                            </div>
-                          )}
+                          <div className="flex flex-col">
+                            <span className="text-foreground">{feature.title}</span>
+                            {feature.subtext && <span className="text-[0.95rem] md:text-base mt-2 opacity-80 leading-snug">{feature.subtext}</span>}
+                          </div>
                         </div>
                       </li>
                     ))}

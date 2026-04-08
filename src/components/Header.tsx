@@ -2,16 +2,19 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 const navLinks = [
-  { label: "Our Solutions", href: "#solutions" },
-  { label: "SEO & Design", href: "#seo" },
-  { label: "Success Stories", href: "#portfolio" },
+  { label: "nav.solutions", href: "#solutions" },
+  { label: "nav.seo_design", href: "#seo" },
+  { label: "nav.portfolio", href: "#portfolio" },
 ];
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const { t } = useTranslation();
 
   // Dynamic header effects based on scroll
   const headerBg = useTransform(
@@ -29,7 +32,7 @@ const Header = () => {
   return (
     <motion.header
       style={{ fontSize: '1.25rem' }}
-      className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-5xl mx-auto transition-transform duration-300"
+      className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-7xl mx-auto transition-transform duration-300"
       role="banner"
     >
       <motion.nav
@@ -38,44 +41,48 @@ const Header = () => {
           backdropFilter: headerBlur,
           border: headerBorder,
         }}
-        className="flex items-center justify-between px-8 py-2 mb-5 sm:py-3 min-[880px]:py-4 rounded-full shadow-[0_1.25rem_3.125rem_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)]"
+        className="flex items-center justify-between px-6 lg:px-10 py-2 mb-5 sm:py-3 lg:py-4 rounded-full shadow-[0_1.25rem_3.125rem_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.05)]"
         role="navigation"
         aria-label="Main navigation"
       >
         {/* Logo - Flex Basis to balance with Action Area */}
-        <div className="flex-1 lg:flex-none lg:w-[200px]">
+        <div className="flex-1 lg:flex-none lg:w-[200px] xl:w-[240px]">
           <a href="/" className="flex items-center hover:opacity-80 transition-opacity" aria-label="Future Builds Home">
-            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className=" h-6 max-[400px]:h-5 sm:h-7 md:h-8 w-auto " />
+            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className="h-6 max-[400px]:h-5 sm:h-7 md:h-8 lg:h-9 w-auto" />
           </a>
         </div>
 
         {/* Desktop Navigation - Centered in the middle */}
-        <ul className="hidden min-[880px]:flex items-center justify-center gap-8 flex-1">
+        <ul className="hidden lg:flex items-center justify-center gap-6 xl:gap-8 flex-1 px-4">
           {navLinks.map((link) => (
             <li key={link.label}>
               <a
                 href={link.href}
                 className="text-muted-foreground hover:text-primary transition-all text-base lg:text-lg font-bold tracking-wide whitespace-nowrap"
               >
-                {link.label}
+                {t(link.label)}
               </a>
             </li>
           ))}
         </ul>
 
         {/* Action Area - Balanced Flex Basis */}
-        <div className="flex-1 lg:flex-none lg:w-[200px] flex items-center justify-end gap-4">
+        <div className="flex-1 lg:flex-none lg:w-auto xl:min-w-[360px] flex items-center justify-end gap-3 sm:gap-6">
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
+          </div>
+
           <Button
-            className="hidden min-[880px]:flex rounded-full px-6 py-5 lg:py-6 font-bold text-[1.1rem] shadow-lg shadow-primary/20"
+            className="hidden lg:flex rounded-full px-6 py-5 lg:py-6 font-bold text-[1.1rem] shadow-lg shadow-primary/20"
             size="sm"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Start Your Project
+            {t('nav.cta')}
           </Button>
 
           {/* Mobile Menu Button */}
           <button
-            className="min-[880px]:hidden p-2 text-foreground hover:bg-white/5 rounded-full transition-colors"
+            className="lg:hidden p-2 text-foreground hover:bg-white/5 rounded-full transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileMenuOpen}
@@ -102,10 +109,21 @@ const Header = () => {
                   className="text-foreground/80 hover:text-primary transition-colors text-base font-semibold block py-3 border-b border-white/5 last:border-0"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.label}
+                  {t(link.label)}
                 </a>
               </li>
             ))}
+            <li className="pt-4 mt-2 border-t border-white/10">
+              <Button 
+                className="w-full rounded-full py-6 font-bold text-lg shadow-xl shadow-primary/20"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                {t('nav.cta')}
+              </Button>
+            </li>
           </ul>
         </motion.div>
       )}

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Zap, Award, ArrowRight } from "lucide-react";
 import heroImage from "../assets/weboldalak-Picsart-BackgroundRemover_v2.png";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useTranslation } from "react-i18next";
 
 const FloatingShapes = () => {
   return (
@@ -47,12 +47,9 @@ const InfinityGrid = () => {
   );
 };
 
-const LightBeams = () => {
-  return null;
-};
-
-
 const Hero = ({ id }: { id?: string }) => {
+  const { t } = useTranslation();
+
   return (
     <section
       id={id}
@@ -61,7 +58,6 @@ const Hero = ({ id }: { id?: string }) => {
     >
       <InfinityGrid />
       <Starfield />
-      <LightBeams />
       <FloatingShapes />
 
       <div className="relative z-20 w-full max-w-[95%] lg:max-w-none ">
@@ -71,21 +67,21 @@ const Hero = ({ id }: { id?: string }) => {
             {/* Headline - ATTENTION */}
             <h1 className="text-4xl min-[450px]:text-4xl sm:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-7xl lg:pt-0 font-bold tracking-tight mb-10 leading-[1.2] lg:leading-[1.15] xl:leading-[1.3] text-foreground">
               <span className="text-primary inline-block">
-                Conversion-Focused.
+                {t('hero.title_part1')}
               </span>
               <br />
               <span className="inline-block">
-                Google-Optimized.
+                {t('hero.title_part2')}
               </span>
               <br />
               <span className="text-secondary italic inline-block">
-                Guaranteed Growth.
+                {t('hero.title_part3')}
               </span>
             </h1>
 
             {/* Subheadline - INTEREST & DESIRE */}
             <p className="text-muted-foreground text-md min-[450px]:text-md md:text-xl lg:text-xl xl:text-[1.4rem] max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed lg:leading-[1.4] xl:leading-[1.6] font-medium text-pretty">
-              We build websites that rank on Google and turn visitors into paying customers — guaranteed within 90 days.
+              {t('hero.subtitle')}
             </p>
 
             {/* CTA Buttons - Primary + Secondary */}
@@ -97,7 +93,7 @@ const Hero = ({ id }: { id?: string }) => {
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <a href="#contact">
-                  <span className="relative z-10 transition-colors group-hover:text-white">Book Your Call</span>
+                  <span className="relative z-10 transition-colors group-hover:text-white">{t('hero.cta_primary')}</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 transition-transform duration-500 group-hover:scale-110" />
                   {/* Shimmer Effect */}
                   <div className="absolute inset-0 w-1/2 h-full bg-white/20 -skew-x-[45deg] -translate-x-[200%] group-hover:animate-[shimmer_1.5s_infinite]" />
@@ -112,7 +108,7 @@ const Hero = ({ id }: { id?: string }) => {
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <a href="#portfolio">
-                  See Our Work
+                  {t('hero.cta_secondary')}
                   <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
@@ -122,15 +118,15 @@ const Hero = ({ id }: { id?: string }) => {
             <div className="flex flex-wrap justify-center lg:justify-start gap-x-6 gap-y-3 text-sm lg:text-base xl:text-xl  font-medium text-muted-foreground">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-secondary" />
-                <span>High-Converting Designs</span>
+                <span>{t('hero.trust_1')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Award className="w-4 h-4 text-secondary" />
-                <span>4+ Years Expertise</span>
+                <span>{t('hero.trust_2')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-secondary" />
-                <span>Fast Delivery</span>
+                <span>{t('hero.trust_3')}</span>
               </div>
             </div>
           </div>
@@ -141,7 +137,7 @@ const Hero = ({ id }: { id?: string }) => {
               <div className="absolute -inset-8 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
               <img
                 src={heroImage}
-                alt="Modern Digital Devices showing web interfaces"
+                alt={t('hero.alt_hero')}
                 className="relative z-10 w-[clamp(24rem,32vw,38rem)] h-auto object-top drop-shadow-2xl transform transition-transform duration-700 group-hover:scale-105"
               />
             </div>
