@@ -10,4 +10,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://futurebuilds.dev/sitemap.xml
+Sitemap: https://futurebuilds.ro/sitemap.xml

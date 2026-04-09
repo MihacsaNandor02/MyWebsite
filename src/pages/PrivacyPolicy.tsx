@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
       <main className="max-w-4xl mx-auto py-24 px-6">
         <h1 className="text-4xl font-bold mb-8">{t('policies.privacy.title')}</h1>
         <p className="text-muted-foreground mb-6">{t('policies.privacy.updated')}</p>
-        
+
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4 text-primary">{t('policies.privacy.s1_t')}</h2>
           <p className="mb-4">{t('policies.privacy.s1_d')}</p>
@@ -30,7 +30,7 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mb-4 text-primary">{t('policies.privacy.s4_t')}</h2>
           <p className="mb-4">
             {t('policies.privacy.s4_d')}
-            <a href="mailto:futurebuilds@futurebuilds.dev" className="text-primary hover:underline">futurebuilds@futurebuilds.dev</a>.
+            <a href="mailto:contact@futurebuilds.ro" className="text-primary hover:underline">contact@futurebuilds.ro</a>.
           </p>
         </section>
       </main>

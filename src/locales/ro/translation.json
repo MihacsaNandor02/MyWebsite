@@ -278,7 +278,7 @@
     "direct_title": "Hai să vorbim direct",
     "direct_desc": "Preferi să vorbim mai repede? Scrie-ne pe WhatsApp și îți răspundem în câteva ore.",
     "direct_whatsapp": "Discută pe WhatsApp",
-    "direct_hours": "Luni – Vineri, 8:00 – 20:00",
+    "direct_hours": "Luni – Duminică, 08:00 – 20:00",
     "direct_timezone": "(ora României)",
     "err_name": "Numele este obligatoriu",
     "err_email": "Adresă de email invalidă",
@@ -287,7 +287,7 @@
     "packages": {
       "essential": {
         "name": "Website Essential",
-        "price": "De la 2000 RON",
+        "price": "De la 2497 RON",
         "f1": "Mockup gratuit inclus",
         "f2": "Design custom premium",
         "f3": "Optimizare pentru conversii",
@@ -297,7 +297,7 @@
       },
       "recommended": {
         "name": "Website Recomandat",
-        "price": "De la 3500 RON",
+        "price": "De la 4997 RON",
         "f1": "Tot din Essential",
         "f2": "Gata în 10 zile",
         "f3": "Tracking trafic",

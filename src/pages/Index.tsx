@@ -18,28 +18,28 @@ import { Helmet } from "react-helmet-async";
 const Index = () => {
   const { t, i18n } = useTranslation();
   const currentLang = i18n.language || 'ro';
-  const baseUrl = "https://futurebuilds.dev";
+  const baseUrl = "https://futurebuilds.ro";
   const localizedUrl = currentLang === 'en' ? `${baseUrl}/en/` : `${baseUrl}/`;
 
   const organizationSchema = [
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "@id": "https://futurebuilds.dev/#organization",
+      "@id": "https://futurebuilds.ro/#organization",
       "name": "Future Builds",
       "url": localizedUrl,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://futurebuilds.dev/portfolio/Future Builds - Written-Transparent-Cropped.png"
+        "url": "https://futurebuilds.ro/portfolio/Future Builds - Written-Transparent-Cropped.png"
       },
       "description": t("seo.org_desc")
     },
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "@id": "https://futurebuilds.dev/#localbusiness",
+      "@id": "https://futurebuilds.ro/#localbusiness",
       "name": "Future Builds",
-      "image": "https://futurebuilds.dev/portfolio/Future Build - Logo and BG with write - Cropped.png",
+      "image": "https://futurebuilds.ro/portfolio/Future Builds - Written-Transparent-Cropped.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Bulevardul 1 Decembrie 1918 213",
@@ -60,7 +60,7 @@ const Index = () => {
       "@type": "Service",
       "name": t("seo.service_web_title"),
       "serviceType": "Web Design",
-      "provider": { "@id": "https://futurebuilds.dev/#organization" },
+      "provider": { "@id": "https://futurebuilds.ro/#organization" },
       "description": t("seo.service_web_desc")
     },
     {
@@ -68,7 +68,7 @@ const Index = () => {
       "@type": "Service",
       "name": t("seo.service_seo_title"),
       "serviceType": "Search Engine Optimization",
-      "provider": { "@id": "https://futurebuilds.dev/#organization" },
+      "provider": { "@id": "https://futurebuilds.ro/#organization" },
       "description": t("seo.service_seo_desc")
     },
     {
@@ -194,7 +194,7 @@ const Index = () => {
                 Bulevardul 1 Decembrie 1918 213<br />
                 Targu Mures, {t("seo.addr_country_full")} 540000<br />
                 {t("seo.addr_phone")}: +40768919621<br />
-                {t("seo.addr_email")}: hello@futurebuilds.dev
+                {t("seo.addr_email")}: contact@futurebuilds.ro
               </address>
             </div>
           </div>
