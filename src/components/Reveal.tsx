@@ -1,45 +1,60 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-import { useIsMobile } from "@/hooks/use-mobile";
 
-interface Props {
-    children: JSX.Element;
-    width?: "fit-content" | "100%";
-    delay?: number;
-    fullHeight?: boolean;
-    className?: string;
-    instant?: boolean;
+interface RevealProps {
+  children: React.ReactNode;
+  width?: "fit-content" | "100%";
+  delay?: number;
+  duration?: number;
+  instant?: boolean;
+  fullHeight?: boolean;
+  overflowVisible?: boolean;
 }
 
-export const Reveal = ({ children, width = "fit-content", delay = 0.25, fullHeight = false, className = "", instant = false }: Props) => {
-    const isMobile = useIsMobile();
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: isMobile ? "-20px" : "-50px" });
+export const Reveal = ({
+  children,
+  width = "fit-content",
+  delay = 0.25,
+  duration = 0.5,
+  instant = false,
+  fullHeight = false,
+  overflowVisible = false,
+}: RevealProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const mainControls = useAnimation();
 
-    const mainControls = useAnimation();
+  useEffect(() => {
+    if (isInView || instant) {
+      mainControls.start("visible");
+    }
+  }, [isInView, mainControls, instant]);
 
-    useEffect(() => {
-        if (isInView) {
-            mainControls.start("visible");
-        }
-    }, [isInView, mainControls]);
-
-    return (
-        <div ref={ref} className={`${className} ${fullHeight ? "h-full" : ""}`} style={{ position: "relative", width }}>
-            <motion.div
-                variants={{
-                    hidden: { opacity: 0, y: isMobile ? 30 : 75 },
-                    visible: { opacity: 1, y: 0 },
-                }}
-                initial={instant ? "visible" : "hidden"}
-                animate={instant ? "visible" : mainControls}
-                transition={{ duration: 0.5, delay: instant ? 0 : delay }}
-                className={fullHeight ? "h-full" : ""}
-                style={{ willChange: "transform, opacity" }}
-            >
-                {children}
-            </motion.div>
-        </div>
-    );
+  return (
+    <div
+      ref={ref}
+      style={{
+        position: "relative",
+        width,
+        overflow: overflowVisible ? "visible" : "hidden",
+        height: fullHeight ? "100%" : "auto",
+      }}
+      className={fullHeight ? "flex flex-col" : ""}
+    >
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 75 },
+          visible: { opacity: 1, y: 0 },
+        }}
+        initial="hidden"
+        animate={mainControls}
+        transition={{ duration, delay }}
+        style={fullHeight ? { height: "100%", display: "flex", flexDirection: "column", flex: 1 } : {}}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
 };
-

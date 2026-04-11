@@ -1,7 +1,10 @@
+"use client";
+
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
 interface PricingProps {
   onSelectPackage: (packageName: string) => void;
@@ -9,53 +12,51 @@ interface PricingProps {
 }
 
 const Pricing = ({ onSelectPackage, id }: PricingProps) => {
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
 
   const websiteTiers = [
     {
-      name: t("pricing.essential.name"),
-      description: t("pricing.essential.desc"),
-      price: t("pricing.essential.price"),
-      option: t("pricing.essential.option"),
+      name: t(dictionary, "pricing.essential.name"),
+      description: t(dictionary, "pricing.essential.desc"),
+      price: t(dictionary, "pricing.essential.price"),
+      option: t(dictionary, "pricing.essential.option"),
       featured: false,
       features: [
-        { title: t("pricing.essential.f1_t"), subtext: t("pricing.essential.f1_s") },
-        { title: t("pricing.essential.f2_t"), subtext: t("pricing.essential.f2_s") },
-        { title: t("pricing.essential.f3_t"), subtext: t("pricing.essential.f3_s") },
-        { title: t("pricing.essential.f4_t"), subtext: t("pricing.essential.f4_s") },
-        { title: t("pricing.essential.f5_t"), subtext: t("pricing.essential.f5_s") },
-        { title: t("pricing.essential.f6_t"), subtext: t("pricing.essential.f6_s") }
+        { title: t(dictionary, "pricing.essential.f1_t"), subtext: t(dictionary, "pricing.essential.f1_s") },
+        { title: t(dictionary, "pricing.essential.f2_t"), subtext: t(dictionary, "pricing.essential.f2_s") },
+        { title: t(dictionary, "pricing.essential.f3_t"), subtext: t(dictionary, "pricing.essential.f3_s") },
+        { title: t(dictionary, "pricing.essential.f4_t"), subtext: t(dictionary, "pricing.essential.f4_s") },
+        { title: t(dictionary, "pricing.essential.f5_t"), subtext: t(dictionary, "pricing.essential.f5_s") },
       ],
-      cta: t("pricing.essential.cta"),
+      cta: t(dictionary, "pricing.essential.cta"),
     },
     {
-      name: t("pricing.recommended.name"),
-      description: t("pricing.recommended.desc"),
-      price: t("pricing.recommended.price"),
+      name: t(dictionary, "pricing.recommended.name"),
+      description: t(dictionary, "pricing.recommended.desc"),
+      price: t(dictionary, "pricing.recommended.price"),
       featured: true,
       features: [
-        { title: t("pricing.recommended.f1_t") },
-        { title: t("pricing.recommended.f2_t"), subtext: t("pricing.recommended.f2_s") },
-        { title: t("pricing.recommended.f3_t"), subtext: t("pricing.recommended.f3_s") },
-        { title: t("pricing.recommended.f4_t"), subtext: t("pricing.recommended.f4_s") },
-        { title: t("pricing.recommended.f5_t"), subtext: t("pricing.recommended.f5_s") },
-        { title: t("pricing.recommended.f6_t"), subtext: t("pricing.recommended.f6_s") }
+        { title: t(dictionary, "pricing.recommended.f1_t") },
+        { title: t(dictionary, "pricing.recommended.f2_t"), subtext: t(dictionary, "pricing.recommended.f2_s") },
+        { title: t(dictionary, "pricing.recommended.f3_t"), subtext: t(dictionary, "pricing.recommended.f3_s") },
+        { title: t(dictionary, "pricing.recommended.f4_t"), subtext: t(dictionary, "pricing.recommended.f4_s") },
+        { title: t(dictionary, "pricing.recommended.f5_t"), subtext: t(dictionary, "pricing.recommended.f5_s") },
       ],
-      cta: t("pricing.recommended.cta"),
+      cta: t(dictionary, "pricing.recommended.cta"),
     },
     {
-      name: t("pricing.custom.name"),
-      description: t("pricing.custom.desc"),
-      price: t("pricing.custom.price"),
+      name: t(dictionary, "pricing.custom.name"),
+      description: t(dictionary, "pricing.custom.desc"),
+      price: t(dictionary, "pricing.custom.price"),
       featured: false,
       features: [
-        { title: t("pricing.custom.f1_t") },
-        { title: t("pricing.custom.f2_t"), subtext: t("pricing.custom.f2_s") },
-        { title: t("pricing.custom.f3_t"), subtext: t("pricing.custom.f3_s") },
-        { title: t("pricing.custom.f4_t"), subtext: t("pricing.custom.f4_s") },
-        { title: t("pricing.custom.f5_t"), subtext: t("pricing.custom.f5_s") },
+        { title: t(dictionary, "pricing.custom.f1_t") },
+        { title: t(dictionary, "pricing.custom.f2_t"), subtext: t(dictionary, "pricing.custom.f2_s") },
+        { title: t(dictionary, "pricing.custom.f3_t"), subtext: t(dictionary, "pricing.custom.f3_s") },
+        { title: t(dictionary, "pricing.custom.f4_t"), subtext: t(dictionary, "pricing.custom.f4_s") },
+        { title: t(dictionary, "pricing.custom.f5_t"), subtext: t(dictionary, "pricing.custom.f5_s") },
       ],
-      cta: t("pricing.custom.cta"),
+      cta: t(dictionary, "pricing.custom.cta"),
     }
   ];
 
@@ -66,22 +67,22 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
         <div className="text-center mb-16">
           <Reveal width="100%">
             <h2 className="text-4xl sm:text-4xl md:text-5xl font-extrabold text-foreground mb-6">
-              {t("pricing.title_main")} <span className="text-primary italic">{t("pricing.title_highlight")}</span>
+              {t(dictionary, "pricing.title_main")} <span className="text-primary italic">{t(dictionary, "pricing.title_highlight")}</span>
             </h2>
           </Reveal>
           <Reveal width="100%" delay={0.4}>
             <p className="text-muted-foreground text-lg sm:text-xl xl:text-2xl max-w-2xl mx-auto font-medium w-[80%]">
-              {t("pricing.subtitle")}
+              {t(dictionary, "pricing.subtitle")}
               <br />
-              <span className="text-xs xl:text-lg mt-2 block opacity-70">{t("pricing.guarantee_note")}</span>
+              <span className="text-xs xl:text-lg mt-2 block opacity-70">{t(dictionary, "pricing.guarantee_note")}</span>
             </p>
           </Reveal>
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 justify-items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {websiteTiers.map((tier, index) => (
-            <Reveal key={index} delay={0.2 + index * 0.1} width="100%" fullHeight>
+            <Reveal key={index} delay={0.2 + index * 0.1} width="100%" fullHeight overflowVisible>
               <div className="w-full max-w-none sm:max-w-[75%] lg:max-w-none mx-auto h-full">
                 <div
                   className={`relative rounded-3xl p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-2 cursor-pointer
@@ -95,7 +96,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
                   {tier.featured && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="bg-primary text-primary-foreground text-xs xl:text-[1.1rem] font-semibold px-4 py-1.5 rounded-full">
-                        {t("pricing.best_value")}
+                        {t(dictionary, "pricing.best_value")}
                       </span>
                     </div>
                   )}
@@ -118,8 +119,8 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
                     <span className="text-3xl md:text-4xl lg:text-4xl font-extrabold text-foreground">
                       {tier.price}
                     </span>
-                    {tier.name !== t("pricing.custom.name") && (
-                      <span className="text-muted-foreground text-sm font-medium">{t("pricing.per_project")}</span>
+                    {tier.name !== t(dictionary, "pricing.custom.name") && (
+                      <span className="text-muted-foreground text-sm font-medium">{t(dictionary, "pricing.per_project")}</span>
                     )}
                   </div>
 

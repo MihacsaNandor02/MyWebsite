@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Zap, Target } from "lucide-react";
@@ -5,10 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import PortfolioModal from "./PortfolioModal";
 import FightClubModal from "./FightClubModal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
+import Image from "next/image";
 
 const Portfolio = () => {
-    const { t } = useTranslation();
+    const dictionary = useDictionary();
     const [isFightClubOpen, setIsFightClubOpen] = useState(false);
     const [isGenericOpen, setIsGenericOpen] = useState(false);
 
@@ -27,7 +31,7 @@ const Portfolio = () => {
                             viewport={{ once: true }}
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
                         >
-                            <Zap className="w-3 h-3" /> {t('portfolio.tag')}
+                            <Zap className="w-3 h-3" /> {t(dictionary, 'portfolio.tag')}
                         </motion.div>
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
@@ -36,8 +40,8 @@ const Portfolio = () => {
                             transition={{ delay: 0.1 }}
                             className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] uppercase italic"
                         >
-                            {t('portfolio.title_part1')} <br />
-                            <span className="text-primary ">{t('portfolio.title_part2')}</span>
+                            {t(dictionary, 'portfolio.title_part1')} <br />
+                            <span className="text-primary ">{t(dictionary, 'portfolio.title_part2')}</span>
                         </motion.h2>
                     </div>
                 </div>
@@ -56,7 +60,7 @@ const Portfolio = () => {
                                 <div className="lg:col-span-7 relative h-[400px] lg:h-[700px] overflow-hidden bg-[#0a0a0a]">
                                     <img
                                         src="/portfolio/bdf-hero-clean.png"
-                                        alt="Black Diamond Fight Redesign"
+                                        alt="Black Diamond Fight Club — Studiu de caz redesign website"
                                         className="w-full h-full object-cover object-right transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/20 via-transparent to-transparent hidden lg:block" />
@@ -65,26 +69,26 @@ const Portfolio = () => {
                                     <div className="absolute top-8 left-8">
                                         <div className="flex items-center gap-3">
                                             <div className="w-12 h-px bg-yellow-400" />
-                                            <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">{t('portfolio.case_study_redesign')}</span>
+                                            <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">{t(dictionary, 'portfolio.case_study_redesign')}</span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="lg:col-span-5 p-8 md:p-12 lg:p-16 flex flex-col justify-center space-y-10">
                                     <div className="space-y-4">
-                                        <Badge className="bg-yellow-400 text-black border-none font-black italic uppercase tracking-tighter px-4 py-1">{t('portfolio.featured_badge')}</Badge>
+                                        <Badge className="bg-yellow-400 text-black border-none font-black italic uppercase tracking-tighter px-4 py-1">{t(dictionary, 'portfolio.featured_badge')}</Badge>
                                         <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-[0.9]">
                                             BLACK <span className="text-yellow-400">DIAMOND</span> FIGHT
                                         </h3>
                                         <p className="text-xl text-white/50 leading-tight max-w-md">
-                                            {t('portfolio.fight_club_desc')}
+                                            {t(dictionary, 'portfolio.fight_club_desc')}
                                         </p>
                                     </div>
 
                                     <div className="grid grid-cols-2 gap-6">
                                         {[
-                                            { label: t('portfolio.stat_clarity'), val: t('portfolio.stat_strategic'), icon: Target },
-                                            { label: t('portfolio.stat_design'), val: t('portfolio.stat_premium'), icon: Zap },
+                                            { label: t(dictionary, 'portfolio.stat_clarity'), val: t(dictionary, 'portfolio.stat_strategic'), icon: Target },
+                                            { label: t(dictionary, 'portfolio.stat_design'), val: t(dictionary, 'portfolio.stat_premium'), icon: Zap },
                                         ].map((stat, i) => (
                                             <div key={i} className="space-y-1">
                                                 <div className="flex items-center gap-2 text-yellow-400/60 mb-2">
@@ -101,7 +105,7 @@ const Portfolio = () => {
                                             size="lg"
                                             className="h-16 mx-auto sm:mx-0 px-6 md:px-10 text-base md:text-lg font-black italic uppercase tracking-widest rounded-2xl bg-white text-black hover:bg-yellow-400 transition-all flex items-center gap-4 group/btn"
                                         >
-                                            {t('portfolio.cta_transformation')}
+                                            {t(dictionary, 'portfolio.cta_transformation')}
                                             <ArrowUpRight className="w-6 h-6 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                                         </Button>
                                     </div>
@@ -123,22 +127,22 @@ const Portfolio = () => {
                             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-card/10 backdrop-blur-xl aspect-video">
                                 <img
                                     src="/portfolio/content.png"
-                                    alt="Torockó Beauty System"
+                                    alt="Torockó Beauty System — Web design e-commerce"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                                 />
                                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
                                 <div className="absolute bottom-6 left-6 right-6">
-                                    <h4 className="text-2xl font-black tracking-tight uppercase italic mb-2">{t('portfolio.project_torocko_title')}</h4>
-                                    <p className="text-white/60 text-sm line-clamp-1">{t('portfolio.project_torocko_desc')}</p>
+                                    <h4 className="text-2xl font-black tracking-tight uppercase italic mb-2">{t(dictionary, 'portfolio.project_torocko_title')}</h4>
+                                    <p className="text-white/60 text-sm line-clamp-1">{t(dictionary, 'portfolio.project_torocko_desc')}</p>
                                 </div>
                             </div>
                         </motion.div>
 
                         <div className="flex flex-col justify-center p-8 rounded-[2rem] border border-dashed border-white/10 hover:border-primary/50 transition-colors group cursor-pointer">
-                            <h4 className="text-xl font-bold mb-2 text-white/40 group-hover:text-white transition-colors uppercase italic tracking-tighter">{t('portfolio.your_project_title')}</h4>
-                            <p className="text-muted-foreground mb-6">{t('portfolio.your_project_desc')}</p>
+                            <h4 className="text-xl font-bold mb-2 text-white/40 group-hover:text-white transition-colors uppercase italic tracking-tighter">{t(dictionary, 'portfolio.your_project_title')}</h4>
+                            <p className="text-muted-foreground mb-6">{t(dictionary, 'portfolio.your_project_desc')}</p>
                             <Button variant="link" className="text-primary p-0 h-auto font-bold uppercase tracking-widest text-xs flex items-center gap-2 group-hover:gap-4 transition-all" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-                                {t('portfolio.your_project_cta')} <ArrowUpRight className="w-4 h-4" />
+                                {t(dictionary, 'portfolio.your_project_cta')} <ArrowUpRight className="w-4 h-4" />
                             </Button>
                         </div>
                     </div>
@@ -151,10 +155,10 @@ const Portfolio = () => {
                 {/* Preload critical modal images ONLY when section comes into view */}
                 {isInView && (
                     <div className="hidden" aria-hidden="true">
-                        <img src="/portfolio/bdf-after.png" alt="preload" />
-                        <img src="/portfolio/bdf-before.png" alt="preload" />
-                        <img src="/portfolio/hero.png" alt="preload" />
-                        <img src="/portfolio/mobile.png" alt="preload" />
+                        <img src="/portfolio/bdf-after.png" alt="" />
+                        <img src="/portfolio/bdf-before.png" alt="" />
+                        <img src="/portfolio/hero.png" alt="" />
+                        <img src="/portfolio/mobile.png" alt="" />
                     </div>
                 )}
             </div>

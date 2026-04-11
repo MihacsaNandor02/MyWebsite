@@ -1,11 +1,14 @@
+"use client";
+
 import { Search, MousePointerClick, PhoneCall } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
 const LeadFocus = () => {
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
 
-  const leadFocusItems = t("lead_focus.items", { returnObjects: true }) as string[];
+  const leadFocusItems = t(dictionary, "lead_focus.items") as string[];
   const icons = [Search, MousePointerClick, PhoneCall];
 
   const items = Array.isArray(leadFocusItems) ? leadFocusItems.map((text, index) => ({
@@ -21,7 +24,7 @@ const LeadFocus = () => {
       <div className="max-w-6xl mx-auto">
         <Reveal width="100%">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-center text-foreground mb-16 tracking-tight">
-            {t("lead_focus.title")}
+            {t(dictionary, "lead_focus.title")}
           </h2>
         </Reveal>
 
@@ -33,10 +36,10 @@ const LeadFocus = () => {
             {items.map((item, index) => {
               const Icon = item.icon;
               return (
-                <Reveal key={index} delay={0.2 + index * 0.15} width="100%">
+                <Reveal key={index} delay={0.2 + index * 0.15} width="100%" overflowVisible>
                   <div className="flex flex-col items-center text-center group">
                     <div className="w-20 h-20 rounded-3xl bg-card border border-border/50 flex items-center justify-center mb-6 relative z-10 
-                                  shadow-[0_8px_30px_rgb(0,0,0,0.04)] group-hover:border-primary/50 group-hover:shadow-[0_8px_30px_rgba(124,58,237,0.15)] transition-all duration-300 group-hover:-translate-y-1">
+                                  shadow-[0_8px_30px_rgb(0,0,0,0.04)] group-hover:border-primary/50 group-hover:shadow-[0_8px_30px_rgba(var(--primary-rgb),0.15)] transition-all duration-300 group-hover:-translate-y-1">
                       <Icon className="w-10 h-10 text-primary" strokeWidth={1.5} />
                       
                       {/* Step number badge */}

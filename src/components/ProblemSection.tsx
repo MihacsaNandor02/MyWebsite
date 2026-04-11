@@ -1,6 +1,9 @@
+"use client";
+
 import { UserMinus, EyeOff, Receipt, LucideIcon } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
 interface Problem {
   icon: LucideIcon;
@@ -8,7 +11,7 @@ interface Problem {
 }
 
 const ProblemSection = () => {
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
 
   const problems: Problem[] = [
     {
@@ -31,18 +34,18 @@ const ProblemSection = () => {
         {/* Section Headline */}
         <Reveal width="100%" instant>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.5rem] xl:text-[2.75rem] font-extrabold text-center text-foreground mb-8 sm:mb-12 lg:mb-12 max-w-4xl mx-auto leading-tight xl:leading-[3.5rem] tracking-tight">
-            {t('problems.headline_main')}
-            <span className="text-primary italic">{t('problems.headline_highlight')}</span>
+            {t(dictionary, 'problems.headline_main')}
+            <span className="text-primary italic">{t(dictionary, 'problems.headline_highlight')}</span>
           </h2>
         </Reveal>
 
         {/* Problem Cards Grid */}
         <div className="flex justify-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[410px] sm:max-w-[65%] md:max-w-none xl:max-w-[85%] xl:gap-x-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[410px] sm:max-w-[65%] md:max-w-none xl:max-w-[85%] xl:gap-x-10 items-stretch">
             {problems.map((problem, index) => {
               const Icon = problem.icon;
               return (
-                <Reveal key={index} delay={0.2 + index * 0.1} fullHeight width="100%" instant>
+                <Reveal key={index} delay={0.2 + index * 0.1} fullHeight width="100%" instant overflowVisible>
                   <div
                     className="relative h-full group rounded-3xl p-8 flex flex-col items-center
                     bg-card/50 
@@ -64,7 +67,7 @@ const ProblemSection = () => {
 
                     {/* Problem Text */}
                     <p className="text-lg sm:text-xl xl:text-2xl text-[hsl(220,10%,70%)] font-medium leading-relaxed xl:leading-[2.4rem] text-center relative z-10">
-                      {t(problem.textKey)}
+                      {t(dictionary, problem.textKey)}
                     </p>
                   </div>
                 </Reveal>

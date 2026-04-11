@@ -1,34 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
   <url>
-    <loc>https://futurebuilds.ro/</loc>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://futurebuilds.ro/"/>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://futurebuilds.ro/ro/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://futurebuilds.ro/ro/" />
   </url>
   <url>
     <loc>https://futurebuilds.ro/en/</loc>
-    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://futurebuilds.ro/"/>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://futurebuilds.ro/ro/" />
+  </url>
+
+  <!-- Creare Site Web -->
+  <url>
+    <loc>https://futurebuilds.ro/ro/creare-site-web/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/creare-site-web/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/creare-site-web/" />
   </url>
   <url>
-    <loc>https://futurebuilds.ro/privacy-policy</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://futurebuilds.ro/en/creare-site-web/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/creare-site-web/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/creare-site-web/" />
+  </url>
+
+  <!-- Optimizare SEO -->
+  <url>
+    <loc>https://futurebuilds.ro/ro/optimizare-seo/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/optimizare-seo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/optimizare-seo/" />
   </url>
   <url>
-    <loc>https://futurebuilds.ro/terms-of-service</loc>
-    <lastmod>2026-04-09</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://futurebuilds.ro/en/optimizare-seo/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/optimizare-seo/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/optimizare-seo/" />
   </url>
+
+  <!-- Redesign Website -->
+  <url>
+    <loc>https://futurebuilds.ro/ro/redesign-website/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/redesign-website/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/redesign-website/" />
+  </url>
+  <url>
+    <loc>https://futurebuilds.ro/en/redesign-website/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/redesign-website/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/redesign-website/" />
+  </url>
+
+  <!-- Mentenanta Website -->
+  <url>
+    <loc>https://futurebuilds.ro/ro/mentenanta-website/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/mentenanta-website/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/mentenanta-website/" />
+  </url>
+  <url>
+    <loc>https://futurebuilds.ro/en/mentenanta-website/</loc>
+    <lastmod>2026-04-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/mentenanta-website/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/mentenanta-website/" />
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://futurebuilds.ro/ro/privacy-policy/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/privacy-policy/" />
+  </url>
+  <url>
+    <loc>https://futurebuilds.ro/en/privacy-policy/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/privacy-policy/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/privacy-policy/" />
+  </url>
+
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://futurebuilds.ro/ro/terms-of-service/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/terms-of-service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/terms-of-service/" />
+  </url>
+  <url>
+    <loc>https://futurebuilds.ro/en/terms-of-service/</loc>
+    <lastmod>2026-03-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="ro" href="https://futurebuilds.ro/ro/terms-of-service/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://futurebuilds.ro/en/terms-of-service/" />
+  </url>
+
 </urlset>

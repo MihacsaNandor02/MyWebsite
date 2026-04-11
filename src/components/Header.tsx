@@ -1,9 +1,14 @@
+"use client";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
+import Link from "next/link";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 const navLinks = [
   { label: "nav.solutions", href: "#solutions" },
@@ -14,7 +19,36 @@ const navLinks = [
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
+  const params = useParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const locale = params?.locale as string || "ro";
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If we're on the home page, just scroll
+    if (pathname === `/${locale}/` || pathname === `/${locale}`) {
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const element = document.getElementById(href.substring(1));
+        element?.scrollIntoView({ behavior: "smooth" });
+        setMobileMenuOpen(false);
+      }
+    } else {
+      // If we're on a service page, use standard navigation back to home + hash
+      // The browser will handle the scroll to hash on load
+      setMobileMenuOpen(false);
+    }
+  };
+
+  const handleCTAClick = () => {
+    if (pathname === `/${locale}/` || pathname === `/${locale}`) {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push(`/${locale}/#contact`);
+    }
+    setMobileMenuOpen(false);
+  };
 
   // Dynamic header effects based on scroll
   const headerBg = useTransform(
@@ -47,21 +81,22 @@ const Header = () => {
       >
         {/* Logo - Flex Basis to balance with Action Area */}
         <div className="flex-1 lg:flex-none lg:w-[200px] xl:w-[240px]">
-          <a href="/" className="flex items-center hover:opacity-80 transition-opacity" aria-label="Future Builds Home">
-            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds" className="h-6 max-[400px]:h-5 sm:h-7 md:h-8 lg:h-9 w-auto" />
-          </a>
+          <Link href={`/${locale}/`} className="flex items-center hover:opacity-80 transition-opacity" aria-label="Future Builds Home">
+            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds — Agenție Web Design Târgu Mureș" className="h-6 max-[400px]:h-5 sm:h-7 md:h-8 lg:h-9 w-auto" />
+          </Link>
         </div>
 
         {/* Desktop Navigation - Centered in the middle */}
         <ul className="hidden lg:flex items-center justify-center gap-6 xl:gap-8 flex-1 px-4">
           {navLinks.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
+              <Link
+                href={`/${locale}/${link.href}`}
                 className="text-muted-foreground hover:text-primary transition-all text-base lg:text-lg font-bold tracking-wide whitespace-nowrap"
+                onClick={(e: any) => handleNavClick(e, link.href)}
               >
-                {t(link.label)}
-              </a>
+                {t(dictionary, link.label)}
+              </Link>
             </li>
           ))}
         </ul>
@@ -75,9 +110,9 @@ const Header = () => {
           <Button
             className="hidden lg:flex rounded-full px-6 py-5 lg:py-6 font-bold text-[1.1rem] shadow-lg shadow-primary/20"
             size="sm"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={handleCTAClick}
           >
-            {t('nav.cta')}
+            {t(dictionary, 'nav.cta')}
           </Button>
 
           {/* Mobile Menu Button */}
@@ -99,29 +134,26 @@ const Header = () => {
           id="mobile-menu"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden mt-2 bg-background/98 backdrop-blur-2xl rounded-2xl border border-white/10 p-6 shadow-2xl"
+          className="lg:hidden mt-2 bg-background/98 backdrop-blur-2xl rounded-2xl border border-white/10 p-6 shadow-2xl"
         >
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  href={`/${locale}/${link.href}`}
                   className="text-foreground/80 hover:text-primary transition-colors text-base font-semibold block py-3 border-b border-white/5 last:border-0"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e: any) => handleNavClick(e, link.href)}
                 >
-                  {t(link.label)}
-                </a>
+                  {t(dictionary, link.label)}
+                </Link>
               </li>
             ))}
             <li className="pt-4 mt-2 border-t border-white/10">
               <Button 
                 className="w-full rounded-full py-6 font-bold text-lg shadow-xl shadow-primary/20"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={handleCTAClick}
               >
-                {t('nav.cta')}
+                {t(dictionary, 'nav.cta')}
               </Button>
             </li>
           </ul>
@@ -132,4 +164,3 @@ const Header = () => {
 };
 
 export default Header;
-

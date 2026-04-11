@@ -1,25 +1,28 @@
+"use client";
+
 import { Reveal } from "./Reveal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
 const HowItWorks = () => {
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
 
   const steps = [
     {
-      title: t("how_it_works.step1_title"),
-      description: t("how_it_works.step1_desc"),
+      title: t(dictionary, "how_it_works.step1_title"),
+      description: t(dictionary, "how_it_works.step1_desc"),
     },
     {
-      title: t("how_it_works.step2_title"),
-      description: t("how_it_works.step2_desc"),
+      title: t(dictionary, "how_it_works.step2_title"),
+      description: t(dictionary, "how_it_works.step2_desc"),
     },
     {
-      title: t("how_it_works.step3_title"),
-      description: t("how_it_works.step3_desc"),
+      title: t(dictionary, "how_it_works.step3_title"),
+      description: t(dictionary, "how_it_works.step3_desc"),
     },
     {
-      title: t("how_it_works.step4_title"),
-      description: t("how_it_works.step4_desc"),
+      title: t(dictionary, "how_it_works.step4_title"),
+      description: t(dictionary, "how_it_works.step4_desc"),
     },
   ];
 
@@ -29,14 +32,14 @@ const HowItWorks = () => {
         {/* Section Headline */}
         <Reveal width="100%">
           <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-foreground mb-8 xl:mb-4 leading-tight tracking-tight">
-            {t("how_it_works.title")}
+            {t(dictionary, "how_it_works.title")}
           </h2>
         </Reveal>
 
         {/* Steps Container */}
         <div className="flex flex-col">
           {steps.map((step, index) => (
-            <Reveal key={index} delay={0.2 + index * 0.15} width="100%">
+            <Reveal key={index} delay={0.2 + index * 0.15} width="100%" overflowVisible>
               <div className={`flex items-start gap-8 py-12 ${index !== 0 ? 'border-t border-white/10' : ''}`}>
                 {/* Number Indicator */}
                 <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center relative overflow-hidden group">

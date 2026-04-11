@@ -1,13 +1,11 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
+# Robots.txt for futurebuilds.ro
 
 User-agent: *
 Allow: /
 
+# Block non-essential paths
+Disallow: /_next/static/
+Disallow: /api/
+
+# Sitemap
 Sitemap: https://futurebuilds.ro/sitemap.xml

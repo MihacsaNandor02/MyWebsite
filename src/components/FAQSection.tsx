@@ -1,6 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import { Reveal } from "./Reveal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
 interface FAQItem {
   id: string;
@@ -14,7 +17,7 @@ interface FAQGroup {
 }
 
 const FAQSection = () => {
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
   const [openId, setOpenId] = useState<string | null>("guarantee");
 
   const toggleItem = (id: string) => {
@@ -23,92 +26,92 @@ const FAQSection = () => {
 
   const faqData: FAQGroup[] = [
     {
-      label: t("faq.groups.getting_started"),
+      label: t(dictionary, "faq.groups.getting_started"),
       items: [
         {
           id: "how-long",
-          question: t("faq.items.how_long_q"),
-          answer: t("faq.items.how_long_a")
+          question: t(dictionary, "faq.items.how_long_q"),
+          answer: t(dictionary, "faq.items.how_long_a")
         },
         {
           id: "what-to-provide",
-          question: t("faq.items.what_to_provide_q"),
-          answer: t("faq.items.what_to_provide_a")
+          question: t(dictionary, "faq.items.what_to_provide_q"),
+          answer: t(dictionary, "faq.items.what_to_provide_a")
         },
         {
           id: "changes-after-launch",
-          question: t("faq.items.changes_after_launch_q"),
-          answer: t("faq.items.changes_after_launch_a")
+          question: t(dictionary, "faq.items.changes_after_launch_q"),
+          answer: t(dictionary, "faq.items.changes_after_launch_a")
         },
         {
           id: "react-vs-wordpress",
-          question: t("faq.items.react_vs_wordpress_q"),
-          answer: t("faq.items.react_vs_wordpress_a")
+          question: t(dictionary, "faq.items.react_vs_wordpress_q"),
+          answer: t(dictionary, "faq.items.react_vs_wordpress_a")
         },
         {
           id: "ownership",
-          question: t("faq.items.ownership_q"),
-          answer: t("faq.items.ownership_a")
+          question: t(dictionary, "faq.items.ownership_q"),
+          answer: t(dictionary, "faq.items.ownership_a")
         }
       ]
     },
     {
-      label: t("faq.groups.seo_rankings"),
+      label: t(dictionary, "faq.groups.seo_rankings"),
       items: [
         {
           id: "seo-results-time",
-          question: t("faq.items.seo_results_time_q"),
-          answer: t("faq.items.seo_results_time_a")
+          question: t(dictionary, "faq.items.seo_results_time_q"),
+          answer: t(dictionary, "faq.items.seo_results_time_a")
         },
         {
           id: "guarantee",
-          question: t("faq.items.guarantee_q"),
-          answer: t("faq.items.guarantee_a")
+          question: t(dictionary, "faq.items.guarantee_q"),
+          answer: t(dictionary, "faq.items.guarantee_a")
         },
         {
           id: "new-site-for-seo",
-          question: t("faq.items.new_site_for_seo_q"),
-          answer: t("faq.items.new_site_for_seo_a")
+          question: t(dictionary, "faq.items.new_site_for_seo_q"),
+          answer: t(dictionary, "faq.items.new_site_for_seo_a")
         },
         {
           id: "monthly-seo-necessity",
-          question: t("faq.items.monthly_seo_necessity_q"),
-          answer: t("faq.items.monthly_seo_necessity_a")
+          question: t(dictionary, "faq.items.monthly_seo_necessity_q"),
+          answer: t(dictionary, "faq.items.monthly_seo_necessity_a")
         }
       ]
     },
     {
-      label: t("faq.groups.not_sure"),
+      label: t(dictionary, "faq.groups.not_sure"),
       items: [
         {
           id: "website-vs-seo",
-          question: t("faq.items.website_vs_seo_q"),
-          answer: t("faq.items.website_vs_seo_a")
+          question: t(dictionary, "faq.items.website_vs_seo_q"),
+          answer: t(dictionary, "faq.items.website_vs_seo_a")
         },
         {
           id: "location-romania-hungary",
-          question: t("faq.items.location_romania_hungary_q"),
-          answer: t("faq.items.location_romania_hungary_a")
+          question: t(dictionary, "faq.items.location_romania_hungary_q"),
+          answer: t(dictionary, "faq.items.location_romania_hungary_a")
         },
         {
           id: "freelancer-vs-agency",
-          question: t("faq.items.freelancer_vs_agency_q"),
-          answer: t("faq.items.freelancer_vs_agency_a")
+          question: t(dictionary, "faq.items.freelancer_vs_agency_q"),
+          answer: t(dictionary, "faq.items.freelancer_vs_agency_a")
         }
       ]
     },
     {
-      label: t("faq.groups.pricing_payments"),
+      label: t(dictionary, "faq.groups.pricing_payments"),
       items: [
         {
           id: "payment-terms",
-          question: t("faq.items.payment_terms_q"),
-          answer: t("faq.items.payment_terms_a")
+          question: t(dictionary, "faq.items.payment_terms_q"),
+          answer: t(dictionary, "faq.items.payment_terms_a")
         },
         {
           id: "free-mockup-details",
-          question: t("faq.items.free_mockup_details_q"),
-          answer: t("faq.items.free_mockup_details_a")
+          question: t(dictionary, "faq.items.free_mockup_details_q"),
+          answer: t(dictionary, "faq.items.free_mockup_details_a")
         }
       ]
     }
@@ -126,12 +129,12 @@ const FAQSection = () => {
           </Reveal>
           <Reveal width="100%" delay={0.2}>
             <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-6">
-              {t("faq.title_main")} <span className="text-primary italic">{t("faq.title_highlight")}</span>
+              {t(dictionary, "faq.title_main")} <span className="text-primary italic">{t(dictionary, "faq.title_highlight")}</span>
             </h2>
           </Reveal>
           <Reveal width="100%" delay={0.4}>
             <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto font-medium">
-              {t("faq.subtitle")}
+              {t(dictionary, "faq.subtitle")}
             </p>
           </Reveal>
         </div>
@@ -139,12 +142,12 @@ const FAQSection = () => {
         {/* FAQ Groups */}
         <div className="grid grid-cols-1 gap-12 items-start max-w-4xl mx-auto">
           {faqData.map((group, groupIndex) => (
-            <Reveal key={groupIndex} width="100%" delay={0.1 * groupIndex}>
+            <Reveal key={groupIndex} width="100%" delay={0.1 * groupIndex} overflowVisible>
               <div className="flex flex-col gap-4 lg:mb-10">
                 <span className="text-xs lg:text-lg font-bold uppercase tracking-widest text-muted-foreground/90 px-2">
                   {group.label}
                 </span>
-                <div className="bg-[#111317] border border-[hsl(220,10%,18%)] shadow-[0_2rem_4rem_rgba(0,0,0,0.4),inset_0_1px_0_0_rgba(255,255,255,0.05)] rounded-3xl backdrop-blur-xl relative overflow-hidden">
+                <div className="bg-[#111317] border border-[hsl(220,10%,18%)] shadow-[0_2.5rem_5rem_-1.5rem_rgba(0,0,0,0.55),inset_0_1px_0_0_rgba(255,255,255,0.05)] rounded-3xl backdrop-blur-xl relative overflow-hidden">
                   {/* Inner glow/gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent pointer-events-none" />
 
@@ -188,7 +191,7 @@ const FAQSection = () => {
         {/* Bottom CTA */}
         <Reveal width="100%" delay={0.6}>
           <div className="mt-24 text-center">
-            <p className="text-muted-foreground text-lg mb-6 font-medium">{t("faq.still_questions")}</p>
+            <p className="text-muted-foreground text-lg mb-6 font-medium">{t(dictionary, "faq.still_questions")}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
               <a
                 href="#contact"
@@ -198,7 +201,7 @@ const FAQSection = () => {
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                {t("faq.cta_call")}
+                {t(dictionary, "faq.cta_call")}
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
 
@@ -210,7 +213,7 @@ const FAQSection = () => {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 text-[#25D366] font-semibold text-lg transition-all"
               >
-                {t("faq.cta_whatsapp")}
+                {t(dictionary, "faq.cta_whatsapp")}
                 <span className="group-hover:translate-x-1 transition-transform">→</span>
               </a>
             </div>

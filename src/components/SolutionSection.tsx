@@ -1,44 +1,51 @@
+"use client";
+
 import { Reveal } from "./Reveal";
 import { Button } from "@/components/ui/button";
-import designIcon from "../assets/wireframe-copped.png";
-import searchIcon from "../assets/solution-seo-v2.png";
-import websiteIcon from "../assets/solution-website-final-Picsart-BackgroundRemover-Photoroom.png";
-import { useTranslation } from "react-i18next";
+import Image from "next/image";
+import designIcon from "@/assets/wireframe-copped.png";
+import searchIcon from "@/assets/solution-seo-v2.png";
+import websiteIcon from "@/assets/solution-website-final-Picsart-BackgroundRemover-Photoroom.png";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
-const SolutionSection = () => {
-  const { t } = useTranslation();
+const SolutionSection = ({ locale }: { locale: string }) => {
+  const dictionary = useDictionary();
 
   const solutions = [
     {
-      title: t("solutions.design_title"),
-      description: t("solutions.design_desc"),
+      title: t(dictionary, "solutions.design_title"),
+      description: t(dictionary, "solutions.design_desc"),
       image: designIcon,
       reversed: false,
       flipped: false,
       largexl: true,
-      ctaText: t("solutions.design_cta"),
+      ctaText: t(dictionary, "solutions.design_cta"),
+      link: `/${locale}/creare-site-web/`
     },
     {
-      title: t("solutions.seo_title"),
-      description: t("solutions.seo_desc"),
+      title: t(dictionary, "solutions.seo_title"),
+      description: t(dictionary, "solutions.seo_desc"),
       image: searchIcon,
       reversed: true,
       flipped: false,
-      ctaText: t("solutions.seo_cta"),
+      ctaText: t(dictionary, "solutions.seo_cta"),
+      link: `/${locale}/optimizare-seo/`
     },
     {
-      title: t("solutions.consult_title"),
-      description: t("solutions.consult_desc"),
+      title: t(dictionary, "solutions.consult_title"),
+      description: t(dictionary, "solutions.consult_desc"),
       image: websiteIcon,
       reversed: false,
       flipped: false,
       large: true,
-      ctaText: t("solutions.consult_cta"),
+      ctaText: t(dictionary, "solutions.consult_cta"),
+      link: `/${locale}/#contact`
     },
   ];
 
   return (
-    <section id="solutions" className="pt-8 sm:pt-20  px-4 overflow-hidden relative ">
+    <section id="solutions" className="pt-8 sm:pt-20 px-4 overflow-visible relative ">
       {/* Background elements */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -z-10" />
@@ -48,11 +55,11 @@ const SolutionSection = () => {
         <Reveal width="100%">
           <div className="text-center mb-8 md:mb-0 lg:mb-0 xl:mb-0 max-w-4xl xl:max-w-5xl mx-auto md:pb-16 lg:pb-6 xl:pb-0">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-6 leading-tight tracking-tight">
-              {t("solutions.headline_main")}
-              <span className="text-secondary">{t("solutions.headline_highlight")}</span>
+              {t(dictionary, "solutions.headline_main")}
+              <span className="text-secondary">{t(dictionary, "solutions.headline_highlight")}</span>
             </h2>
             <p className="text-[hsl(220,10%,60%)] text-lg sm:text-xl xl:text-2xl leading-relaxed max-w-2xl xl:max-w-4xl mx-auto">
-              {t("solutions.headline_subtitle")}
+              {t(dictionary, "solutions.headline_subtitle")}
             </p>
           </div>
         </Reveal>
@@ -67,7 +74,7 @@ const SolutionSection = () => {
             >
               {/* Text Side */}
               <div className="flex-1 text-center md:text-left ">
-                <Reveal>
+                <Reveal overflowVisible>
                   <div>
                     <h3 className="text-2xl sm:text-3xl md:text-2xl lg:text-4xl font-bold text-foreground mb-6">
                       {solution.title}
@@ -76,15 +83,21 @@ const SolutionSection = () => {
                       {solution.description}
                     </p>
                     <Button
+                      asChild
                       size="lg"
                       className="rounded-full px-10 py-7 text-lg font-bold bg-primary hover:bg-primary/90 shadow-[0_0_1.875rem_-0.3125rem_rgba(124,58,237,0.5)] hover:shadow-[0_0_2.5rem_-0.3125rem_rgba(124,58,237,0.7)] transition-all duration-300 transform hover:-translate-y-1"
-                      onClick={() =>
-                        document
-                          .getElementById("contact")
-                          ?.scrollIntoView({ behavior: "smooth" })
-                      }
                     >
-                      {solution.ctaText}
+                      <a
+                        href={solution.link}
+                        onClick={(e) => {
+                          if (solution.link.includes("#contact")) {
+                            e.preventDefault();
+                            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }}
+                      >
+                        {solution.ctaText}
+                      </a>
                     </Button>
                   </div>
                 </Reveal>
@@ -92,7 +105,7 @@ const SolutionSection = () => {
 
               {/* Image Side */}
               <div className="flex-1 w-full relative">
-                <Reveal delay={0.2} width="100%">
+                <Reveal delay={0.2} width="100%" overflowVisible>
                   <div className="relative group">
                     {/* Glow effect backend (targeted size) */}
                     <div className={`absolute ${index === 1 ? '-inset-3' : '-inset-4'} bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -100,7 +113,7 @@ const SolutionSection = () => {
                     {/* Image Container */}
                     <div className={`relative z-10 ${solution.large ? 'p-4 mt-20 md:mt-0 mb-[-5.5vh] md:mb-[0vh] lg:mb-[2vh] xl:mb-[0vh] md:p-6 lg:p-8' : 'p-8 mt-12 md:mt-0 mb-[-8vh] md:mb-[-10vh] md:p-12 lg:p-16 lg:mb-[-10vh]'} 
                     ${solution.largexl ? 'p-0 md:p-0 lg:p-0 mb-[-5vh] sm:mb-[-5vh] md:mb-[2vh] lg:mb-[2vh] xl:mb-[0vh] xl:mt-[2vh]' : ''} transition-transform duration-500 hover:scale-105`}>
-                      <img
+                      <Image
                         src={solution.image}
                         alt={solution.title}
                         className={`w-full h-auto mx-auto drop-shadow-2xl
@@ -110,7 +123,9 @@ const SolutionSection = () => {
                               ? 'max-w-[20rem] sm:max-w-[20rem] md:max-w-[20rem] lg:max-w-[22rem] xl:max-w-[25rem]'
                               : 'max-w-[15.125rem] sm:max-w-[18rem] lg:max-w-[20.3125rem] xl:max-w-[21.7125rem]'
                           }
-                                  `} />
+                                  `}
+                        unoptimized
+                      />
                     </div>
                   </div>
                 </Reveal>

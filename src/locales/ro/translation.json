@@ -6,13 +6,15 @@
     "cta": "Începe Proiectul Tău"
   },
   "hero": {
-    "title_part1": "Creat pentru conversii.",
+    "location_badge": "Târgu Mureș, România",
+    "title_part1": "Obține mai mulți clienți din Google.",
+    "title_location": "Web design & SEO în Târgu Mureș",
     "title_part2": "Optimizat pentru Google.",
     "title_part3": "Mai mulți clienți din Google.",
     "subtitle": "Construim site-uri care apar pe Google și îi determină pe oameni să te contacteze — rezultate vizibile în 90 de zile.",
     "cta_primary": "Programează un Apel",
     "cta_secondary": "Proiectele Noastre",
-    "trust_1": "Design gândit să aducă cereri",
+    "trust_1": "Site-uri gândite să aducă cereri",
     "trust_2": "4+ ani experiență",
     "trust_3": "Implementare rapidă",
     "alt_hero": "Dispozitive digitale moderne care afișează interfețe web"
@@ -29,13 +31,13 @@
     "headline_highlight": "aduce mai mulți clienți",
     "headline_subtitle": "Îți construim site-ul astfel încât să apari exact când oamenii caută serviciile tale.",
     "design_title": "Design orientat spre rezultate",
-    "design_desc": "Facem un site simplu, clar și ușor de folosit — astfel încât oamenii să înțeleagă rapid ce faci și să te contacteze.",
+    "design_desc": "Un site clar, rapid și ușor de înțeles. Vizitatorii știu imediat ce faci și cum te pot contacta.",
     "design_cta": "Vezi cum ar putea arăta site-ul tău",
-    "seo_title": "Top 5 pe Google Garantat",
+    "seo_title": "Fii găsit pe Google când contează.",
     "seo_desc": "Primele rezultate primesc majoritatea click-urilor. Te ajutăm să ajungi acolo pentru căutările relevante din zona ta (ex: „instalator Târgu Mureș”) în 90 de zile sau lucrăm gratuit până reușim.",
-    "seo_cta": "Vreau să apar mai sus",
+    "seo_cta": "Vreau să fiu găsit",
     "consult_title": "Analizăm site-ul tău gratuit.",
-    "consult_desc": "Programează un apel de 15 minute și îți arătăm exact cum să fii găsit de mai mulți oameni și să scoți mai mult din traficul pe care îl ai deja — gratuit.",
+    "consult_desc": "Îți arătăm exact cum să fii găsit de mai mulți oameni și ce lipsește site-ului tău — gratuit.",
     "consult_cta": "Descoperă ce lipsește"
   },
   "portfolio": {
@@ -45,28 +47,28 @@
     "case_study_redesign": "Studiu de caz redesign",
     "featured_badge": "Proiect recomandat",
     "fight_club_title": "BLACK DIAMOND FIGHT",
-    "fight_club_desc": "Transformarea unui site vechi și aglomerat într-un motor digital de conversii cu impact ridicat.",
+    "fight_club_desc": "Am transformat un site vechi și confuz într-un sistem clar de generare de cereri și programări.",
     "stat_clarity": "Claritate conținut",
     "stat_strategic": "STRATEGIC",
     "stat_design": "Nivel design",
     "stat_premium": "PREMIUM",
-    "cta_transformation": "Transformarea",
+    "cta_transformation": "Vezi transformarea",
     "project_torocko_title": "TOROCKÓ BEAUTY: ESENȚĂ NATURALĂ",
     "project_torocko_desc": "Limbaj vizual și UX e-commerce pentru un brand de cosmetice artizanale.",
     "your_project_title": "Proiectul tău aici?",
-    "your_project_desc": "Suntem pregătiți să construim următorul tău motor de conversii.",
+    "your_project_desc": "Suntem pregătiți să construim următorul tău site",
     "your_project_cta": "Începe redesign-ul"
   },
   "how_it_works": {
     "title": "Cum funcționează",
-    "step1_title": "Pasul 1: Consultare & Programare",
-    "step1_desc": "Alege pachetul potrivit și completează formularul pentru a începe.",
+    "step1_title": "Pasul 1: Discuție inițială",
+    "step1_desc": "Îți înțelegem afacerea, ce îți dorești să obții și îți spunem sincer dacă putem ajuta.",
     "step2_title": "Pasul 2: Strategie & Planificare",
-    "step2_desc": "Te ajutăm să identifici ce are nevoie site-ul tău și îți trimitem un plan clar, pas cu pas, pentru a începe proiectul fără probleme.",
+    "step2_desc": "Stabilim împreună cum va arăta site-ul, ce pagini are nevoie și cum va fi găsit pe Google.",
     "step3_title": "Pasul 3: Revizuire & Ajustări",
     "step3_desc": "Ne uităm împreună peste prima versiune, facem modificările dorite și îți trimitem varianta finală gata de lansare.",
     "step4_title": "Pasul 4: Lansare",
-    "step4_desc": "Verificăm fiecare detaliu înainte de lansare — ca să te asiguri că totul funcționează perfect din prima zi."
+    "step4_desc": "Verificăm fiecare detaliu înainte de lansare — ca să ne asigurăm că site-ul funcționează perfect din prima zi."
   },
   "pricing": {
     "title_main": "Prețuri simple. ",
@@ -77,26 +79,24 @@
     "per_project": "/proiect",
     "essential": {
       "name": "Essential",
-      "desc": "Ideal pentru afaceri mici care își doresc un website profesional care aduce clienți.",
+      "desc": "Pentru afaceri care au nevoie de un site profesional care arată bine și inspiră încredere.",
       "price": "2,497 RON",
       "option": "(sau 3 plăți de 833 RON)",
       "cta": "Vezi cum ar putea arăta site-ul tău",
       "f1_t": "Previzualizare gratuită a site-ului",
       "f1_s": "Îți arătăm cum va arăta site-ul înainte să începem.",
-      "f2_t": "Design personalizat premium",
-      "f2_s": "Design adaptat afacerii tale pentru a inspira încredere clienților.",
-      "f3_t": "Structură gândită pentru apeluri",
-      "f3_s": "Totul este aranjat astfel încât oamenii să te sune sau să îți scrie rapid.",
+      "f2_t": "Design personalizat",
+      "f2_s": "Fără șabloane — totul construit pentru afacerea ta.",
+      "f3_t": "Structură gândită pentru cereri",
+      "f3_s": "Aranjăm totul astfel încât oamenii să înțeleagă rapid ce faci și să te poată contacta ușor.",
       "f4_t": "Optimizare pentru mobil și viteză",
-      "f4_s": "Optimizat pentru dispozitive mobile și încărcare rapidă.",
-      "f5_t": "Optimizare limitată pentru Google",
-      "f5_s": "Top 5 pe Google nu este inclusă — aceasta este inclusă în planul Recomandat.",
-      "f6_t": "1 lună de modificări nelimitate",
-      "f6_s": "Modificări nelimitate în prima lună după lansare."
+      "f4_s": "Se încarcă rapid pe telefon — acolo unde vin majoritatea clienților tăi.",
+      "f5_t": "1 lună de modificări nelimitate",
+      "f5_s": "Modificări nelimitate în prima lună după lansare."
     },
     "recommended": {
-      "name": "Recommended",
-      "desc": "Pentru cei care vor să apară pe Google și să primească cereri constant.",
+      "name": "Recomandat",
+      "desc": "Pentru afaceri care vor clienți constant din Google.",
       "price": "4,997 RON",
       "cta": "Programează o discuție gratuită",
       "f1_t": "Tot ce include pachetul Essential",
@@ -104,12 +104,10 @@
       "f2_s": "Ca să poți începe cât mai repede să primești clienți.",
       "f3_t": "Urmărirea vizitatorilor",
       "f3_s": "Vezi câți oameni intră pe site și ce îi determină să te contacteze.",
-      "f4_t": "Poziționare în top 5 pe Google garantat",
-      "f4_s": "Ajungem în primele rezultate Google în maximum 90 de zile — altfel continuăm să lucrăm fără costuri până reușim.",
+      "f4_t": "Optimizare pentru Google",
+      "f4_s": "Ca sa fii gasit ușor de persoanele care cauta serviciile tale",
       "f5_t": "Ajustare completă a site-ului",
-      "f5_s": "Fiecare pagină este pregătită pentru a aduce mai mulți clienți.",
-      "f6_t": "Configurare pentru vizitatori din Google",
-      "f6_s": "Construim site-ul astfel încât Google să înțeleagă clar ce oferi și cui să te arate."
+      "f5_s": "Fiecare pagină este pregătită pentru a aduce mai mulți clienți."
     },
     "custom": {
       "name": "Personalizat",
@@ -129,12 +127,12 @@
   },
   "seo_pricing": {
     "title_main": "Ai deja un website? ",
-    "title_highlight": "Adu-l pe primele poziții pe Google.",
-    "subtitle": "Lucrăm pe site-ul tău actual și îl ajustăm astfel încât să apari mai sus în Google pentru căutările importante.",
+    "title_highlight": "Te facem găsit pe Google.",
+    "subtitle": "Lucrăm pe site-ul tău actual și îl ajustăm astfel încât să fii găsit când cineva caută serviciile tale.",
     "guarantee_note": "*Garanția de poziționare în 90 de zile se aplică pentru planul Growth și pentru anumite cuvinte cheie.",
     "best_value": "Cea mai bună alegere",
     "or": "sau",
-    "billed_quarterly": "facturat la fiecare 3 luni",
+    "billed_quarterly": "pentru 3 luni",
     "book_call": "Programează o discuție {{name}}",
     "local": {
       "name": "Local",
@@ -146,7 +144,7 @@
       "f1_t": "Apari pe Google Maps",
       "f1_s": "Apari când oamenii din apropiere caută serviciul tău.",
       "f2_t": "Te poziționezi pentru cuvântul tău principal",
-      "f2_s": "Apari când oamenii caută exact ce oferi.",
+      "f2_s": "Apari când oamenii caută exact ce faci tu.",
       "f3_t": "Analiză de bază a concurenței",
       "f3_s": "Vezi unde te situezi față de alte afaceri locale.",
       "f4_t": "Actualizări la fiecare două săptămâni",
@@ -169,7 +167,7 @@
       "f2_s": "Apari pentru toate serviciile pe care le caută clienții tăi.",
       "f3_t": "Website optimizat complet pentru Google",
       "f3_s": "Fiecare pagină este ajustată pentru a performa mai bine în căutări.",
-      "f4_t": "Depășești concurența principală",
+      "f4_t": "Depășirea concurenței",
       "f4_s": "Analizăm ce fac ceilalți și lucrăm astfel încât să apari înaintea lor.",
       "f5_t": "Actualizări la fiecare două săptămâni",
       "f5_s": "Lucrăm constant la creșterea poziționării tale.",
@@ -178,17 +176,17 @@
     }
   },
   "seo": {
-    "org_desc": "Agenție de web design orientată pe conversii, care ajută afacerile să domine Google și să crească.",
-    "service_web_desc": "Website-uri performante, create pentru a transforma vizitatorii în clienți, cu garanție de poziționare în 90 de zile.",
-    "service_seo_desc": "Strategii SEO bazate pe date, care te ajută să domini rezultatele Google și să atragi constant clienți de calitate.",
-    "service_web_title": "Web design orientat pe conversii",
-    "service_seo_title": "Strategie SEO Google",
+    "org_desc": "Agenție web din Târgu Mureș specializată în creare site web, optimizare SEO și redesign website pentru afaceri locale.",
+    "service_web_desc": "Creare site web profesional în Târgu Mureș — design custom, optimizare mobil, structură orientată spre conversii, cu garanție de poziționare în 90 de zile.",
+    "service_seo_desc": "Servicii SEO locale în Târgu Mureș — te ajutăm să apari pe prima pagină Google și să atragi constant clienți din zona ta.",
+    "service_web_title": "Creare Site Web Târgu Mureș",
+    "service_seo_title": "Optimizare SEO Târgu Mureș",
     "breadcrumb_home": "Acasă",
     "addr_phone": "Telefon",
     "addr_email": "Email",
     "addr_country_full": "România",
-    "page_title": "Future Builds - Agenție de web design orientată pe conversii și SEO",
-    "page_desc": "Future Builds creează website-uri performante și oferă servicii SEO pentru a ajuta afacerile să apară în Google și să transforme vizitatorii în clienți."
+    "page_title": "Agenție Web Design Târgu Mureș — Creare Site & SEO | Future Builds",
+    "page_desc": "Agenție web din Târgu Mureș: creare site web, optimizare SEO, redesign website. Site-uri care aduc clienți din Google. Garanție top 5 în 90 zile. Consultație gratuită."
   },
   "lead_focus": {
     "title": "Cum vin clienții:",
@@ -454,6 +452,208 @@
       "s3_d": "Conținutul, designul și instrumentele proprietare utilizate de Future Builds sunt protejate de legile privind proprietatea intelectuală.",
       "s4_t": "4. Limitarea răspunderii",
       "s4_d": "Future Builds nu este responsabil pentru daune indirecte, accidentale sau consecințe rezultate din utilizarea serviciilor noastre."
+    }
+  },
+  "services": {
+    "creare_site": {
+      "page_title": "Creare Site Web Târgu Mureș — Design Profesional de la 2497 RON",
+      "page_desc": "Creare site de prezentare și magazine online în Târgu Mureș. Design custom, optimizare mobil, gata în 10 zile. Mockup gratuit inclus. Solicită ofertă.",
+      "h1": "Creare site web profesional în Târgu Mureș",
+      "intro": "Ai nevoie de un site web care să aducă clienți pentru afacerea ta din Târgu Mureș? La Future Builds, construim site-uri de prezentare și magazine online gândite să apară pe Google și să transforme vizitatorii în clienți reali. Fiecare proiect include design personalizat, optimizare pentru mobil și structură orientată spre conversii.",
+      "features_title": "Ce include un site web de la Future Builds",
+      "features": [
+        {
+          "title": "Design custom premium",
+          "desc": "Fiecare site este creat de la zero, adaptat identității și nevoilor afacerii tale din Târgu Mureș."
+        },
+        {
+          "title": "Optimizare mobil și viteză",
+          "desc": "Site responsive care se încarcă rapid pe orice dispozitiv — esențial pentru clienții care te caută de pe telefon."
+        },
+        {
+          "title": "Structură gândită pentru conversii",
+          "desc": "Fiecare pagină este aranjată astfel încât vizitatorii să te contacteze rapid — nu doar să navigheze."
+        },
+        {
+          "title": "Previzualizare gratuită",
+          "desc": "Îți arătăm cum va arăta site-ul tău înainte să începem — fără obligații."
+        },
+        {
+          "title": "1 lună de modificări nelimitate",
+          "desc": "După lansare, ai 30 de zile în care poți cere orice ajustare fără costuri suplimentare."
+        }
+      ],
+      "why_title": "De ce să alegi Future Builds pentru site-ul tău",
+      "why_items": [
+        "Nu folosim șabloane — fiecare site este construit de la zero pentru afacerea ta.",
+        "Site-ul tău va fi gata în maximum 10 zile lucrătoare.",
+        "Garanție de poziționare în top 5 Google în 90 de zile (planul Recomandat)."
+      ],
+      "pricing_note": "Prețuri de la 2497 RON (planul Essential) la 4997 RON (planul Recomandat cu SEO inclus).",
+      "cta_title": "Solicită o ofertă gratuită",
+      "cta_desc": "Completează formularul și primești un mockup gratuit al site-ului tău în 48 de ore.",
+      "cta_button": "Solicită ofertă gratuită",
+      "faq_title": "Întrebări frecvente despre creare site web",
+      "faq_items": [
+        {
+          "q": "Cât durează realizarea unui site web în Târgu Mureș?",
+          "a": "Planul Essential durează 2-3 săptămâni, iar planul Recomandat este gata în doar 10 zile lucrătoare."
+        },
+        {
+          "q": "Cât costă un site web profesional în Târgu Mureș?",
+          "a": "Prețurile încep de la 2497 RON pentru un site Essential și ajung la 4997 RON pentru un site optimizat complet cu SEO inclus."
+        },
+        {
+          "q": "Ce tip de site pot să obțin?",
+          "a": "Construim site-uri de prezentare, landing page-uri, magazine online și portaluri personalizate — totul adaptat nevoilor afacerii tale."
+        }
+      ]
+    },
+    "optimizare_seo": {
+      "page_title": "Servicii SEO Târgu Mureș — Garanție Top 5 Google în 90 Zile",
+      "page_desc": "Optimizare SEO locală în Târgu Mureș. Apari pe prima pagină Google în 90 de zile sau lucrăm gratuit. Planuri de la 600 RON/lună. Consultație SEO gratuită.",
+      "h1": "Servicii SEO locale în Târgu Mureș — Apari pe Google garantat",
+      "intro": "Afacerea ta din Târgu Mureș merită să fie găsită de oamenii care caută exact ce oferi. La Future Builds, oferim servicii de optimizare SEO locală care te aduc pe prima pagină a Google. Lucrăm pe cuvinte cheie relevante pentru zona ta și garantăm rezultate în 90 de zile — sau continuăm gratuit.",
+      "features_title": "Ce include serviciul de SEO",
+      "features": [
+        {
+          "title": "Optimizare Google Maps",
+          "desc": "Apari când oamenii din Târgu Mureș și împrejurimi caută serviciul tău pe Google Maps."
+        },
+        {
+          "title": "Cercetare cuvinte cheie locale",
+          "desc": "Identificăm exact ce caută potențialii tăi clienți și optimizăm site-ul pentru acele căutări."
+        },
+        {
+          "title": "Optimizare on-page completă",
+          "desc": "Ajustăm titluri, descrieri, structura paginilor și conținutul pentru performanță maximă în Google."
+        },
+        {
+          "title": "Analiză concurență",
+          "desc": "Vedem ce fac competitorii tăi din Târgu Mureș și construim o strategie care te pune înaintea lor."
+        },
+        {
+          "title": "Rapoarte lunare de progres",
+          "desc": "Primești un raport clar cu pozițiile tale în Google și evoluția traficului organic."
+        }
+      ],
+      "why_title": "De ce ai nevoie de SEO local în Târgu Mureș",
+      "why_items": [
+        "75% dintre oameni nu trec de prima pagină Google — dacă nu ești acolo, pierzi clienți.",
+        "SEO local te pune înaintea concurenților din zona ta pentru căutări cu intenție de cumpărare.",
+        "Garanție: Ajungi în top 5 Google în 90 de zile sau nu plătești până reușim."
+      ],
+      "pricing_note": "Planuri de la 600 RON/lună (Local) la 800 RON/lună (Growth cu garanție).",
+      "cta_title": "Solicită o consultație SEO gratuită",
+      "cta_desc": "Îți analizăm poziția curentă pe Google și îți arătăm exact ce pași trebuie să urmezi.",
+      "cta_button": "Analizează-mi site-ul gratuit",
+      "faq_title": "Întrebări frecvente despre SEO",
+      "faq_items": [
+        {
+          "q": "În cât timp apar rezultatele SEO?",
+          "a": "Majoritatea clienților noștri din Târgu Mureș văd primele îmbunătățiri în 30-45 de zile. Rezultate semnificative apar în lunile 2 și 3."
+        },
+        {
+          "q": "Trebuie să am un site nou pentru SEO?",
+          "a": "Nu neapărat. Putem optimiza site-ul tău existent dacă este suficient de bine construit tehnic. Îl evaluăm gratuit."
+        },
+        {
+          "q": "Ce se întâmplă dacă nu ajung în top 5?",
+          "a": "Continuăm să lucrăm fără costuri suplimentare până atingem obiectivul. Aceasta este garanția noastră pentru planul Growth."
+        }
+      ]
+    },
+    "redesign_website": {
+      "page_title": "Redesign Website Târgu Mureș — Modernizare Site Profesional",
+      "page_desc": "Refacere și modernizare site web în Târgu Mureș. Transformăm site-uri vechi în motoare de conversie. Portofoliu demonstrativ. Solicită ofertă personalizată.",
+      "h1": "Redesign website în Târgu Mureș — Transformăm site-uri vechi în motoare de clienți",
+      "intro": "Site-ul tău arată depășit sau nu aduce rezultate? La Future Builds, redesign-ul nu înseamnă doar un look nou — înseamnă un site reproiectat complet pentru a aduce clienți din Google. Analizăm ce nu funcționează, reproiectăm structura și livrăm un site modern, rapid și optimizat pentru conversii.",
+      "features_title": "Ce include serviciul de redesign",
+      "features": [
+        {
+          "title": "Audit complet al site-ului actual",
+          "desc": "Identificăm toate problemele tehnice, de design și de conținut care îți afectează performanța."
+        },
+        {
+          "title": "Design modern de la zero",
+          "desc": "Nu punem un plasture — reconstruim site-ul complet cu design premium adaptat afacerii tale."
+        },
+        {
+          "title": "Migrare conținut și SEO",
+          "desc": "Menținem pozițiile câștigate pe Google și transferăm conținutul important în noul site."
+        },
+        {
+          "title": "Optimizare conversii",
+          "desc": "Fiecare element este gândit să transforme vizitatorii în clienți — de la butoane la structura paginilor."
+        }
+      ],
+      "why_title": "Când ai nevoie de un redesign",
+      "why_items": [
+        "Site-ul tău nu arată bine pe telefon sau se încarcă greu.",
+        "Ai un site WordPress vechi cu probleme de securitate sau performanță.",
+        "Oamenii intră pe site dar nu te contactează — rata de conversie e scăzută."
+      ],
+      "pricing_note": "Prețuri personalizate în funcție de complexitate. Solicită o evaluare gratuită.",
+      "cta_title": "Solicită o evaluare gratuită a site-ului tău",
+      "cta_desc": "Analizăm site-ul tău actual și îți arătăm exact ce trebuie schimbat pentru rezultate mai bune.",
+      "cta_button": "Evaluează-mi site-ul gratuit",
+      "faq_title": "Întrebări frecvente despre redesign",
+      "faq_items": [
+        {
+          "q": "Cât durează un redesign complet?",
+          "a": "Depinde de complexitate, dar majoritatea proiectelor de redesign sunt gata în 2-4 săptămâni."
+        },
+        {
+          "q": "Pierd pozițiile pe Google dacă refac site-ul?",
+          "a": "Nu — gestionăm migrarea SEO cu atenție, redirecționând URL-urile vechi și păstrând conținutul optimizat."
+        }
+      ]
+    },
+    "mentenanta_website": {
+      "page_title": "Mentenanță Website Târgu Mureș — Întreținere și Actualizare Site",
+      "page_desc": "Servicii de mentenanță și întreținere website în Târgu Mureș. Backup, securitate, actualizări conținut, suport tehnic rapid. Solicită ofertă.",
+      "h1": "Mentenanță și întreținere website în Târgu Mureș",
+      "intro": "Un site web are nevoie de îngrijire constantă pentru a funcționa corect și a rămâne sigur. La Future Builds, oferim servicii de mentenanță lunară care includ backup-uri, actualizări de securitate, modificări de conținut și suport tehnic. Te ocupi de afacere — noi ne ocupăm de site.",
+      "features_title": "Ce include mentenanța de la Future Builds",
+      "features": [
+        {
+          "title": "Backup regulat și securitate",
+          "desc": "Verificăm și actualizăm site-ul pentru a preveni probleme de securitate și pierderea datelor."
+        },
+        {
+          "title": "Actualizări de conținut",
+          "desc": "Schimbări de text, imagini, prețuri sau informații noi — le facem noi pentru tine."
+        },
+        {
+          "title": "Monitorizare uptime",
+          "desc": "Verificăm constant dacă site-ul tău este online și funcțional."
+        },
+        {
+          "title": "Suport tehnic prioritar",
+          "desc": "Dacă apare o problemă, ai acces rapid la echipa noastră pentru rezolvare."
+        }
+      ],
+      "why_title": "De ce ai nevoie de mentenanță profesională",
+      "why_items": [
+        "Site-urile neîntreținute devin vulnerabile la atacuri și pierd poziții pe Google.",
+        "Actualizările regulate de conținut semnalează Google că site-ul tău este activ.",
+        "Economisești timp — nu mai trebuie să te ocupi singur de problemele tehnice."
+      ],
+      "pricing_note": "Planuri lunare de la €30-50/lună. Solicită o ofertă personalizată.",
+      "cta_title": "Ai nevoie de suport pentru site-ul tău?",
+      "cta_desc": "Spune-ne ce probleme ai și te ajutăm cu un plan de mentenanță adaptat nevoilor tale.",
+      "cta_button": "Solicită ofertă de mentenanță",
+      "faq_title": "Întrebări frecvente despre mentenanță",
+      "faq_items": [
+        {
+          "q": "Cât costă mentenanța unui website?",
+          "a": "Planurile noastre de mentenanță pornesc de la €30-50 pe lună, în funcție de complexitatea site-ului."
+        },
+        {
+          "q": "Ce se întâmplă dacă nu fac mentenanță site-ului?",
+          "a": "Site-ul poate deveni lent, vulnerabil la atacuri și poate pierde poziții pe Google în timp."
+        }
+      ]
     }
   }
 }

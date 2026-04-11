@@ -1,7 +1,10 @@
+"use client";
+
 import { Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
-import { useTranslation } from "react-i18next";
+import { useDictionary } from "@/components/DictionaryProvider";
+import { t } from "@/lib/t";
 
 interface SEOProps {
   onSelectPackage: (packageName: string) => void;
@@ -9,46 +12,46 @@ interface SEOProps {
 }
 
 const SEO = ({ onSelectPackage, id }: SEOProps) => {
-  const { t } = useTranslation();
+  const dictionary = useDictionary();
 
   const seoTiers = [
     {
-      name: t("seo_pricing.local.name"),
-      description: t("seo_pricing.local.desc"),
-      price: t("seo_pricing.local.price"),
-      priceLabel: t("seo_pricing.local.price_label"),
+      name: t(dictionary, "seo_pricing.local.name"),
+      description: t(dictionary, "seo_pricing.local.desc"),
+      price: t(dictionary, "seo_pricing.local.price"),
+      priceLabel: t(dictionary, "seo_pricing.local.price_label"),
       featured: false,
-      visibility: t("seo_pricing.local.visibility"),
+      visibility: t(dictionary, "seo_pricing.local.visibility"),
       visibilityStrength: 0.3,
       features: [
-        { title: t("seo_pricing.local.f1_t"), subtext: t("seo_pricing.local.f1_s") },
-        { title: t("seo_pricing.local.f2_t"), subtext: t("seo_pricing.local.f2_s") },
-        { title: t("seo_pricing.local.f3_t"), subtext: t("seo_pricing.local.f3_s") },
-        { title: t("seo_pricing.local.f4_t"), subtext: t("seo_pricing.local.f4_s") },
-        { title: t("seo_pricing.local.f5_t"), subtext: t("seo_pricing.local.f5_s") },
+        { title: t(dictionary, "seo_pricing.local.f1_t"), subtext: t(dictionary, "seo_pricing.local.f1_s") },
+        { title: t(dictionary, "seo_pricing.local.f2_t"), subtext: t(dictionary, "seo_pricing.local.f2_s") },
+        { title: t(dictionary, "seo_pricing.local.f3_t"), subtext: t(dictionary, "seo_pricing.local.f3_s") },
+        { title: t(dictionary, "seo_pricing.local.f4_t"), subtext: t(dictionary, "seo_pricing.local.f4_s") },
+        { title: t(dictionary, "seo_pricing.local.f5_t"), subtext: t(dictionary, "seo_pricing.local.f5_s") },
       ],
-      cta: t("seo_pricing.local.cta"),
+      cta: t(dictionary, "seo_pricing.local.cta"),
       packageName: "Local SEO",
     },
     {
-      name: t("seo_pricing.growth.name"),
-      description: t("seo_pricing.growth.desc"),
-      price: t("seo_pricing.growth.price"),
-      priceLabel: t("seo_pricing.growth.price_label"),
-      quarterlyPrice: t("seo_pricing.growth.q_price"),
-      quarterlySaving: t("seo_pricing.growth.q_save"),
+      name: t(dictionary, "seo_pricing.growth.name"),
+      description: t(dictionary, "seo_pricing.growth.desc"),
+      price: t(dictionary, "seo_pricing.growth.price"),
+      priceLabel: t(dictionary, "seo_pricing.growth.price_label"),
+      quarterlyPrice: t(dictionary, "seo_pricing.growth.q_price"),
+      quarterlySaving: t(dictionary, "seo_pricing.growth.q_save"),
       featured: true,
-      visibility: t("seo_pricing.growth.visibility"),
+      visibility: t(dictionary, "seo_pricing.growth.visibility"),
       visibilityStrength: 0.75,
       features: [
-        { title: t("seo_pricing.growth.f1_t"), subtext: t("seo_pricing.growth.f1_s") },
-        { title: t("seo_pricing.growth.f2_t"), subtext: t("seo_pricing.growth.f2_s") },
-        { title: t("seo_pricing.growth.f3_t"), subtext: t("seo_pricing.growth.f3_s") },
-        { title: t("seo_pricing.growth.f4_t"), subtext: t("seo_pricing.growth.f4_s") },
-        { title: t("seo_pricing.growth.f5_t"), subtext: t("seo_pricing.growth.f5_s") },
-        { title: t("seo_pricing.growth.f6_t"), subtext: t("seo_pricing.growth.f6_s") },
+        { title: t(dictionary, "seo_pricing.growth.f1_t"), subtext: t(dictionary, "seo_pricing.growth.f1_s") },
+        { title: t(dictionary, "seo_pricing.growth.f2_t"), subtext: t(dictionary, "seo_pricing.growth.f2_s") },
+        { title: t(dictionary, "seo_pricing.growth.f3_t"), subtext: t(dictionary, "seo_pricing.growth.f3_s") },
+        { title: t(dictionary, "seo_pricing.growth.f4_t"), subtext: t(dictionary, "seo_pricing.growth.f4_s") },
+        { title: t(dictionary, "seo_pricing.growth.f5_t"), subtext: t(dictionary, "seo_pricing.growth.f5_s") },
+        { title: t(dictionary, "seo_pricing.growth.f6_t"), subtext: t(dictionary, "seo_pricing.growth.f6_s") },
       ],
-      cta: t("seo_pricing.growth.cta"),
+      cta: t(dictionary, "seo_pricing.growth.cta"),
       packageName: "Growth SEO",
     },
   ];
@@ -61,25 +64,25 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
         <div className="text-center mb-16">
           <Reveal width="100%">
             <h2 className="text-4xl sm:text-4xl md:text-[2.5rem] lg:text-5xl font-extrabold text-foreground mb-6">
-              {t("seo_pricing.title_main")}
-              <span className="text-teal-400 italic">{t("seo_pricing.title_highlight")}</span>
+              {t(dictionary, "seo_pricing.title_main")}
+              <span className="text-teal-400 italic">{t(dictionary, "seo_pricing.title_highlight")}</span>
             </h2>
           </Reveal>
           <Reveal width="100%" delay={0.4}>
             <p className="text-muted-foreground text-lg sm:text-xl xl:text-2xl max-w-2xl mx-auto font-medium w-[80%]">
-              {t("seo_pricing.subtitle")}
+              {t(dictionary, "seo_pricing.subtitle")}
               <br />
               <span className="text-xs xl:text-lg mt-2 block opacity-70">
-                {t("seo_pricing.guarantee_note")}
+                {t(dictionary, "seo_pricing.guarantee_note")}
               </span>
             </p>
           </Reveal>
         </div>
 
         {/* SEO Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 justify-items-center max-w-3xl lg:max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 justify-items-center items-stretch max-w-3xl lg:max-w-5xl mx-auto">
           {seoTiers.map((tier, index) => (
-            <Reveal key={index} delay={0.2 + index * 0.1} width="100%" fullHeight>
+            <Reveal key={index} delay={0.2 + index * 0.1} width="100%" fullHeight overflowVisible>
               <div className="w-full max-w-none sm:max-w-[75%] lg:max-w-none mx-auto h-full">
                 <div
                   className={`relative rounded-3xl p-8 flex flex-col h-full transition-all duration-300 hover:-translate-y-2 cursor-pointer backdrop-blur-xl border
@@ -92,7 +95,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                   {tier.featured && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                       <span className="bg-teal-500 text-white text-xs xl:text-[1.1rem] font-semibold px-4 py-1.5 rounded-full whitespace-nowrap">
-                        {t("seo_pricing.best_value")}
+                        {t(dictionary, "seo_pricing.best_value")}
                       </span>
                     </div>
                   )}
@@ -122,7 +125,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                   {tier.quarterlyPrice && (
                     <div className="mb-6 flex items-center gap-2">
                       <span className="text-muted-foreground text-sm">
-                        {t("seo_pricing.or")} <span className="text-foreground font-semibold">{tier.quarterlyPrice}</span> {t("seo_pricing.billed_quarterly")}
+                        {t(dictionary, "seo_pricing.or")} <span className="text-foreground font-semibold">{tier.quarterlyPrice}</span> {t(dictionary, "seo_pricing.billed_quarterly")}
                       </span>
                       <span className="bg-teal-500/15 text-teal-400 text-xs font-bold px-2 py-0.5 rounded-full">
                         {tier.quarterlySaving}
@@ -188,7 +191,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
                       onClick={() => onSelectPackage(tier.packageName)}
                     >
                       <Phone size={16} className="text-teal-400" />
-                      {t("seo_pricing.book_call", { name: tier.name })}
+                      {t(dictionary, "seo_pricing.book_call").replace('{{name}}', tier.name)}
                     </Button>
                   </div>
                 </div>
