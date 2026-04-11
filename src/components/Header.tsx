@@ -66,7 +66,7 @@ const Header = () => {
   return (
     <motion.header
       style={{ fontSize: '1.25rem' }}
-      className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-7xl mx-auto transition-transform duration-300"
+      className="sticky top-3 inset-x-0 z-50 w-[95%] max-w-7xl mx-auto transition-transform duration-300 "
       role="banner"
     >
       <motion.nav
@@ -80,9 +80,9 @@ const Header = () => {
         aria-label="Main navigation"
       >
         {/* Logo - Flex Basis to balance with Action Area */}
-        <div className="flex-1 lg:flex-none lg:w-[200px] xl:w-[240px]">
+        <div className="flex-1 lg:flex-none lg:w-[200px] xl:w-[230px] ">
           <Link href={`/${locale}/`} className="flex items-center hover:opacity-80 transition-opacity" aria-label="Future Builds Home">
-            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds — Agenție Web Design Târgu Mureș" className="h-6 max-[400px]:h-5 sm:h-7 md:h-8 lg:h-9 w-auto" />
+            <img src="/portfolio/Future Builds - Written-Transparent-Cropped.png" alt="Future Builds — Agenție Web Design Târgu Mureș" className="h-6 max-[400px]:h-5 sm:h-7 md:h-7 2xl:h-7.25 w-auto" />
           </Link>
         </div>
 
@@ -149,7 +149,7 @@ const Header = () => {
               </li>
             ))}
             <li className="pt-4 mt-2 border-t border-white/10">
-              <Button 
+              <Button
                 className="w-full rounded-full py-6 font-bold text-lg shadow-xl shadow-primary/20"
                 onClick={handleCTAClick}
               >
