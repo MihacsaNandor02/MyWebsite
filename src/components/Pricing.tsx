@@ -17,6 +17,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
   const websiteTiers = [
     {
       name: t(dictionary, "pricing.essential.name"),
+      packageName: "Essential",
       description: t(dictionary, "pricing.essential.desc"),
       price: t(dictionary, "pricing.essential.price"),
       option: t(dictionary, "pricing.essential.option"),
@@ -32,6 +33,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
     },
     {
       name: t(dictionary, "pricing.recommended.name"),
+      packageName: "Recommended",
       description: t(dictionary, "pricing.recommended.desc"),
       price: t(dictionary, "pricing.recommended.price"),
       featured: true,
@@ -46,6 +48,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
     },
     {
       name: t(dictionary, "pricing.custom.name"),
+      packageName: "Custom",
       description: t(dictionary, "pricing.custom.desc"),
       price: t(dictionary, "pricing.custom.price"),
       featured: false,
@@ -151,7 +154,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
                       ? "shadow-lg shadow-primary/20"
                       : "border-primary/20 hover:bg-primary/5 hover:border-primary/40 hover:text-primary transition-colors"
                       }`}
-                    onClick={() => onSelectPackage(`${tier.name} Website`)}
+                    onClick={() => onSelectPackage(`${tier.packageName} Website`)}
                   >
                     {tier.cta}
                   </Button>

@@ -434,7 +434,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                             <h3 className="text-3xl md:text-4xl lg:text-[2.35rem] font-bold text-foreground mb-3">
                               {needOptions.find(o => o.value === (formData.need || "Recommended Website"))?.label || effectiveNeed}
                             </h3>
-                            {currentPackage.price !== "Custom" && currentPackage.price !== "Quote" && currentPackage.price !== "TBD" && (
+                            {currentPackage.price !== "Custom" && currentPackage.price !== "Quote" && currentPackage.price !== "Ofertă" && currentPackage.price !== "TBD" && (
                               <div className="flex items-baseline gap-2">
                                 <span className="text-4xl md:text-[2.2rem] font-extrabold text-primary pt-2">{currentPackage.price}</span>
                                 <span className="text-muted-foreground text-lg font-medium">

@@ -77,8 +77,9 @@
     "guarantee_note": "*Garanția de poziționare în 90 de zile se aplică pentru anumite cuvinte cheie.",
     "best_value": "Cea mai bună alegere",
     "per_project": "/proiect",
+    "per_month": "/lună",
     "essential": {
-      "name": "Essential",
+      "name": "Esențial",
       "desc": "Pentru afaceri care au nevoie de un site profesional care arată bine și inspiră încredere.",
       "price": "2,497 RON",
       "option": "(sau 3 plăți de 833 RON)",
@@ -284,7 +285,7 @@
     "err_need": "Te rugăm să selectezi o opțiune",
     "packages": {
       "essential": {
-        "name": "Website Essential",
+        "name": "Website Esențial",
         "price": "De la 2497 RON",
         "f1": "Mockup gratuit inclus",
         "f2": "Design custom premium",
@@ -304,7 +305,7 @@
         "f6": "Configurare trafic organic"
       },
       "custom": {
-        "name": "Website Custom",
+        "name": "Website Personalizat",
         "price": "Ofertă",
         "f1": "Tot din Recommended",
         "f2": "Construit pentru tine",
