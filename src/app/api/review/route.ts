@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = 'force-dynamic';
+
 
 const reviewSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
@@ -16,6 +17,7 @@ const reviewSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const body = await request.json();
 
     // 1. Validation & Honeypot
