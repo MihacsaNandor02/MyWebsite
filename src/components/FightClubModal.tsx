@@ -4,7 +4,10 @@ import React, { useState } from 'react';
 import {
     Dialog,
     DialogContent,
+    DialogTitle,
+    DialogDescription,
 } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Smartphone, UserCheck, CreditCard, TrendingUp } from "lucide-react";
@@ -64,6 +67,14 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="max-w-5xl p-0 overflow-hidden bg-[#050505] border-white/5 shadow-2xl rounded-[2rem] text-white">
+                <VisuallyHidden>
+                    <DialogTitle>
+                        {t(dictionary, 'modals.fight_club.title_main')} {t(dictionary, 'modals.fight_club.title_highlight')}
+                    </DialogTitle>
+                    <DialogDescription>
+                        {t(dictionary, 'modals.fight_club.overview')}
+                    </DialogDescription>
+                </VisuallyHidden>
                 <div className="max-h-[90vh] overflow-y-auto scrollbar-hide">
                     {/* 1. Flagship Static Hero */}
                     <div className="relative group overflow-hidden h-[220px] sm:h-[360px] md:h-[420px]">
@@ -80,13 +91,13 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
 
                     <div className="px-8 md:px-16 pb-16 space-y-24">
                         {/* 2. Project Title & Overview */}
-                        <div className="mt-12 space-y-12">
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
+                        <div className="mt-12 space-y-10">
+                            <div className="space-y-2">
+                                <div className="flex items-center gap-4 mb-4">
                                     <div className="w-12 h-px bg-yellow-400" />
                                     <span className="text-yellow-400 text-xs font-black uppercase tracking-[0.3em] italic">{t(dictionary, 'modals.fight_club.tag')}</span>
                                 </div>
-                                <h2 className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter uppercase italic leading-[0.8]">
+                                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter uppercase italic leading-[0.9] !p-0 !m-0">
                                     {t(dictionary, 'modals.fight_club.title_main')}<span className="text-yellow-400">{t(dictionary, 'modals.fight_club.title_highlight')}</span>
                                 </h2>
                             </div>
@@ -211,7 +222,7 @@ const FightClubModal = ({ isOpen, onClose }: FightClubModalProps) => {
                                         key={i}
                                         initial={{ opacity: 0, y: 30 }}
                                         whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
+                                        viewport={{ once: false }}
                                         transition={{ delay: i * 0.1 }}
                                         className="group/screen space-y-6"
                                     >

@@ -3,6 +3,7 @@
 import { Reveal } from "./Reveal";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 import designIcon from "@/assets/wireframe-copped.png";
 import searchIcon from "@/assets/solution-seo-v2.png";
 import websiteIcon from "@/assets/solution-website-final-Picsart-BackgroundRemover-Photoroom.png";
@@ -21,7 +22,8 @@ const SolutionSection = ({ locale }: { locale: string }) => {
       flipped: false,
       largexl: true,
       ctaText: t(dictionary, "solutions.design_cta"),
-      link: `/${locale}/creare-site-web/`
+      link: `/${locale}/#contact`,
+      learnMoreLink: `/${locale}/creare-site-web-targu-mures/`
     },
     {
       title: t(dictionary, "solutions.seo_title"),
@@ -30,7 +32,8 @@ const SolutionSection = ({ locale }: { locale: string }) => {
       reversed: true,
       flipped: false,
       ctaText: t(dictionary, "solutions.seo_cta"),
-      link: `/${locale}/optimizare-seo/`
+      link: `/${locale}/#contact`,
+      learnMoreLink: `/${locale}/optimizare-seo-targu-mures/`
     },
     {
       title: t(dictionary, "solutions.consult_title"),
@@ -40,7 +43,8 @@ const SolutionSection = ({ locale }: { locale: string }) => {
       flipped: false,
       large: true,
       ctaText: t(dictionary, "solutions.consult_cta"),
-      link: `/${locale}/#contact`
+      link: `/${locale}/#contact`,
+      learnMoreLink: `/${locale}/redesign-website-targu-mures/`
     },
   ];
 
@@ -82,23 +86,28 @@ const SolutionSection = ({ locale }: { locale: string }) => {
                     <p className="text-[hsl(220,10%,60%)] text-lg sm:text-xl lg:text-2xl leading-relaxed mb-8">
                       {solution.description}
                     </p>
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-full px-10 py-7 text-lg font-bold bg-primary hover:bg-primary/90 shadow-[0_0_1.875rem_-0.3125rem_rgba(124,58,237,0.5)] hover:shadow-[0_0_2.5rem_-0.3125rem_rgba(124,58,237,0.7)] transition-all duration-300 transform hover:-translate-y-1"
-                    >
-                      <a
-                        href={solution.link}
-                        onClick={(e) => {
-                          if (solution.link.includes("#contact")) {
-                            e.preventDefault();
-                            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                          }
-                        }}
+                    <div className="flex flex-col items-center md:items-start gap-4">
+                      <Button
+                        asChild
+                        size="lg"
+                        className="rounded-full px-10 py-7 text-lg font-bold bg-primary hover:bg-primary/90 shadow-[0_0_1.875rem_-0.3125rem_rgba(124,58,237,0.5)] hover:shadow-[0_0_2.5rem_-0.3125rem_rgba(124,58,237,0.7)] transition-all duration-300 transform hover:-translate-y-1"
                       >
-                        {solution.ctaText}
-                      </a>
-                    </Button>
+                        <Link
+                          href={solution.link}
+                          onClick={(e) => {
+                            if (solution.link.includes("#contact")) {
+                              e.preventDefault();
+                              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                            }
+                          }}
+                        >
+                          {solution.ctaText}
+                        </Link>
+                      </Button>
+                      <Link href={solution.learnMoreLink} className="text-muted-foreground hover:text-foreground text-sm font-semibold transition-colors underline-offset-4 hover:underline">
+                        {t(dictionary, "solutions.learn_more")} <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
                   </div>
                 </Reveal>
               </div>

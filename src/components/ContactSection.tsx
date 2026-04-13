@@ -42,6 +42,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
     website: z.string().trim().max(255).optional(),
     need: z.string().min(1, t(dictionary, "contact.err_need")),
     timezone: z.string().optional(),
+    bot_field: z.string().optional(),
   }), [dictionary]);
 
   type FormData = z.infer<typeof formSchema>;
@@ -53,6 +54,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
     website: "",
     need: initialPackage || "",
     timezone: "",
+    bot_field: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
 
@@ -179,25 +181,41 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
     setIsSubmitting(true);
 
     try {
+      // Fire in background to Google Apps Script (Sheets)
       const formBody = new URLSearchParams();
       Object.entries(formData).forEach(([key, value]) => {
         if (value) formBody.append(key, value);
       });
-
-      await fetch(SCRIPT_URL, {
+      fetch(SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
         body: formBody.toString(),
+      }).catch((error) => console.error("Google Sheets Submission failed:", error));
+
+      // Call Next.js Serverless API Route (Resend)
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      setStep("confirmation");
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      // Tiny delay for UX so it feels like it "processed"
+      setTimeout(() => {
+        setStep("confirmation");
+        setIsSubmitting(false);
+      }, 600);
     } catch (error) {
       console.error("Submission failed:", error);
       alert("Something went wrong. Please try again or contact us directly.");
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -288,6 +306,18 @@ const ContactSection: React.FC<ContactSectionProps> = ({ initialPackage, package
                         </h2>
 
                         <form onSubmit={handleSubmit} className="space-y-6 lg:space-y-5 mt-4">
+                          {/* Honeypot field - visually hidden to catch bots */}
+                          <div className="hidden" aria-hidden="true">
+                            <Label htmlFor="bot_field">Don't fill this out if you're human:</Label>
+                            <Input
+                              id="bot_field"
+                              type="text"
+                              tabIndex={-1}
+                              value={formData.bot_field || ""}
+                              onChange={(e) => handleInputChange("bot_field", e.target.value)}
+                            />
+                          </div>
+
                           <div className="grid grid-cols-1 gap-6 lg:gap-4">
                             <div className="space-y-3 lg:space-y-2">
                               <Label htmlFor="name" className="text-base font-semibold text-foreground/90">

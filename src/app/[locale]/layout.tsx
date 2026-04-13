@@ -1,7 +1,12 @@
 import { getDictionary } from "@/lib/get-dictionary";
 import { Providers } from "@/app/providers";
 import { DictionaryProvider } from "@/components/DictionaryProvider";
-import HtmlLangSetter from "@/components/HtmlLangSetter";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export type Locale = "en" | "ro";
 
@@ -20,11 +25,14 @@ export default async function LocaleLayout({
   const dictionary = await getDictionary(locale as Locale);
 
   return (
-    <DictionaryProvider dictionary={dictionary}>
-      <HtmlLangSetter locale={locale} />
-      <Providers>
-        {children}
-      </Providers>
-    </DictionaryProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${plusJakartaSans.variable} font-sans antialiased bg-background text-foreground`}>
+        <DictionaryProvider dictionary={dictionary}>
+          <Providers>
+            {children}
+          </Providers>
+        </DictionaryProvider>
+      </body>
+    </html>
   );
 }

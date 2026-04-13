@@ -64,7 +64,7 @@ const Pricing = ({ onSelectPackage, id }: PricingProps) => {
   ];
 
   return (
-    <section id={id || "pricing"} className="py-24 px-4 overflow-hidden">
+    <section id={id || "pricing"} className="py-24 px-4">
       <div className="max-w-6xl xl:max-w-[1300px] mx-auto relative w-[95%]">
         {/* Section Headline */}
         <div className="text-center mb-16">

@@ -23,11 +23,22 @@ export const Reveal = ({
   overflowVisible = false,
 }: RevealProps) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // Do NOT use once:true — it prevents re-triggering on back-navigation.
+  // We track "already animated" manually so it still only animates once per mount.
+  const isInView = useInView(ref, { margin: "0px" });
   const mainControls = useAnimation();
+  const hasAnimated = useRef(false);
+
+  // Reset animation state on every mount (covers back-navigation)
+  useEffect(() => {
+    hasAnimated.current = false;
+    mainControls.set("hidden");
+  }, [mainControls]);
 
   useEffect(() => {
+    if (hasAnimated.current) return;
     if (isInView || instant) {
+      hasAnimated.current = true;
       mainControls.start("visible");
     }
   }, [isInView, mainControls, instant]);
@@ -38,7 +49,6 @@ export const Reveal = ({
       style={{
         position: "relative",
         width,
-        overflow: overflowVisible ? "visible" : "hidden",
         height: fullHeight ? "100%" : "auto",
       }}
       className={fullHeight ? "flex flex-col" : ""}

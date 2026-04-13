@@ -2,10 +2,13 @@
 
 import Header from "@/components/Header";
 import BackgroundEffect from "@/components/BackgroundEffect";
+import Footer from "@/components/Footer";
 import { useDictionary } from "@/components/DictionaryProvider";
 import { t } from "@/lib/t";
 import { Check, ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 interface ServicePageClientProps {
   serviceKey: string;
@@ -14,6 +17,7 @@ interface ServicePageClientProps {
 
 export default function ServicePageClient({ serviceKey, locale }: ServicePageClientProps) {
   const dictionary = useDictionary();
+  const pathname = usePathname();
 
   const svc = (key: string) => t(dictionary, `services.${serviceKey}.${key}`);
   const features = t(dictionary, `services.${serviceKey}.features`) as Array<{ title: string; desc: string }>;
@@ -21,43 +25,52 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
   const faqItems = t(dictionary, `services.${serviceKey}.faq_items`) as Array<{ q: string; a: string }>;
 
   const otherServices = [
-    { key: "creare_site", slug: "creare-site-web", label: locale === "ro" ? "Creare Site Web" : "Web Design" },
-    { key: "optimizare_seo", slug: "optimizare-seo", label: locale === "ro" ? "Optimizare SEO" : "SEO Services" },
-    { key: "redesign_website", slug: "redesign-website", label: locale === "ro" ? "Redesign Website" : "Website Redesign" },
-    { key: "mentenanta_website", slug: "mentenanta-website", label: locale === "ro" ? "Mentenanță Website" : "Website Maintenance" },
+    { key: "creare_site", slug: "creare-site-web-targu-mures", label: locale === "ro" ? "Creare Site Web" : "Web Design" },
+    { key: "optimizare_seo", slug: "optimizare-seo-targu-mures", label: locale === "ro" ? "Optimizare SEO" : "SEO Services" },
+    { key: "redesign_website", slug: "redesign-website-targu-mures", label: locale === "ro" ? "Redesign Website" : "Website Redesign" },
+    { key: "mentenanta_website", slug: "mentenanta-website-targu-mures", label: locale === "ro" ? "Mentenanță Website" : "Website Maintenance" },
+
   ].filter((s) => s.key !== serviceKey);
 
   return (
-    <div className="min-h-screen relative selection:bg-primary/30">
+    <div className="min-h-screen relative selection:bg-primary/30 font-sans">
+
+
       <BackgroundEffect />
       <Header />
       <main id="main-content" role="main">
         {/* Hero Section */}
-        <section className="pt-32 pb-16 px-4">
-          <div className="max-w-4xl mx-auto text-center">
+        <section className="pt-32 pb-24 px-4 overflow-hidden">
+          <div className="max-w-6xl mx-auto text-center">
+
+
             {/* Breadcrumb */}
-            <nav aria-label="Breadcrumb" className="mb-8">
-              <ol className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <nav aria-label="Breadcrumb" className="mb-10">
+              <ol className="flex items-center justify-center gap-2 text-sm text-muted-foreground bg-white/5 w-fit mx-auto px-4 py-1.5 rounded-full border border-white/10 backdrop-blur-sm">
                 <li>
-                  <a href={`/${locale}/`} className="hover:text-primary transition-colors">
+                  <Link href={`/${locale}/`} className="hover:text-primary transition-colors font-medium">
                     {t(dictionary, "seo.breadcrumb_home")}
-                  </a>
+                  </Link>
                 </li>
-                <li className="text-muted-foreground/40">/</li>
-                <li className="text-foreground font-medium">{svc("h1")}</li>
+                <li className="text-muted-foreground/40 text-xs">/</li>
+                <li className="text-foreground/90 font-semibold">{svc("h1")}</li>
               </ol>
             </nav>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-foreground mb-8 leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight mb-8 leading-tight text-foreground">
               {svc("h1")}
             </h1>
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+
+
+            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto font-medium">
               {svc("intro")}
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
               <Button
                 size="lg"
-                className="rounded-full px-10 py-7 text-lg font-bold shadow-2xl shadow-primary/20"
+                className="h-16 px-10 text-xl font-bold rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl transition-all hover:-translate-y-2 group"
+
+
                 onClick={() => document.getElementById("service-cta")?.scrollIntoView({ behavior: "smooth" })}
               >
                 {svc("cta_button")}
@@ -66,7 +79,9 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-full px-10 py-7 text-lg font-semibold border-white/15"
+                className="h-16 px-10 text-xl font-bold rounded-2xl border-primary/20 bg-card/20 hover:bg-primary/5 hover:border-primary/40 text-foreground transition-all"
+
+
               >
                 <a
                   href="https://wa.me/40768919621"
@@ -82,24 +97,30 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
         </section>
 
         {/* Features Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground mb-12 text-center">
+        <section className="py-32 px-4 border-y border-white/5 bg-white/[0.01]">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-2xl lg:text-5xl font-extrabold tracking-tight text-foreground mb-20 text-center">
               {svc("features_title")}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
               {Array.isArray(features) &&
-                features.map((feature, i) => (
+                features.map((feature: { title: string; desc: string }, i: number) => (
                   <div
                     key={i}
-                    className="flex items-start gap-4 p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-xl hover:border-primary/30 transition-colors"
+                    className="group flex items-start gap-8 p-10 rounded-[2.5rem] bg-card/40 border border-border/40 backdrop-blur-xl hover:border-primary/40 transition-all duration-300 transform shadow-xl hover:-translate-y-1"
                   >
-                    <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Check className="w-4 h-4 text-primary" />
+                    <div className="mt-1 flex-shrink-0 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+
+
+                      <Check className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold text-foreground mb-2">{feature.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{feature.desc}</p>
+                      <h3 className="text-2xl font-bold tracking-tight text-foreground mb-2 group-hover:text-primary transition-colors">{feature.title}</h3>
+                      <p className="text-muted-foreground text-lg leading-relaxed font-medium">{feature.desc}</p>
+
+
                     </div>
                   </div>
                 ))}
@@ -108,38 +129,54 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="py-20 px-4 bg-card/20 border-y border-white/5">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground mb-12 text-center">
+        <section className="py-32 px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-foreground mb-20 text-center leading-tight">
               {svc("why_title")}
             </h2>
-            <div className="space-y-6">
+
+            <div className="space-y-8">
+
+
               {Array.isArray(whyItems) &&
-                whyItems.map((item, i) => (
-                  <div key={i} className="flex items-start gap-4">
-                    <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-bold text-sm">
+                whyItems.map((item: string, i: number) => (
+                  <div key={i} className="group flex items-start gap-8 p-10 rounded-[2.5rem] bg-card/20 border border-border/40 hover:bg-card/40 transition-colors backdrop-blur-xl shadow-xl">
+                    <div className="w-16 h-16 rounded-full border-2 border-border/40 flex items-center justify-center text-2xl font-extrabold group-hover:border-primary group-hover:text-primary transition-all flex-shrink-0">
+
+
                       {i + 1}
                     </div>
-                    <p className="text-lg text-foreground/90 leading-relaxed">{item}</p>
+                    <p className="text-xl text-muted-foreground leading-relaxed font-medium pt-2">{item}</p>
+
+
                   </div>
                 ))}
             </div>
-            <p className="text-center mt-10 text-muted-foreground font-medium text-lg">{svc("pricing_note")}</p>
+            <p className="text-center mt-12 text-muted-foreground font-bold uppercase tracking-widest text-sm">{svc("pricing_note")}</p>
+
+
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground mb-12 text-center">
+        <section className="py-24 px-4 bg-white/[0.02] border-y border-white/5">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl lg:text-5xl font-bold tracking-tight text-foreground mb-16 text-center leading-tight">
               {svc("faq_title")}
             </h2>
+
+
+
             <div className="space-y-6">
               {Array.isArray(faqItems) &&
-                faqItems.map((faq, i) => (
-                  <div key={i} className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-xl">
-                    <h3 className="text-lg font-bold text-foreground mb-3">{faq.q}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{faq.a}</p>
+                faqItems.map((faq: { q: string; a: string }, i: number) => (
+                  <div key={i} className="p-10 rounded-[2.5rem] bg-card/30 border border-border/40 backdrop-blur-md shadow-xl">
+
+
+                    <h3 className="text-2xl font-bold tracking-tight text-primary mb-4">{faq.q}</h3>
+                    <p className="text-muted-foreground text-xl font-medium leading-relaxed">{faq.a}</p>
+
+
                   </div>
                 ))}
             </div>
@@ -147,27 +184,36 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
         </section>
 
         {/* CTA Section */}
-        <section id="service-cta" className="py-20 px-4 bg-card/20 border-y border-white/5">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-foreground mb-6">
+        <section id="service-cta" className="py-32 px-4">
+          <div className="max-w-4xl mx-auto text-center space-y-12">
+
+
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-8 leading-tight">
               {svc("cta_title")}
             </h2>
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">{svc("cta_desc")}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="rounded-full px-10 py-7 text-lg font-bold shadow-2xl shadow-primary/20">
-                <a href={`/${locale}/#contact`}>{svc("cta_button")}</a>
+
+            <p className="text-lg sm:text-2xl text-muted-foreground leading-tight max-w-3xl mx-auto font-medium">{svc("cta_desc")}</p>
+
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button asChild size="lg" className="h-20 px-12 text-2xl font-bold rounded-2xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-xl transition-all hover:-translate-y-2 group">
+                <Link href={`/${locale}/#contact`}>{svc("cta_button")} <ArrowRight className="w-8 h-8 ml-4 transition-transform group-hover:translate-x-2" /></Link>
               </Button>
+
+
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="rounded-full px-10 py-7 text-lg font-semibold border-white/15"
+                className="h-20 px-12 text-2xl font-bold rounded-2xl border-primary/20 bg-card/20 hover:bg-primary/5 hover:border-primary/40 text-foreground shadow-xl transition-all hover:-translate-y-2"
               >
                 <a href="https://wa.me/40768919621" target="_blank" rel="noopener noreferrer">
-                  <Phone className="w-5 h-5 mr-2 text-[#25D366]" />
+                  <Phone className="w-8 h-8 mr-4 text-[#25D366]" />
                   WhatsApp
                 </a>
               </Button>
+
+
             </div>
           </div>
         </section>
@@ -179,8 +225,8 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
               {locale === "ro" ? "Alte servicii" : "Other Services"}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {otherServices.map((s) => (
-                <a
+              {otherServices.map((s: { key: string; slug: string; label: string }) => (
+                <Link
                   key={s.key}
                   href={`/${locale}/${s.slug}/`}
                   className="group flex items-center justify-between p-5 rounded-xl bg-card/50 border border-border/50 hover:border-primary/40 transition-all"
@@ -189,7 +235,7 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
                     {s.label}
                   </span>
                   <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -197,60 +243,7 @@ export default function ServicePageClient({ serviceKey, locale }: ServicePageCli
       </main>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-border bg-card/30" role="contentinfo">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-2 items-center md:items-start">
-            <a href={`/${locale}/`}>
-              <img
-                src="/portfolio/Future Builds - Written-Transparent-Cropped.png"
-                alt="Future Builds — Agenție Web Design Târgu Mureș"
-                className="h-8 md:h-10 w-auto object-contain"
-              />
-            </a>
-            <p className="text-sm text-muted-foreground mt-2">{t(dictionary, "footer.tagline")}</p>
-          </div>
-          <div className="flex gap-x-6 gap-y-3 text-sm text-muted-foreground flex-wrap justify-center">
-            <a href={`/${locale}/`} className="hover:text-primary transition-colors">
-              {t(dictionary, "footer.link_home")}
-            </a>
-            <a href={`/${locale}/creare-site-web/`} className="hover:text-primary transition-colors">
-              {locale === "ro" ? "Creare Site Web" : "Web Design"}
-            </a>
-            <a href={`/${locale}/optimizare-seo/`} className="hover:text-primary transition-colors">
-              {locale === "ro" ? "Optimizare SEO" : "SEO Services"}
-            </a>
-            <a href={`/${locale}/#contact`} className="hover:text-primary transition-colors">
-              {t(dictionary, "footer.link_contact")}
-            </a>
-          </div>
-          <div className="flex flex-col items-center md:items-end gap-2">
-            <address className="not-italic text-xs text-muted-foreground/60 text-center md:text-right leading-relaxed">
-              <span className="font-medium text-muted-foreground/80">Future Builds</span>
-              <br />
-              Bulevardul 1 Decembrie 1918 213, Târgu Mureș 540000
-              <br />
-              <a href="tel:+40768919621" className="hover:text-primary transition-colors">
-                +40 768 919 621
-              </a>
-              {" · "}
-              <a href="mailto:contact@futurebuilds.ro" className="hover:text-primary transition-colors">
-                contact@futurebuilds.ro
-              </a>
-            </address>
-            <a
-              href="https://maps.google.com/?q=Future+Builds+Bulevardul+1+Decembrie+1918+213+Targu+Mures"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-primary/60 hover:text-primary transition-colors mt-1"
-            >
-              📍 {locale === "ro" ? "Vezi pe Google Maps" : "View on Google Maps"}
-            </a>
-            <p className="text-xs text-muted-foreground/50 mt-1">
-              {t(dictionary, "footer.copyright")?.replace("{{year}}", new Date().getFullYear().toString())}
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

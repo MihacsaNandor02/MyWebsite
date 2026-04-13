@@ -128,7 +128,8 @@ export default async function IndexPage({
         },
         "sameAs": [
           "https://www.facebook.com/futurebuilds",
-          "https://wa.me/40768919621"
+          "https://wa.me/40768919621",
+          "https://share.google/NDhbCtHrpMYGIuXLh"
         ]
       },
       {

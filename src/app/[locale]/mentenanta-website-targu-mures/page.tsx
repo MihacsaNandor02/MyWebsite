@@ -14,7 +14,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const dictionary = await getDictionary(locale);
   const baseUrl = "https://futurebuilds.ro";
-  const localizedUrl = `${baseUrl}/${locale}/mentenanta-website/`;
+  const localizedUrl = `${baseUrl}/${locale}/mentenanta-website-targu-mures/`;
 
   return {
     title: dictionary.services?.mentenanta_website?.page_title,
@@ -22,8 +22,8 @@ export async function generateMetadata({
     alternates: {
       canonical: localizedUrl,
       languages: {
-        ro: `${baseUrl}/ro/mentenanta-website/`,
-        en: `${baseUrl}/en/mentenanta-website/`,
+        ro: `${baseUrl}/ro/mentenanta-website-targu-mures/`,
+        en: `${baseUrl}/en/mentenanta-website-targu-mures/`,
       },
     },
     openGraph: {

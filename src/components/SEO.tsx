@@ -9,15 +9,17 @@ import { t } from "@/lib/t";
 interface SEOProps {
   onSelectPackage: (packageName: string) => void;
   id?: string;
+  primaryOutcome?: string;
+  growthOutcome?: string;
 }
 
-const SEO = ({ onSelectPackage, id }: SEOProps) => {
+const SEO = ({ onSelectPackage, id, primaryOutcome, growthOutcome }: SEOProps) => {
   const dictionary = useDictionary();
 
   const seoTiers = [
     {
       name: t(dictionary, "seo_pricing.local.name"),
-      description: t(dictionary, "seo_pricing.local.desc"),
+      description: primaryOutcome || t(dictionary, "seo_pricing.local.desc"),
       price: t(dictionary, "seo_pricing.local.price"),
       priceLabel: t(dictionary, "seo_pricing.local.price_label"),
       featured: false,
@@ -35,7 +37,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
     },
     {
       name: t(dictionary, "seo_pricing.growth.name"),
-      description: t(dictionary, "seo_pricing.growth.desc"),
+      description: growthOutcome || t(dictionary, "seo_pricing.growth.desc"),
       price: t(dictionary, "seo_pricing.growth.price"),
       priceLabel: t(dictionary, "seo_pricing.growth.price_label"),
       quarterlyPrice: t(dictionary, "seo_pricing.growth.q_price"),
@@ -57,7 +59,7 @@ const SEO = ({ onSelectPackage, id }: SEOProps) => {
   ];
 
   return (
-    <section id={id || "seo"} className="py-12 px-4 overflow-hidden">
+    <section id={id || "seo"} className="py-12 px-4">
       <div className="max-w-6xl xl:max-w-7xl mx-auto relative w-[95%]">
 
         {/* Section Headline */}

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
-import ServicePageClient from "@/components/ServicePageClient";
+import CreareSiteTarguMuresClient from "@/components/CreareSiteTarguMuresClient";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ro" }];
@@ -14,21 +14,21 @@ export async function generateMetadata({
   const { locale } = await params;
   const dictionary = await getDictionary(locale);
   const baseUrl = "https://futurebuilds.ro";
-  const localizedUrl = `${baseUrl}/${locale}/optimizare-seo/`;
+  const localizedUrl = `${baseUrl}/${locale}/creare-site-web-targu-mures/`;
 
   return {
-    title: dictionary.services?.optimizare_seo?.page_title,
-    description: dictionary.services?.optimizare_seo?.page_desc,
+    title: dictionary.services?.creare_site?.page_title,
+    description: dictionary.services?.creare_site?.page_desc,
     alternates: {
       canonical: localizedUrl,
       languages: {
-        ro: `${baseUrl}/ro/optimizare-seo/`,
-        en: `${baseUrl}/en/optimizare-seo/`,
+        ro: `${baseUrl}/ro/creare-site-web-targu-mures/`,
+        en: `${baseUrl}/en/creare-site-web-targu-mures/`,
       },
     },
     openGraph: {
-      title: dictionary.services?.optimizare_seo?.page_title,
-      description: dictionary.services?.optimizare_seo?.page_desc,
+      title: dictionary.services?.creare_site?.page_title,
+      description: dictionary.services?.creare_site?.page_desc,
       url: localizedUrl,
       siteName: "Future Builds",
       locale: locale === "ro" ? "ro_RO" : "en_US",
@@ -37,7 +37,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function OptimizareSeoPage({
+export default async function CreareSiteWebPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -48,8 +48,8 @@ export default async function OptimizareSeoPage({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": dictionary.services?.optimizare_seo?.h1 || "Servicii SEO Târgu Mureș",
-    "serviceType": "Search Engine Optimization",
+    "name": dictionary.services?.creare_site?.h1 || "Creare Site Web Târgu Mureș",
+    "serviceType": "Web Design",
     "provider": {
       "@type": "ProfessionalService",
       "@id": "https://futurebuilds.ro/#localbusiness",
@@ -58,17 +58,16 @@ export default async function OptimizareSeoPage({
       "@type": "City",
       "name": "Târgu Mureș",
     },
-    "description": dictionary.services?.optimizare_seo?.page_desc,
+    "description": dictionary.services?.creare_site?.page_desc,
     "offers": {
       "@type": "Offer",
       "priceCurrency": "RON",
-      "price": "600",
+      "price": "2497",
       "priceSpecification": {
         "@type": "PriceSpecification",
         "priceCurrency": "RON",
-        "price": "600",
-        "unitText": "MONTH",
-        "description": "Planul Local — optimizare SEO lunară",
+        "price": "2497",
+        "description": "Planul Essential — creare site web profesional",
       },
     },
   };
@@ -76,7 +75,7 @@ export default async function OptimizareSeoPage({
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": (dictionary.services?.optimizare_seo?.faq_items || []).map(
+    "mainEntity": (dictionary.services?.creare_site?.faq_items || []).map(
       (faq: { q: string; a: string }) => ({
         "@type": "Question",
         "name": faq.q,
@@ -98,7 +97,7 @@ export default async function OptimizareSeoPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ServicePageClient serviceKey="optimizare_seo" locale={locale} />
+      <CreareSiteTarguMuresClient locale={locale} />
     </>
   );
 }

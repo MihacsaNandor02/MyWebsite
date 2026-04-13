@@ -17,7 +17,7 @@ const Portfolio = () => {
     const [isGenericOpen, setIsGenericOpen] = useState(false);
 
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "200px" });
+    const isInView = useInView(ref, { margin: "200px" });
 
     return (
         <section id="portfolio" ref={ref} className="pb-24 mt-32 sm:mt-36 md:mt-32 xl:mt-28 px-4 relative overflow-hidden">
@@ -28,7 +28,7 @@ const Portfolio = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
                         >
                             <Zap className="w-3 h-3" /> {t(dictionary, 'portfolio.tag')}
@@ -36,7 +36,7 @@ const Portfolio = () => {
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             transition={{ delay: 0.1 }}
                             className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] uppercase italic"
                         >
@@ -51,7 +51,7 @@ const Portfolio = () => {
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         className="group relative cursor-pointer"
                         onClick={() => setIsFightClubOpen(true)}
                     >
@@ -77,8 +77,8 @@ const Portfolio = () => {
                                 <div className="lg:col-span-5 p-8 md:p-12 lg:p-16 flex flex-col justify-center space-y-10">
                                     <div className="space-y-4">
                                         <Badge className="bg-yellow-400 text-black border-none font-black italic uppercase tracking-tighter px-4 py-1">{t(dictionary, 'portfolio.featured_badge')}</Badge>
-                                        <h3 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-[0.9]">
-                                            BLACK <span className="text-yellow-400">DIAMOND</span> FIGHT
+                                        <h3 className="text-3xl md:text-5xl font-black tracking-tighter uppercase italic leading-[0.9]">
+                                            {t(dictionary, 'portfolio.fight_club_title')}
                                         </h3>
                                         <p className="text-xl text-white/50 leading-tight max-w-md">
                                             {t(dictionary, 'portfolio.fight_club_desc')}
@@ -120,7 +120,7 @@ const Portfolio = () => {
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             className="group relative cursor-pointer"
                             onClick={() => setIsGenericOpen(true)}
                         >

@@ -89,14 +89,14 @@ const Hero = ({ id }: { id?: string }) => {
             </p>
 
             {/* CTA Buttons - Primary + Secondary */}
-            <div className="flex flex-col sm:flex-row max-w-[65vw] sm:max-w-xl xl:max-w-2xl sm:items-stretch sm:items-center justify-center lg:justify-start mb-12 gap-6 sm:gap-8  mx-auto sm:mx-auto lg:mx-0">
+            <div className="flex flex-col sm:flex-row w-full justify-center lg:justify-start items-center sm:items-stretch mb-6 lg:mt-8 gap-5 sm:gap-6 mx-auto lg:mx-0">
               <Button
                 asChild
                 size="lg"
-                className="flex-1 group relative text-base lg:text-lg px-0 py-5  sm:py-8 lg:px-10 lg:py-8 font-bold rounded-2xl shadow-2xl shadow-primary/20 transition-all hover:shadow-primary/40 hover:-translate-y-1.5 overflow-hidden"
+                className="w-full sm:w-[clamp(15rem,28vw,18rem)] group relative text-base lg:text-lg px-2 py-5 sm:py-5 lg:py-5 font-bold rounded-[20px] shadow-2xl shadow-primary/20 transition-all hover:shadow-primary/40 hover:-translate-y-1.5 overflow-hidden"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <a href="#contact">
+                <a href="#contact" className="flex items-center justify-center w-full h-full">
                   <span className="relative z-10 transition-colors group-hover:text-white">{t(dictionary, 'hero.cta_primary')}</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 transition-transform duration-500 group-hover:scale-110" />
                   {/* Shimmer Effect */}
@@ -108,10 +108,10 @@ const Hero = ({ id }: { id?: string }) => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="flex-1 group text-base lg:text-lg px-0 py-5 sm:py-8 lg:px-10 lg:py-8 font-semibold rounded-2xl border-white/15 bg-white/5 backdrop-blur-sm text-foreground hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1"
+                className="w-full sm:w-[clamp(15rem,28vw,18rem)] group text-base lg:text-lg px-2 py-5 sm:py-5 lg:py-5 font-semibold rounded-[20px] border border-white/15 bg-white/5 backdrop-blur-sm text-foreground hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:-translate-y-1"
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <a href="#portfolio">
+                <a href="#portfolio" className="flex items-center justify-center w-full h-full">
                   {t(dictionary, 'hero.cta_secondary')}
                   <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </a>

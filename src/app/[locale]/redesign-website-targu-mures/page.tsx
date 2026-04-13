@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
-import ServicePageClient from "@/components/ServicePageClient";
+import RedesignPageClient from "@/components/RedesignPageClient";
 
 export async function generateStaticParams() {
   return [{ locale: "en" }, { locale: "ro" }];
@@ -14,21 +14,21 @@ export async function generateMetadata({
   const { locale } = await params;
   const dictionary = await getDictionary(locale);
   const baseUrl = "https://futurebuilds.ro";
-  const localizedUrl = `${baseUrl}/${locale}/creare-site-web/`;
+  const localizedUrl = `${baseUrl}/${locale}/redesign-website-targu-mures/`;
 
   return {
-    title: dictionary.services?.creare_site?.page_title,
-    description: dictionary.services?.creare_site?.page_desc,
+    title: dictionary.services?.redesign_website?.page_title,
+    description: dictionary.services?.redesign_website?.page_desc,
     alternates: {
       canonical: localizedUrl,
       languages: {
-        ro: `${baseUrl}/ro/creare-site-web/`,
-        en: `${baseUrl}/en/creare-site-web/`,
+        ro: `${baseUrl}/ro/redesign-website-targu-mures/`,
+        en: `${baseUrl}/en/redesign-website-targu-mures/`,
       },
     },
     openGraph: {
-      title: dictionary.services?.creare_site?.page_title,
-      description: dictionary.services?.creare_site?.page_desc,
+      title: dictionary.services?.redesign_website?.page_title,
+      description: dictionary.services?.redesign_website?.page_desc,
       url: localizedUrl,
       siteName: "Future Builds",
       locale: locale === "ro" ? "ro_RO" : "en_US",
@@ -37,7 +37,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function CreareSiteWebPage({
+export default async function RedesignWebsitePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -48,8 +48,8 @@ export default async function CreareSiteWebPage({
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": dictionary.services?.creare_site?.h1 || "Creare Site Web Târgu Mureș",
-    "serviceType": "Web Design",
+    "name": dictionary.services?.redesign_website?.h1 || "Redesign Website Târgu Mureș",
+    "serviceType": "Website Redesign",
     "provider": {
       "@type": "ProfessionalService",
       "@id": "https://futurebuilds.ro/#localbusiness",
@@ -58,24 +58,13 @@ export default async function CreareSiteWebPage({
       "@type": "City",
       "name": "Târgu Mureș",
     },
-    "description": dictionary.services?.creare_site?.page_desc,
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "RON",
-      "price": "2497",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "priceCurrency": "RON",
-        "price": "2497",
-        "description": "Planul Essential — creare site web profesional",
-      },
-    },
+    "description": dictionary.services?.redesign_website?.page_desc,
   };
 
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": (dictionary.services?.creare_site?.faq_items || []).map(
+    "mainEntity": (dictionary.services?.redesign_website?.faq_items || []).map(
       (faq: { q: string; a: string }) => ({
         "@type": "Question",
         "name": faq.q,
@@ -97,7 +86,7 @@ export default async function CreareSiteWebPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <ServicePageClient serviceKey="creare_site" locale={locale} />
+      <RedesignPageClient locale={locale} />
     </>
   );
 }
