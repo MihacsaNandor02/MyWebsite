@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
 
+export const dynamic = 'force-dynamic';
 
 
 const contactSchema = z.object({
