@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     shortcut: "/favicon.png",
     apple: "/favicon.png",
   },
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

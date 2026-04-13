@@ -25,7 +25,7 @@ export default async function LocaleLayout({
   const dictionary = await getDictionary(locale as Locale);
 
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
+    <html lang={locale} className="dark" style={{ colorScheme: 'dark' }} suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable} font-sans antialiased bg-background text-foreground`}>
         <DictionaryProvider dictionary={dictionary}>
           <Providers>
