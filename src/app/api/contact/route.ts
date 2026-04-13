@@ -18,7 +18,12 @@ const contactSchema = z.object({
 
 export async function POST(request: Request) {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("Missing RESEND_API_KEY environment variable");
+      return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+    }
+    const resend = new Resend(apiKey);
     const body = await request.json();
 
     // 1. Validation & Honeypot
